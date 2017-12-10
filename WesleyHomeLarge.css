@@ -1,0 +1,49 @@
+#logo {
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    background-image: url("images/cover-page-background.jpeg");
+}
+
+#cover-page {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    background-attachment: fixed;
+    background-image: url("images/cover-page-background.jpeg");
+}
+
+.emptyGap {
+    height: 100px;
+}
+
+#about-section {
+    height: 500px;
+    border: 1px solid black;
+    align-items: center;
+}
+
+#footer {
+    height: 500px;
+    border: 1px solid black;
+}
+
+.about-tab {
+    border: 2px solid black;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    background-image: url("images/cover-page-background.jpeg");
+}
+
+.tab-text-format {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    color: black;
+}
