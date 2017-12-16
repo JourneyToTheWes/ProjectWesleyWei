@@ -1,0 +1,23 @@
+.resume-sub-tab {
+    border: 2px solid black;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    background-image: url("images/cover-page-background.jpeg");
+}
+
+#resume-tabs {
+    text-align: center;
+}
+
+.tab-text-format {
+    position: absolute;
+    white-space: pre-wrap;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    color: black;
+    font-size: 12px;
+}

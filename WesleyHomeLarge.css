@@ -30,6 +30,7 @@
     /* border: 1px solid black; */
     align-items: center;
 }
+
 .about-tab {
     border: 2px solid black;
     border-radius: 50%;
@@ -53,10 +54,15 @@
     /* border: 1px solid black;    */
     display: flex;
     /* background-color: rgba(100, 98, 98, 0.03); */
-    background-image: url("images/bioBackground.jpg");
+    background-image: url("images/bioBackground3.jpg");
     background-attachment: fixed;
     background-position: center top;
     /* opacity: 0.9; */
+}
+
+#bio-p {
+    font-size: 16px;
+    color: white;
 }
 
 #image-card {
