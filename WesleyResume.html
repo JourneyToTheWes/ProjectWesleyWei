@@ -1,4 +1,4 @@
-<! doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -9,8 +9,10 @@
         <link id = "pagestyle" rel = "stylesheet" type = "text/css" href = "wesleyResume.css">
         <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        
     </head>
     <body>
+        <div id="test"></div>
         <div id="resume-tabs" class="container">
             <div class="row">
                 <div class="col-3">
@@ -35,7 +37,15 @@
                 </div>
             </div>
         </div>
-        <div id="skills-section">
+        <div id="work-experience-section">
+            <ul>
+                <li>
+                    Worked over the summer in an upholstery & drapery design showroom six days a week. Updated and maintained the company’s computer database/network. 
+                    Self-programmed the company website: 5starupholsteryanddrapery.com. 
+                </li>
+            </ul>
+        </div>
+        <div id="skills-section" class="hidden">
             <ul>
                 <li>Proficient understanding of HTML, CSS, JavaScript, Java, R, SQL, Git Bash, GitHub
                     <ul>
@@ -53,6 +63,27 @@
                 <li>Proficient Chinese/Mandarin and basic knowledge of Korean</li>
             </ul>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <div id="leadership-section" class="hidden">
+            <ul>
+                <li>
+                    TYAPN (Taiwanese Youth Alliance Pacific Northwest, Position: TYAPanel officer): organizes events on UW campus, 
+                    such as a resume workshop, to help students prepare them for the outside world. TYAPN also focuses on gathering 
+                    groups of people, especially Taiwanese, to become more aware of different cultures.
+                </li>
+                <li>
+                    Husky Table Tennis Club (Position – President): practice table tennis three days a week in the school gym for 
+                    three hours each practice. Our school team travels to participate in the National Collegiate Table Tennis 
+                    Association’s national collegiate tournament between other schools.
+                </li>
+            </ul>
+        </div>
+        <div id="honors-and-awards-section" class="hidden">
+            <ul>
+                <li>Annual Dean's List</li>
+                <li>Table Tennis Ranking: #60 (State/Regional), top 200 (National)</li>
+            </ul>
+        </div>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
+        <script src="ResumeScript.js"></script>
     </body>
 </html>
