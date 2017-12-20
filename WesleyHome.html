@@ -13,7 +13,15 @@
 	<body>
         <div id="cover-section">
             <div id="west-way-header" class="text-center">
-                <h1>WestWay</h1>
+                <ul class="fly-in-text hidden">
+                    <li>W</li>
+                    <li>e</li>
+                    <li>s</li>
+                    <li>t</li>
+                    <li>W</li>
+                    <li>a</li>
+                    <li>y</li>
+                </ul>
                 <h4>Welcome!</h4>
                 <img id="logo" src="images/WestWay.JPG"></img>
             </div>
@@ -46,8 +54,8 @@
         </div>
         <div class="emptyGap"></div>
         <div id="bio-section">
-            <div id="image-card" class="row"> 
-                <div id="bio-p" class="col-9">
+            <div id="image-card" class="row container-fluid"> 
+                <div id="bio-p" class="col-7 col-md-8 col-lg-9">
                     <p>
                         Hello! My name is Wesley Wei and I am studying Informatics at the University of Washington. This website
                         is dedicated to channel my inner web development creativity and from what I learned from Info 343 (client
@@ -57,11 +65,19 @@
                         ranked in table tennis!
                     </p>    
                 </div> 
-                <div class="col-3">  
+                <div class="col-5 col-md-4 col-lg-3">  
                     <img id="aboutMeImg" src="images/aboutMe.jpg"></img>
                 </div>
             </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                setTimeout(function() {
+                    $('.fly-in-text').removeClass('hidden');
+                }, 500);
+            })();
+        </script>    
 	</body>
 </html>
