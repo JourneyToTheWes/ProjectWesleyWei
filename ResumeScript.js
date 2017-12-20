@@ -31,16 +31,20 @@ function displayResumePortion(section) {
     }
 }
 
-workExperienceTab.addEventListener('click', function() {
-        displayResumePortion("work")
+workExperienceTab.addEventListener('click', function(evt) {
+    evt.preventDefault();
+    displayResumePortion("work")
 });
-skillsTab.addEventListener('click', function() {
-        displayResumePortion("skills")
+skillsTab.addEventListener('click', function(evt) {
+    evt.preventDefault();
+    displayResumePortion("skills")
 });
-leadershipTab.addEventListener('click', function() {
-        displayResumePortion("leadership")
+leadershipTab.addEventListener('click', function(evt) {
+    evt.preventDefault();
+    displayResumePortion("leadership")
 });
-honorsAndAwardsTab.addEventListener('click', function() {
+honorsAndAwardsTab.addEventListener('click', function(evt) {
+    evt.preventDefault();
     displayResumePortion("honorsAndAwards")
 });
 
