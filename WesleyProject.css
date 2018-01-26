@@ -1,0 +1,25 @@
+#logo {
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+#cover-section {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    background-attachment: fixed;
+    background-image: url("images/cover-page-background.jpeg");
+    margin-bottom: 20px;
+}
+
+#overallProjects {
+    
+}
+
+.projectContainer {
+    border: 1px solid black;
+    height: 400px;
+}
