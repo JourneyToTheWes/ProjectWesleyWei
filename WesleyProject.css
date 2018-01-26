@@ -20,6 +20,45 @@
 }
 
 .projectContainer {
-    border: 1px solid black;
-    height: 400px;
+    /* border: 1px solid black; */
+    /* height: 400px;  */
+    margin: 30px;
+}
+
+.projectTitles {
+    /* text-decoration: none; */
+    color: black;
+    display: block; 
+    text-align: center;
+    font-size: 20px;
+    border-bottom: 1px solid black;
+}
+
+.projectContainer .projectTitles:hover {
+    text-decoration: none;
+    color: #CCD4E1;
+}
+
+.projectList li {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.projectContainer .projectList {
+    list-style-type: none;
+    padding-left: 1em;
+}
+
+.projectContainer .projectList li:before {
+    content: "-";
+    position: absolute;
+    margin-left: -1em;
+}
+
+.hidden {
+    display: none;
+}
+
+.unhidden {
+    display: block;
 }
