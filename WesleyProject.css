@@ -47,12 +47,22 @@
 .projectContainer .projectList {
     list-style-type: none;
     padding-left: 1em;
+    /* border: 1px solid black; */
 }
 
 .projectContainer .projectList li:before {
     content: "-";
     position: absolute;
     margin-left: -1em;
+}
+
+.projectImages {
+    /* border: 1px solid black; */
+}
+
+img {
+    width: auto;
+    height: 200px;
 }
 
 .hidden {
