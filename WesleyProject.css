@@ -33,7 +33,6 @@
     border-radius: 50%;
     height: 130px;
     width: 130px;
-    /* margin: auto; */
     background-image: url("images/cover-page-background.jpeg");
     display: flex;
     justify-content: center;
@@ -54,9 +53,6 @@
 }
 
 .projectContainer hr {
-    /* height: 10px;
-	border: 0;
-    box-shadow: 0 10px 10px -10px #8c8b8b inset; */
     overflow: visible; /* For IE */
     padding: 0;
     border: none;
