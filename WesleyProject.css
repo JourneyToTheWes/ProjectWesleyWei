@@ -15,16 +15,18 @@
     margin-bottom: 20px;
 }
 
-#overallProjects {
-    
+#project-tabs {
+    text-align: center;
+    margin-bottom: 30px;
+    /* border: 1px solid black; */
 }
 
-.projectContainer {
-    /* border: 1px solid black; */
-    /* height: 400px;  */
+/* .projectContainer {
+    border: 1px solid black;
+    height: 400px; 
     text-align: center;
     margin: 30px;
-}
+} */
 
 .project-sub-tab {
     border: 2px solid black;
@@ -36,16 +38,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
 }
 
 .tab-text-format {
     white-space: pre-wrap;
     font-weight: bold;
     color: black;
-    font-size: 15px;
+    font-size: 12px;
 }
 
-.projectContainer a:hover, .projectContainer .tab-text-format:hover {
+#project-tabs a:hover, #project-tabs .tab-text-format:hover {
     text-decoration: none;
     color: #CCD4E1;
 }
@@ -92,7 +95,7 @@
 .projectImages {
     /* border: 1px solid black; */
     width: 100%;
-    height: 500px;
+    height: 600px;
      overflow: visible;
     /* white-space: nowrap; */
     overflow-y: scroll;
