@@ -22,27 +22,54 @@
 .projectContainer {
     /* border: 1px solid black; */
     /* height: 400px;  */
+    text-align: center;
     margin: 30px;
 }
 
-.projectTitles {
-    /* text-decoration: none; */
-    color: black;
-    display: inline-block; 
-    text-align: center;
-    font-size: 20px;
-    border: 1px solid black;
+.project-sub-tab {
+    border: 2px solid black;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    /* text-decoration: overline; */
-    /* text-decoration: underline; */
-    /* border-bottom: 1px solid black; */
+    height: 130px;
+    width: 130px;
+    /* margin: auto; */
+    background-image: url("images/cover-page-background.jpeg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.projectContainer .projectTitles:hover {
+.tab-text-format {
+    white-space: pre-wrap;
+    font-weight: bold;
+    color: black;
+    font-size: 15px;
+}
+
+.projectContainer a:hover, .projectContainer .tab-text-format:hover {
     text-decoration: none;
     color: #CCD4E1;
+}
+
+.projectContainer hr {
+    /* height: 10px;
+	border: 0;
+    box-shadow: 0 10px 10px -10px #8c8b8b inset; */
+    overflow: visible; /* For IE */
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+}
+
+.projectContainer hr:after {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
 }
 
 .projectList li {
