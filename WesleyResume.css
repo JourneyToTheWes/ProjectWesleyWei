@@ -52,6 +52,11 @@ li:not(#nestedList) {
     margin-bottom: 30px;
 }
 
+.skillHighlight {
+    font-weight: 450;
+    font-style: italic;
+}
+
 .timeline {
     font-style: italic;
     font-weight: bold;
