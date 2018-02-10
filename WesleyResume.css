@@ -18,10 +18,14 @@
 .resume-sub-tab {
     border: 2px solid black;
     border-radius: 50%;
-    height: 120px;
-    width: 120px;
-    margin: auto;
+    height: 130px;
+    width: 130px;
     background-image: url("images/cover-page-background.jpeg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 #resume-tabs {
@@ -30,11 +34,7 @@
 }
 
 .tab-text-format {
-    position: absolute;
     white-space: pre-wrap;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     font-weight: bold;
     color: black;
     font-size: 12px;
