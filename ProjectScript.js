@@ -10,9 +10,10 @@ function displayProject(divID) {
     }
 }
 
+// Returns the amount of project divs that are unhidden
 function checkUnhiddenAmount() {
     let count = 0;
-    for (let i = 1; i <= 6; i++) {
+    for (let i = 1; i <= 7; i++) {
         let getProjectId = document.getElementById("project" + i);
         if (getProjectId.classList.contains('unhidden')) {
             count++;
@@ -22,7 +23,7 @@ function checkUnhiddenAmount() {
 }
 
 function removeContent() {
-    for (let i = 1; i <= 6; i++) {
+    for (let i = 1; i <= 7; i++) {
         let getProjectId = document.getElementById("project" + i);
         if (getProjectId.classList.contains('unhidden')) {
             getProjectId.className = 'hidden';

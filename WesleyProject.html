@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">	  
         <meta http-equiv="x-ua-compatible" content="ie=edge">	
-        <title>WestWay Homepage</title>	
+        <title>WestWay Projects</title>	
         <link rel="shortcut icon" type="image/x-icon" href="fivestarFavicon.ico"> 
         <link id = "pagestyle" rel = "stylesheet" type = "text/css" href = "WesleyProject.css">
         <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
@@ -23,6 +23,11 @@
             <div class="row">
                 <div class="col">
                     <div class="project-sub-tab">
+                        <a href="javascript:displayProject('project7');"><span class="tab-text-format">Search Engine</span></a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="project-sub-tab">
                         <a href="javascript:displayProject('project6');"><span class="tab-text-format">Query Suggestion</span></a>
                     </div>
                 </div>
@@ -31,8 +36,8 @@
                         <a href="javascript:displayProject('project5');"><span class="tab-text-format">Cuisinify</span></a>
                     </div>
                 </div>
-            <!-- </div> -->
-            <!-- <div class="row"> -->
+                <!-- </div> -->
+                <!-- <div class="row"> -->
                 <div class="col">
                     <div class="project-sub-tab">
                         <a href="javascript:displayProject('project4');"><span class="tab-text-format">Five Star Upholstery and Drapery</span></a>
@@ -43,8 +48,8 @@
                         <a href="javascript:displayProject('project3');"><span class="tab-text-format">CarMax</span></a>
                     </div>
                 </div>
-            <!-- </div> -->
-            <!-- <div class="row"> -->
+                <!-- </div> -->
+                <!-- <div class="row"> -->
                 <div class="col">
                     <div class="project-sub-tab">
                         <a href="javascript:displayProject('project2');"><span class="tab-text-format">Crime in Washington</span></a>
@@ -59,9 +64,48 @@
         </div> 
         <div class="container" id="overallProjects">
             <div class="projectContainer">
+                <div id="project7" class="hidden">
+                    <div class="row">
+                        <ul class="projectList col-sm-4 col-md-6 col-lg-4">
+                            <li class="projectDate">Feb. 2018 - Mar. 2018</li>
+                            <li>Gif #1 demonstrates a basic search with the key term "arizona" and query suggestions are displayed form the trie data structure.</li>
+                            <li>Gif #2 demonstrates a popular search using the key term "Trump".</li>
+                            <li>Gif #3 demonstrates a combination of cross domain AJAX to an EC2 instance of a previous NBA search assignment and AJAX to Azure webservice to retrieve crawled CNN URL's.</li>
+                            <li>Gif #4 demonstrates caching results. The first time "Obama" is searched, it takes a while to query the results and is stored into a dictionary data structure. The next time it queries and checks the dictionary for a faster result.</li>
+                            <li>Gif #5 demonstrates combining non-consecutive search key words. Instead of searching for one string search it splits the search "diet" and "exercise" and finds results based off of this.</li>
+                            <li>Built a search engine that takes any user input and outputs any search results from CNN.com.</li>
+                            <li>Demonstrates the trie data structure using Wikipedia titles as nodes for search suggestions.</li>
+                            <li>Features a dashboard as well for the backend web crawler that is crawling CNN for URL's.</li>
+                            <li>Crawled information stored in Azure tables and uses Azure queue to communicate from client-side to server-side. Wikipediat title data hosted in Azure Blob Storage and website is deployed using Azure.</li>
+                            <li>NBA Search are results of cross domain AJAX calls to my NBA search application that returns JSONP. NBA headshot images utilizes the NBA Headshot API.</li>
+                            <li>Developed with - C#, ASP.NET, HTML, CSS, JavaScript (AJAX, JQUERY).</li>
+                            <li><a href="http://wesweisearchengine.cloudapp.net/">Live Search Engine Project</a></li>
+                        </ul>
+                        <div class="projectImages col-sm-8 col-md-6 col-lg-8 text-center">
+                            <div class="slide">
+                                <img src="images/ProjectSearchEngine/PA4 Gif 1.gif">
+                            </div>
+                            <div class="slide">
+                                <img src="images/ProjectSearchEngine/PA4 Gif 2.gif">
+                            </div>
+                            <div class="slide">
+                                <img src="images/ProjectSearchEngine/PA4 Gif 3.gif">
+                            </div>
+                            <div class="slide">
+                                <img src="images/ProjectSearchEngine/PA4 Gif 4.gif">
+                            </div>
+                            <div class="slide">
+                                <img src="images/ProjectSearchEngine/PA4 Gif 5.gif">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="projectContainer">
                 <div id="project6" class="hidden">
                     <div class="row">
                         <ul class="projectList col-sm-4 col-md-6 col-lg-4">
+                            <li class="projectDate">Jan. 2018 - Feb. 2018</li>
                             <li>Generates query suggestions based on user text input.</li>
                             <li>Demonstrates the trie data structure using Wikipedia titles as nodes.</li>
                             <li>Data is hosted in Azure Blob Storage and website is deployed using Azure.</li>
@@ -71,7 +115,7 @@
                         <div class="projectImages col-sm-8 col-md-6 col-lg-8">
                             <div class="slide">
                                 <img src="images/ProjectQuerySuggestion/QuerySuggestion1.JPG">
-                            </div> 
+                            </div>
                             <div class="slide">
                                 <img src="images/ProjectQuerySuggestion/QuerySuggestion2.JPG">
                             </div>
@@ -92,6 +136,7 @@
                 <div id="project5" class="hidden">
                     <div class="row">
                         <ul class="projectList col-sm-4 col-md-6 col-lg-4">
+                            <li class="projectDate">Nov. 2017 - Dec. 2017</li>
                             <li>University of Washington - Info 343 - Final Project</li>
                             <li>
                                 Designed to help anyone decide what to cook based off of what ingredients they have
@@ -114,7 +159,7 @@
                         <div class="projectImages col-sm-8 col-md-6 col-lg-8">
                             <div class="slide">
                                 <img src="images/ProjectCuisinify/Cuisinify1.JPG">
-                            </div> 
+                            </div>
                             <div class="slide">
                                 <img src="images/ProjectCuisinify/Cuisinify2.JPG">
                             </div>
@@ -138,6 +183,7 @@
                 <div id="project4" class="hidden">
                     <div class="row">
                         <ul class="projectList col-sm-4 col-md-6 col-lg-4">
+                            <li class="projectDate">Jul. 2016 - Present</li>
                             <li>Personal project designed to improve the outdated version of this website.</li>
                             <li>
                                 Most difficult part of this project was learning the whole process of web development:
@@ -149,7 +195,7 @@
                         <div class="projectImages col-sm-8 col-md-6 col-lg-8">
                             <div class="slide">
                                 <img src="images/ProjectFiveStar/FiveStar0.JPG">
-                            </div> 
+                            </div>
                             <div class="slide">
                                 <img src="images/ProjectFiveStar/FiveStar1.png">
                             </div>
@@ -173,12 +219,13 @@
                 <div id="project3" class="hidden">
                     <div class="row">
                         <ul class="projectList col-sm-4 col-md-6 col-lg-4">
+                            <li class="projectDate">Feb. 2017 - Mar. 2017</li>
                             <li>University of Washington - Info 360 - Final Project</li>
                             <li>Redesigned a mobile app prototype for CarMax with the intention to keep car searching user friendly.</li>
                             <li>
                                 The project goal is to create an experience that identifies with the customers
-                                lifestyle and needs in a vehicle and provides a accurate user generated car that 
-                                fits their expectations. 
+                                lifestyle and needs in a vehicle and provides a accurate user generated car that
+                                fits their expectations.
                             </li>
                             <li>
                                 Process of the project included: whiteboard sketches, paper prototype & user flow,
@@ -191,7 +238,7 @@
                         <div class="projectImages col-sm-8 col-md-6 col-lg-8">
                             <div class="slide">
                                 <img src="images/ProjectCarMax/CarMax1.jpg">
-                            </div> 
+                            </div>
                             <div class="slide">
                                 <img src="images/ProjectCarMax/CarMax2.jpg">
                             </div>
@@ -209,7 +256,7 @@
                             </div>
                             <div class="slide">
                                 <img src="images/ProjectCarMax/CarMax7.jpg">
-                            </div> 
+                            </div>
                             <div class="slide">
                                 <img src="images/ProjectCarMax/CarMax8.jpg">
                             </div>
@@ -233,9 +280,10 @@
                 <div id="project2" class="hidden">
                     <div class="row">
                         <ul class="projectList col-sm-4 col-md-6 col-lg-4">
+                            <li class="projectDate">Mar. 2017</li>
                             <li>University of Washington - Info 201 - Final Project</li>
                             <li>
-                                The data the group extracted is from the Data.gov website. This dataset displays the 
+                                The data the group extracted is from the Data.gov website. This dataset displays the
                                 crimes committed inside the state of washington, specifically the county and the year.
                             </li>
                             <li>Developed using R and deployed with Shiny.</li>
@@ -244,7 +292,7 @@
                         <div class="projectImages col-sm-8 col-md-6 col-lg-8">
                             <div class="slide">
                                 <img src="images/ProjectCrimeInWashington/CIW1.jpg">
-                            </div> 
+                            </div>
                             <div class="slide">
                                 <img src="images/ProjectCrimeInWashington/CIW2.jpg">
                             </div>
@@ -271,11 +319,12 @@
                 <div id="project1" class="hidden">
                     <div class="row">
                         <ul class="projectList col-sm-4 col-md-6 col-lg-4">
+                            <li class="projectDate">Nov. 2016 - Dec. 2016</li>
                             <li>University of Washington - Info 200 - Final Project</li>
                             <li>
                                 Wireframe prototype of an application with the purpose of helping out University students
-                                save money by creating transactions with other University students over objects that they want 
-                                to buy and sell. With the University student in mind, location is also important to provide 
+                                save money by creating transactions with other University students over objects that they want
+                                to buy and sell. With the University student in mind, location is also important to provide
                                 convenience and save time.
                             </li>
                             <li>
@@ -285,7 +334,7 @@
                         <div class="projectImages col-sm-8 col-md-6 col-lg-8">
                             <div class="slide">
                                 <img src="images/ProjectFrugal/Frugal1.JPG">
-                            </div> 
+                            </div>
                             <div class="slide">
                                 <img src="images/ProjectFrugal/Frugal2.JPG">
                             </div>
