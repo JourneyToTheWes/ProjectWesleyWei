@@ -52,7 +52,7 @@
 }
 
 #about-section {
-    height: 500px;
+    height: 300px;
     /* border: 1px solid black; */
     align-items: center;
 }
@@ -62,7 +62,7 @@
     border-radius: 50%;
     height: 100px;
     width: 100px;
-    margin: auto;
+    margin: 0 auto;
     background-image: url("images/cover-page-background.jpeg");
 }
 
@@ -82,7 +82,7 @@
     /* background-color: rgba(100, 98, 98, 0.03); */
     background-image: url("images/bioBackground3.jpg");
     background-attachment: fixed;
-    background-position: center top;
+    background-position: 50% 25%;
     /* opacity: 0.9; */
 }
 
@@ -110,7 +110,32 @@
 	background-color: #555;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 575px) {
+    #image-card {
+        height: 90%;
+        width: 90%;
+        margin: auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    #aboutMeImg {
+        margin-top: 10px;
+        width: 50%;
+        border-radius: 10px;
+    }
+
+    #bio-p {
+        height: 200px;
+        font-size: 14px;
+        color: white;
+        overflow-y: scroll;
+    }
+}
+
+@media (min-width: 576px) {
     #image-card {
         height: 50%;
         width: 90%;
