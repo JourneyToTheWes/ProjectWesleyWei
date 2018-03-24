@@ -46,7 +46,7 @@
         <div class="container">
             <div id="work-experience-section" class="general-resume-formatting">
                 <ul>
-                <% for (var i=0; i<workExperience.length; i++) {%>
+                <% for (var i=0; i<workExperience.length; i++) { %>
                     <span class="timeline"><%= workExperience[i].date %></span>
                     <li>
                         <%= workExperience[i].experience %>
@@ -56,7 +56,8 @@
             </div>
             <div id="skills-section" class="general-resume-formatting hidden">
                 <ul>
-                    <li><span class="skillHighlight">Proficient understanding of HTML, CSS, JavaScript, Java, R, SQL, Git Bash, GitHub</span>
+                    <% for (var i=0; i<skills.length; i++) { %>
+                    <!-- <li><span class="skillHighlight">Proficient understanding of HTML, CSS, JavaScript, Java, R, SQL, Git Bash, GitHub</span>
                         <ul>
                             <li id="nestedList">- Self-taught web development and built 5starupholsteryanddrapery.com.</li>
                             <li id="nestedList">- Designed and programmed webpages in Info 343: <a href="https://github.com/info343c-a17/challenges-JourneyToTheWes/tree/gh-pages">GitHub repository with client-side web development projects</a></li>
@@ -74,7 +75,28 @@
                     </li>
                     <li><span class="skillHighlight">Certified IC3 (internet and computing core certification)</span></li>
                     <li><span class="skillHighlight">Basic computer hardware knowledge (fix up computers)</span></li>
-                    <li><span class="skillHighlight">Proficient Chinese/Mandarin and basic knowledge of Korean</span></li>
+                    <li><span class="skillHighlight">Proficient Chinese/Mandarin and basic knowledge of Korean</span></li> -->
+                    <li>
+                        <span class="skillHighlight"><%= skills[i].title %></span>
+                        <ul>
+                            <% 
+                                objectKeySize = function(obj) {
+                                    var size = 0, key; 
+                                    for (key in obj) {
+                                        if (obj.hasOwnProperty(key)) size++;
+                                    }
+                                    return size;
+                                };
+                                
+                                let skillBody = skills[i].body; 
+                                let skillBodyLength = objectKeySize(skillBody); 
+                            %>
+                            <% for (var key in skillBody) { %>
+                            <li id="nestedList"><%= skillBody[key] %></li>
+                            <% } %>
+                        </ul>
+                    </li>
+                    <% } %>
                 </ul>
             </div>
             <div id="leadership-section" class="general-resume-formatting hidden">
