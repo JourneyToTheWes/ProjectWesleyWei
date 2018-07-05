@@ -1,0 +1,32 @@
+{
+  "name": "ProjectWesleyWei",
+  "version": "1.0.0",
+  "description": "This website is dedicated to channel my inner web development creativity and from what I learned from Info 343 (client side web development). Here you can browse through my resume, videos, and projects that I worked on over the years. This project will keep on undergoing changes as I continue to gain more knowledge whether it be from class or personal curiosity.",
+  "main": "ProjectScript.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JourneyToTheWes/ProjectWesleyWei.git"
+  },
+  "keywords": [],
+  "author": "Wesley Wei <weswei@uw.edu>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JourneyToTheWes/ProjectWesleyWei/issues"
+  },
+  "homepage": "https://github.com/JourneyToTheWes/ProjectWesleyWei#readme",
+  "dependencies": {
+    "async": "^2.6.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongodb": "^3.0.4",
+    "nodemon": "^1.17.4",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.4"
+  }
+}

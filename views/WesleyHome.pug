@@ -1,0 +1,61 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        meta(http-equiv='x-ua-compatible' content='ie=edge')
+        title WestWay Homepage
+        link(rel='shortcut icon' type='image/x-icon' href='fivestarFavicon.ico')
+        link#pagestyle(rel='stylesheet' type='text/css' href='WesleyHomeLarge.css')
+        link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css')
+        link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css' integrity='sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb' crossorigin='anonymous')
+    body
+        #cover-section
+            #west-way-header.text-center
+                ul.fly-in-text.hidden
+                    li W
+                    li e
+                    li s
+                    li t
+                    li W
+                    li a
+                    li y
+                h4 Welcome!
+                a(href='WesleyHome')
+                    img#logo(src='images/WestWay.JPG')
+        .emptyGap
+        #tabs-section.container-fluid
+            #about-section.row
+                .col
+                    #Resume.about-tab
+                        a(href='WesleyResume')
+                            span.tab-text-format Resume
+                .col
+                    #Videos.about-tab
+                        a(href='')
+                            span.tab-text-format Videos
+                .col
+                    #Projects.about-tab
+                        a(href='WesleyProjects')
+                            span.tab-text-format Projects
+        .emptyGap
+        #bio-section
+            #image-card.row.container-fluid
+                #bio-p.col-12.col-sm-7.col-md-7.col-lg-8
+                    p
+                        | Hello! My name is Wesley Wei and I am studying Informatics at the University of Washington. This website
+                        | is dedicated to channel my inner web development creativity and from what I learned from Info 343 (client
+                        | side web development). Here you can browse through my resume, videos, and projects that I worked on over the years.
+                        | I like to challenge myself by occupying my schedule with many activities. My hobbies include: playing
+                        | the violin, playing table tennis, dancing, and cooking. A fun fact would be that I am nationally
+                        | ranked in table tennis!
+                .col-12.col-sm-5.col-md-5.col-lg-4(align='center')
+                    img#aboutMeImg(src='images/aboutMe.jpg')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        script(type='text/javascript').
+            $(function() {
+                setTimeout(function() {
+                    $('.fly-in-text').removeClass('hidden');
+                }, 500);
+            })();

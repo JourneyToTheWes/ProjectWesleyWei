@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">	  
+        <meta http-equiv="x-ua-compatible" content="ie=edge">	
+        <title>WestWay Resume</title>	
+        <link rel="shortcut icon" type="image/x-icon" href="fivestarFavicon.ico"> 
+        <link id = "pagestyle" rel = "stylesheet" type = "text/css" href = "WesleyResume.css">
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        
+    </head>
+    <body>
+        <div id="cover-section">
+            <div id="west-way-header" class="text-center">
+                <h2>WestWay</h2>
+                <h5>Welcome!</h5>
+                <a href="/"><img id="logo" src="images/WestWay.JPG"></img></a>
+            </div>
+        </div>
+        <div id="resume-tabs" class="container">
+            <div class="row">
+                <div class="col">
+                    <div id="work-experience-tab" class="resume-sub-tab">
+                        <a href=""><span class="tab-text-format">Work Experience</span></a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div id="skills-tab" class="resume-sub-tab">
+                        <a href=""><span class="tab-text-format">Skills</span></a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div id="leadership-tab" class="resume-sub-tab">
+                        <a href=""><span class="tab-text-format">Leadership</span></a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div id="honors-and-awards-tab" class="resume-sub-tab">
+                        <a href=""><span class="tab-text-format">Honors and Awards</span></a>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="container">
+            <div id="work-experience-section" class="general-resume-formatting">
+                <ul>
+                <% for (var i=0; i<workExperience.length; i++) { %>
+                    <span class="timeline"><%= workExperience[i].date %></span>
+                    <li>
+                        <%= workExperience[i].experience %>
+                    </li>
+                <% } %>
+                </ul>
+            </div>
+            <div id="skills-section" class="general-resume-formatting hidden">
+                <ul>
+                    <% for (var i=0; i<skills.length; i++) { %>
+                    <li>
+                        <span class="skillHighlight"><%= skills[i].title %></span>
+                        <ul>
+                            <% 
+                                objectKeySize = function(obj) {
+                                    var size = 0, key; 
+                                    for (key in obj) {
+                                        if (obj.hasOwnProperty(key)) size++;
+                                    }
+                                    return size;
+                                };
+                                
+                                let skillBody = skills[i].body; 
+                                let skillBodyLength = objectKeySize(skillBody); 
+                            %>
+                            <% for (var key in skillBody) { %>
+                            <li id="nestedList">- <%= skillBody[key] %></li>
+                            <% } %>
+                        </ul>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+            <div id="leadership-section" class="general-resume-formatting hidden">
+                <ul>
+                    <% for (var i=0; i<leadership.length; i++) { %>
+                    <span class="timeline"><%= leadership[i].date %></span>
+                    <li><%= leadership[i].title + ' - ' + 'Position: ' + leadership[i].position + ' - ' + leadership[i].description %></li>
+                    <% } %>
+                </ul>
+            </div>
+            <div id="honors-and-awards-section" class="general-resume-formatting hidden">
+                <ul>
+                    <% for (var i=0; i<honorsAndAwards.length; i++) { %>
+                    <!-- <span class="timeline">Sept. 2016-Present</span>
+                    <li>Annual Dean's List</li>
+                    <span class="timeline">Jan. 2008-Present</span>
+                    <li>Table Tennis Ranking: #60 (State/Regional), top 200 (National)</li> -->
+                    <span class="timeline"><%= honorsAndAwards[i].date %></span>
+                    <li><%= honorsAndAwards[i].title %></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <script src="ResumeScript.js"></script>
+    </body>
+</html>
