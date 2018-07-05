@@ -99,7 +99,7 @@ app.get("/WesleyProjects", (req, res) => {
             return console.log(err);
         }
         locals.projects = results;
-        res.render("WesleyProjects", locals);
+        res.render("WesleyProjects", JSON.parse(locals));
     })
 });
 
