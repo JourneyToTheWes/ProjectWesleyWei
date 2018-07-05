@@ -39,16 +39,16 @@ html(lang="en")
                 ul
                     each val in workExperience
                         span.timeline= val.date
-                            li= val.experience
+                        li= val.experience
             #skills-section.general-resume-formatting.hidden
                 ul
                     each skill in skills
                         li
                             span.skillHighlight= skill.title
                             ul
-                            if (skill.body)
-                                each skillInfo in skill.body
-                                    li#nestedList - #{skillInfo}
+                                if (skill.body)
+                                    each skillInfo in skill.body
+                                        li#nestedList - #{skillInfo}
                                 
             #leadership-section.general-resume-formatting.hidden
                 ul

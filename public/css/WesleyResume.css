@@ -49,10 +49,10 @@
 }
 
 li:not(#nestedList) {
-    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-.skillHighlight {
+span.skillHighlight {
     font-weight: 450;
     font-style: italic;
 }
