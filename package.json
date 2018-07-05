@@ -21,9 +21,12 @@
   "dependencies": {
     "async": "^2.6.0",
     "body-parser": "^1.18.2",
-    "ejs": "^2.5.7",
     "express": "^4.16.3",
     "mongodb": "^3.0.4",
-    "nodemon": "^1.17.2"
+    "nodemon": "^1.17.4",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.4"
   }
 }

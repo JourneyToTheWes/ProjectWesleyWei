@@ -1,0 +1,65 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        meta(http-equiv="x-ua-compatible", content="ie=edge")
+        title WestWay Resume
+        link(rel="shortcut icon", type="image/x-icon", href="fivestarFavicon.ico")
+        link#pagestyle(rel="stylesheet", type="text/css", href="WesleyResume.css")
+        // <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb", crossorigin="anonymous")
+    body
+        #cover-section
+            #west-way-header.text-center
+                h2 WestWay
+                h5 Welcome!
+                a(href="/")
+                    img#logo(src="images/WestWay.JPG")
+        #resume-tabs.container
+            .row
+                .col
+                    #work-experience-tab.resume-sub-tab
+                        a(href="")
+                            span.tab-text-format Work Experience
+                .col
+                    #skills-tab.resume-sub-tab
+                        a(href="")
+                            span.tab-text-format Skills
+                .col
+                    #leadership-tab.resume-sub-tab
+                        a(href="")
+                            span.tab-text-format Leadership
+                .col
+                    #honors-and-awards-tab.resume-sub-tab
+                        a(href="")
+                            span.tab-text-format Honors and Awards
+        .container
+            #work-experience-section.general-resume-formatting
+                ul
+                    each val in workExperience
+                        span.timeline= val.date
+                            li= val.experience
+            #skills-section.general-resume-formatting.hidden
+                ul
+                    each skill in skills
+                        li
+                            span.skillHighlight= skill.title
+                            ul
+                            if (skill.body)
+                                each skillInfo in skill.body
+                                    li#nestedList - #{skillInfo}
+                                
+            #leadership-section.general-resume-formatting.hidden
+                ul
+                    each leadershipElem in leadership
+                        span.timeline= leadershipElem.date
+                        li #{leadershipElem.title} - Position: #{leadershipElem.position} - #{leadershipElem.description}
+
+            #honors-and-awards-section.general-resume-formatting.hidden
+                ul
+                    each honorAndAward in honorsAndAwards
+                        span.timeline= honorAndAward.date
+                        li= honorAndAward.title
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js")
+        script(src="ResumeScript.js")

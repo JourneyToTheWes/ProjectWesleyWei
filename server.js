@@ -4,7 +4,7 @@ const MongoClient = require("mongodb").MongoClient;
 const async = require("async");
 const app = express();
 
-app.set("view engine", "ejs");
+app.set("view engine", "pug");
 app.use(express.static("public"));
 app.use(express.static("public/js"));
 app.use(express.static("public/css"));
@@ -25,7 +25,7 @@ MongoClient.connect(url, (err, client) => {
 });
 
 app.get("/", (req, res) => {
-    res.render("wesleyHome");
+    res.render("WesleyHome");
 });
 
 app.get("/WesleyResume", (req, res) => {
