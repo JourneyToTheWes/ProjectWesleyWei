@@ -94,12 +94,12 @@ app.get("/WesleyResume", (req, res) => {
 app.get("/WesleyProjects", (req, res) => {
     var locals = {};
     // Load projects
-    projectsDb.collection("projects").find({}).toArray((err, results) => {
+    projectsDb.collection("projects").find().toArray((err, results) => {
         if (err) {
             return console.log(err);
         }
         locals.projects = results;
-        res.render("WesleyProjects", JSON.parse(locals));
+        res.render("WesleyProjects", locals);
     })
 });
 
