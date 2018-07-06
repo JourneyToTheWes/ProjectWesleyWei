@@ -10,18 +10,24 @@ app.use(express.static("public/js"));
 app.use(express.static("public/css"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var url = "mongodb://WesleyWei:WesleyResume@ds117759.mlab.com:17759/resume";
+var resumeUrl = "mongodb://WesleyWei:WesleyResume@ds117759.mlab.com:17759/resume";
+var projectsUrl = "mongodb://WesleyWei:WesleyProjects1@ds125871.mlab.com:25871/wesprojects"
 
-var db;
+var resumeDb;
+var projectsDb;
 
-MongoClient.connect(url, (err, client) => {
+MongoClient.connect(resumeUrl, (err, client) => {
     if (err) {
         return console.log(err);
     }
-    db = client.db('resume');
-    app.listen(3000, () => {
-        console.log("Wesley's app listening on port 3000!");
-    });
+    resumeDb = client.db('resume');
+});
+
+MongoClient.connect(projectsUrl, (err, client) => {
+    if (err) {
+        return console.log(err);
+    }
+    projectsDb = client.db('wesprojects');
 });
 
 app.get("/", (req, res) => {
@@ -33,7 +39,7 @@ app.get("/WesleyResume", (req, res) => {
     var tasks = [
         // Load work experience
         function (callback) {
-            db.collection("workExperience").find().toArray((err, results) => {
+            resumeDb.collection("workExperience").find().toArray((err, results) => {
                 if (err) {
                     return console.log(err);
                 }
@@ -44,18 +50,19 @@ app.get("/WesleyResume", (req, res) => {
 
         //Load skills
         function (callback) {
-            db.collection("skills").find().toArray((err, results) => {
+            resumeDb.collection("skills").find().toArray((err, results) => {
                 if (err) {
                     return console.log(err);
                 }
                 locals.skills = results;
+                console.log("good");
                 callback();
             });
         },
 
         // Load leadership
         function (callback) {
-            db.collection("leadership").find().toArray((err, results) => {
+            resumeDb.collection("leadership").find().toArray((err, results) => {
                 if (err) {
                     return console.log(err);
                 }
@@ -66,7 +73,7 @@ app.get("/WesleyResume", (req, res) => {
 
         // Load honors and awards
         function (callback) {
-            db.collection("honorsAndAwards").find().toArray((err, results) => {
+            resumeDb.collection("honorsAndAwards").find().toArray((err, results) => {
                 if (err) {
                     return console.log(err);
                 }
@@ -85,5 +92,17 @@ app.get("/WesleyResume", (req, res) => {
 });
 
 app.get("/WesleyProjects", (req, res) => {
-    res.render("WesleyProjects");
+    var locals = {};
+    // Load projects
+    projectsDb.collection("projects").find({}).toArray((err, results) => {
+        if (err) {
+            return console.log(err);
+        }
+        locals.projects = results;
+        res.render("WesleyProjects", JSON.parse(locals));
+    })
+});
+
+app.listen(3000, () => {
+    console.log("Wesley's app listening on port 3000!");
 });

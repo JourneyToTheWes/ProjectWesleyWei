@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/JourneyToTheWes/ProjectWesleyWei#readme",
   "dependencies": {
-    "async": "^2.6.0",
+    "async": "^2.6.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "mongodb": "^3.0.4",
