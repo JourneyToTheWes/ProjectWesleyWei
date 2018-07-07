@@ -36,6 +36,9 @@ app.get("/", (req, res) => {
 
 app.get("/WesleyResume", (req, res) => {
     var locals = {};
+    locals.title = "WestWay";
+    locals.pageType = "Projects";
+    locals.css = "WesleyResume.css";
     var tasks = [
         // Load work experience
         function (callback) {
@@ -55,7 +58,6 @@ app.get("/WesleyResume", (req, res) => {
                     return console.log(err);
                 }
                 locals.skills = results;
-                console.log("good");
                 callback();
             });
         },
@@ -93,6 +95,9 @@ app.get("/WesleyResume", (req, res) => {
 
 app.get("/WesleyProjects", (req, res) => {
     var locals = {};
+    locals.title = "WestWay";
+    locals.pageType = "Projects";
+    locals.css = "WesleyProject.css";
     // Load projects
     projectsDb.collection("projects").find().toArray((err, results) => {
         if (err) {
@@ -101,6 +106,14 @@ app.get("/WesleyProjects", (req, res) => {
         locals.projects = results;
         res.render("WesleyProjects", locals);
     })
+});
+
+app.get("/WesleyVideos", (req, res) => {
+    var locals = {};
+    locals.title = "WestWay";
+    locals.pageType = "Videos";
+    locals.css = "WesleyProject.css";
+    res.render("WesleyVideos", locals);
 });
 
 app.listen(process.env.PORT || 3000, () => {
