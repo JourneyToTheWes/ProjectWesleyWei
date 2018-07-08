@@ -35,6 +35,11 @@
     transform: scale(1.2, 1.2);
 }
 
+.resume-sub-tab a:hover, .tab-text-format:hover {
+    text-decoration: none;
+    color: #CCD4E1;
+}
+
 #resume-tabs {
     text-align: center;
     margin-bottom: 30px;

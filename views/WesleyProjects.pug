@@ -16,7 +16,7 @@ block tabContainer
                         ul.projectList.col-sm-4.col-md-6.col-lg-4
                             li.projectDate= project.date
                             each projectInfo in project.description
-                                li= projectInfo
+                                li.projInfo= projectInfo
                         // Load project images
                         .projectImages.col-sm-8.col-md-6.col-lg-8.text-center
                             each projectImg in project.images
@@ -24,3 +24,10 @@ block tabContainer
                                     img(src= projectImg)
     script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js")
     script(src="ProjectScript.js")
+    script.
+        console.log("hello");
+        var projInfo = document.getElementsByClassName("projInfo");
+        var i;
+        for (i = 0; i < projInfo.length; i++) {
+            projInfo[i].innerHTML = projInfo[i].innerText;
+        }
