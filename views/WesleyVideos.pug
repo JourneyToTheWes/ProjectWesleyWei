@@ -12,8 +12,8 @@ block tabContainer
             .videosContainer
                 div(id="video" + (index + 1), class="hidden")
                     .row
-                        div
-                            each url in video.videoUrls
+                        each url in video.videoUrls
+                            .col-12.embed-responsive.embed-responsive-16by9
                                 iframe(src= url, frameborder="0")
                             
                         
