@@ -1,4 +1,4 @@
-function displayProject(divID) {
+function displayTab(divID) {
     // var projectDisplaySection = document.getElementById("overallProjects");
 
     var projectDetails = document.getElementById(divID);

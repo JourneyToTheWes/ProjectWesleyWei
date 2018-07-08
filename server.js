@@ -11,10 +11,12 @@ app.use(express.static("public/css"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var resumeUrl = "mongodb://WesleyWei:WesleyResume@ds117759.mlab.com:17759/resume";
-var projectsUrl = "mongodb://WesleyWei:WesleyProjects1@ds125871.mlab.com:25871/wesprojects"
+var projectsUrl = "mongodb://WesleyWei:WesleyProjects1@ds125871.mlab.com:25871/wesprojects";
+var videosUrl = "mongodb://WesleyWei:WesleyVideos1@ds131551.mlab.com:31551/wesvideos";
 
 var resumeDb;
 var projectsDb;
+var videosDb;
 
 MongoClient.connect(resumeUrl, (err, client) => {
     if (err) {
@@ -30,12 +32,22 @@ MongoClient.connect(projectsUrl, (err, client) => {
     projectsDb = client.db('wesprojects');
 });
 
+MongoClient.connect(videosUrl, (err, client) => {
+    if (err) {
+        return console.log(err);
+    }
+    videosDb = client.db('wesvideos');
+});
+
 app.get("/", (req, res) => {
     res.render("WesleyHome");
 });
 
 app.get("/WesleyResume", (req, res) => {
     var locals = {};
+    locals.title = "WestWay";
+    locals.pageType = "Projects";
+    locals.css = "WesleyResume.css";
     var tasks = [
         // Load work experience
         function (callback) {
@@ -55,7 +67,6 @@ app.get("/WesleyResume", (req, res) => {
                     return console.log(err);
                 }
                 locals.skills = results;
-                console.log("good");
                 callback();
             });
         },
@@ -93,16 +104,34 @@ app.get("/WesleyResume", (req, res) => {
 
 app.get("/WesleyProjects", (req, res) => {
     var locals = {};
+    locals.title = "WestWay";
+    locals.pageType = "Projects";
+    locals.css = "WesleyProject.css";
     // Load projects
-    projectsDb.collection("projects").find({}).toArray((err, results) => {
+    projectsDb.collection("projects").find().toArray((err, results) => {
         if (err) {
             return console.log(err);
         }
         locals.projects = results;
-        res.render("WesleyProjects", JSON.parse(locals));
-    })
+        res.render("WesleyProjects", locals);
+    });
 });
 
-app.listen(3000, () => {
+app.get("/WesleyVideos", (req, res) => {
+    var locals = {};
+    locals.title = "WestWay";
+    locals.pageType = "Videos";
+    locals.css = "WesleyVideo.css";
+    // Load videos
+    videosDb.collection("videos").find().toArray((err, results) => {
+        if (err) {
+            return console.log(err);
+        }
+        locals.videos = results;
+        res.render("WesleyVideos", locals);
+    });
+});
+
+app.listen(process.env.PORT || 3000, () => {
     console.log("Wesley's app listening on port 3000!");
 });
