@@ -51,7 +51,11 @@ li {
 
 iframe {
     display: block;
-    margin: 25px auto;
+    margin: 0 auto;
+}
+
+div.embed-responsive {
+    margin-bottom: 50px;
 }
 
 .hidden {
