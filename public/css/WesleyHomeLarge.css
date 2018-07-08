@@ -4,6 +4,16 @@
     width: 200px;
     height: 200px;
     background-image: url("images/cover-page-background.jpeg");
+    animation: glow 1.5s infinite alternate
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px -5px;
+    }
+    to {
+        box-shadow: 0 0 10px 10px rgba(0,0,0,.5);
+    }
 }
 
 #cover-section {
