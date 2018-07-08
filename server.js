@@ -11,10 +11,12 @@ app.use(express.static("public/css"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var resumeUrl = "mongodb://WesleyWei:WesleyResume@ds117759.mlab.com:17759/resume";
-var projectsUrl = "mongodb://WesleyWei:WesleyProjects1@ds125871.mlab.com:25871/wesprojects"
+var projectsUrl = "mongodb://WesleyWei:WesleyProjects1@ds125871.mlab.com:25871/wesprojects";
+var videosUrl = "mongodb://WesleyWei:WesleyVideos1@ds131551.mlab.com:31551/wesvideos";
 
 var resumeDb;
 var projectsDb;
+var videosDb;
 
 MongoClient.connect(resumeUrl, (err, client) => {
     if (err) {
@@ -28,6 +30,13 @@ MongoClient.connect(projectsUrl, (err, client) => {
         return console.log(err);
     }
     projectsDb = client.db('wesprojects');
+});
+
+MongoClient.connect(videosUrl, (err, client) => {
+    if (err) {
+        return console.log(err);
+    }
+    videosDb = client.db('wesvideos');
 });
 
 app.get("/", (req, res) => {
@@ -105,15 +114,22 @@ app.get("/WesleyProjects", (req, res) => {
         }
         locals.projects = results;
         res.render("WesleyProjects", locals);
-    })
+    });
 });
 
 app.get("/WesleyVideos", (req, res) => {
     var locals = {};
     locals.title = "WestWay";
     locals.pageType = "Videos";
-    locals.css = "WesleyProject.css";
-    res.render("WesleyVideos", locals);
+    locals.css = "WesleyVideo.css";
+    // Load videos
+    videosDb.collection("videos").find().toArray((err, results) => {
+        if (err) {
+            return console.log(err);
+        }
+        locals.videos = results;
+        res.render("WesleyVideos", locals);
+    });
 });
 
 app.listen(process.env.PORT || 3000, () => {

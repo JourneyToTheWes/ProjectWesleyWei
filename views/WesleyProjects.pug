@@ -5,7 +5,7 @@ block tabContainer
             each project, index in projects
                 .col
                     .project-sub-tab
-                        a(href="javascript:displayProject('project" + (index + 1) + "');")
+                        a(href="javascript:displayTab('project" + (index + 1) + "');")
                             span.tab-text-format= project.title
     #overallProjects.container
         each project, index in projects
