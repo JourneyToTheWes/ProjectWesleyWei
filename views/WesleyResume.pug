@@ -21,9 +21,10 @@ block tabContainer
     .container
         #work-experience-section.general-resume-formatting
             ul
-                each val in workExperience
-                    span.timeline= val.date
-                    li= val.experience
+                each workExp in workExperience
+                    h4= workExp.title
+                    span.timeline= workExp.date
+                    li= workExp.experience
         #skills-section.general-resume-formatting.hidden
             ul
                 each skill in skills
@@ -38,7 +39,7 @@ block tabContainer
             ul
                 each leadershipElem in leadership
                     span.timeline= leadershipElem.date
-                    li #{leadershipElem.title} - Position: #{leadershipElem.position} - #{leadershipElem.description}
+                    li <span id="leadershipTitle">#{leadershipElem.title}</span> - Position: <span id="leadershipPosition">#{leadershipElem.position}</span> - #{leadershipElem.description}
 
         #honors-and-awards-section.general-resume-formatting.hidden
             ul
