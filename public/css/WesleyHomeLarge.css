@@ -174,7 +174,7 @@
         margin: 50px auto;
         padding: 20px;
         border-radius: 10px;
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: rgba(0, 0, 0, 0.3);
         overflow: hidden;
     }
 
@@ -203,7 +203,7 @@
         margin: 50px auto;
         padding: 20px;
         border-radius: 10px;
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: rgba(0, 0, 0, 0.3);
     }
 
     #aboutMeImg {
@@ -222,7 +222,7 @@
         padding: 20px;
         border-radius: 10px;
         /* border: 1px solid black; */
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: rgba(0, 0, 0, 0.3);
     }
 
     #aboutMeImg {
