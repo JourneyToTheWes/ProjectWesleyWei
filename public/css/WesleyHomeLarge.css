@@ -114,6 +114,7 @@
 
 #bio-p {
     font-size: 16px;
+    height: 100%;
     color: white;
     overflow-y: scroll;
 }
@@ -125,7 +126,6 @@
 }
 
 #bio-p::-webkit-scrollbar {
-    
     width: 12px;
 	background-color: gray;
 }
@@ -138,6 +138,10 @@
 
 #bioTxtImg {
     width: 100%;
+    height: 100%;
+}
+
+#bio-img-container {
     height: 100%;
 }
 
