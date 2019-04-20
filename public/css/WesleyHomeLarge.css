@@ -3,16 +3,20 @@
     border-radius: 50%;
     width: 200px;
     height: 200px;
-    background-image: url("images/cover-page-background.jpeg");
+    margin-top: 25px;
+    background-image: url("images/WestWay.JPG");
+    background-position-y: 9px;
+    background-position-x: 3px;
+    background-size: 122%;
     animation: glow 1.5s infinite alternate
 }
 
 @keyframes glow {
     from {
-        box-shadow: 0 0 10px -5px;
+        box-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.3);
     }
     to {
-        box-shadow: 0 0 10px 10px rgba(0,0,0,.5);
+        box-shadow: 0 0 20px 20px rgba(0, 0, 0, 0.5);
     }
 }
 
@@ -20,9 +24,9 @@
     height: 500px;
     display: flex;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
     background-attachment: fixed;
-    background-image: url("images/cover-page-background.jpeg");
+    background-image: url("images/cover-page-background.jpg");    
 }
 
 .fly-in-text {
@@ -73,7 +77,7 @@
     height: 100px;
     width: 100px;
     margin: 0 auto;
-    background-image: url("images/cover-page-background.jpeg");
+    background-image: url("images/cover-page-background-resized.jpg");
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
     transition: all 0.3s ease-in-out;
 }
@@ -104,12 +108,13 @@
     /* background-color: rgba(100, 98, 98, 0.03); */
     background-image: url("images/bioBackground3.jpg");
     background-attachment: fixed;
-    background-position: 50% 25%;
+    background-position: 50% -64%;
     /* opacity: 0.9; */
 }
 
 #bio-p {
     font-size: 16px;
+    height: 100%;
     color: white;
     overflow-y: scroll;
 }
@@ -121,7 +126,6 @@
 }
 
 #bio-p::-webkit-scrollbar {
-    
     width: 12px;
 	background-color: gray;
 }
@@ -137,20 +141,54 @@
     height: 100%;
 }
 
+#bio-img-container {
+    height: 100%;
+}
+
+#social-bar {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-flow: row wrap;
+    align-content: center;
+}
+
+#social-bar .fab {
+    padding: 20px;
+    font-size: 30px;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    margin: 15px;
+    border: 1px solid rgba(256, 256, 256, 0.5);
+    color: rgba(256, 256, 256, 0.5);
+    transition: all 0.5s ease-in-out;
+}
+
+#social-bar .fab:hover {
+    transform: scale(1.3, 1.3);
+    border: 1px solid rgba(256, 256, 256, 1);
+    color: rgba(256, 256, 256, 1);
+}
+
 @media (max-width: 575px) {
+    #social-bar .fab {
+        margin: 30px;
+    }
+
     #image-card {
-        height: 90%;
+        height: 50%;
         width: 90%;
-        margin: auto;
+        margin: 50px auto;
         padding: 20px;
         border-radius: 10px;
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: rgba(0, 0, 0, 0.3);
         overflow: hidden;
     }
 
     #aboutMeImg {
         margin-top: 10px;
-        width: 50%;
+        width: 60%;
         border-radius: 10px;
     }
 
@@ -160,16 +198,20 @@
         color: white;
         overflow-y: scroll;
     }
+
+    #bio-section {
+        height: 1000px;
+    }
 }
 
 @media (min-width: 576px) {
     #image-card {
         height: 50%;
         width: 90%;
-        margin: auto;
+        margin: 50px auto;
         padding: 20px;
         border-radius: 10px;
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: rgba(0, 0, 0, 0.3);
     }
 
     #aboutMeImg {
@@ -184,11 +226,11 @@
     #image-card {
         height: 50%;
         width: 50%;
-        margin: auto;
+        margin: 50px auto;
         padding: 20px;
         border-radius: 10px;
         /* border: 1px solid black; */
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: rgba(0, 0, 0, 0.3);
     }
 
     #aboutMeImg {

@@ -11,7 +11,7 @@
     justify-content: center;
     align-items: center;    
     background-attachment: fixed;
-    background-image: url("images/cover-page-background.jpeg");
+    background-image: url("images/cover-page-background.jpg");
     margin-bottom: 20px;
 }
 
@@ -33,7 +33,7 @@
     border-radius: 50%;
     height: 130px;
     width: 130px;
-    background-image: url("images/cover-page-background.jpeg");
+    background-image: url("images/cover-page-background-resized.jpg");
     display: flex;
     justify-content: center;
     align-items: center;

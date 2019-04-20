@@ -8,6 +8,7 @@ app.set("view engine", "pug");
 app.use(express.static("public"));
 app.use(express.static("public/js"));
 app.use(express.static("public/css"));
+app.use(express.static("node/modules"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var resumeUrl = "mongodb://WesleyWei:WesleyResume@ds117759.mlab.com:17759/resume";
