@@ -1,3 +1,47 @@
 body {
     background-image: url('cover-page-background.jpg');
 }
+
+#logo {
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 100px;
+    margin: 25px;
+    width: 100px;
+}
+
+/* Compass css styling */
+#compass {
+    background: white;
+    border: 10px solid rgb(150, 150, 150);
+    border-radius: 50%;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    height: 400px;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%); /* Translates tx and ty 50% of itself */
+}
+
+#compass:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    height: 6px;
+    width: 90%;
+    background: #262626;
+    animation-name: move;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes move {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
