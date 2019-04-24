@@ -5,14 +5,19 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         link(rel="stylesheet", href="index.css")
+        link(href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet")
         title WestWay
     body
         include logo
         #header
+            p#header-text
+            //- p#header-text My name is Wesley Wei. I am the best developer in the world!
         #compass
             span N
             span E
             span S
             span W
             #compass-needle
+        script(src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9")
+        script(src="index.js")
         

@@ -1,5 +1,10 @@
-body {
+body,
+html {
     background-image: url('cover-page-background.jpg');
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
 }
 
 /* Logo styling */
@@ -9,6 +14,30 @@ body {
     height: 100px;
     margin: 25px;
     width: 100px;
+}
+
+/* Header styling */
+#header {
+    width: 60%;
+    height: 30%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* border: 1px solid black; */
+    z-index: 1;
+    /* background: rgba(0, 0, 0, 0.3); */
+    display: table;
+    text-align: center;
+}
+
+#header p {
+    font-size: 5em;
+    font-weight: bold;
+    color: black;
+    display: table-cell;
+    vertical-align: middle;
+    /* text-align: center; */
 }
 
 /* Compass css styling */
@@ -90,7 +119,7 @@ body {
         transform: rotate(-10deg);
     }
     50% {
-        transform: rotate(10deg);
+        transform: rotate(-5deg);
     }
     75% {
         transform: rotate(5deg);
