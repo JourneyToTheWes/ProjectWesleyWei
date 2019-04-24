@@ -24,7 +24,71 @@ body {
     transform: translate(-50%, -50%); /* Translates tx and ty 50% of itself */
 }
 
-#compass:before {
+#compass-needle {
+    width: 45%;
+    height: 10%;
+
+    /* Centering it */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -89px;
+    margin-top: -18px;
+
+    animation: point-west 2s cubic-bezier(1, 0.2, 0.5, 1) infinite alternate;
+}
+
+/* A bit of CSS3 animations on the pointer would be nice */
+@keyframes point-west {
+    0% {
+        transform: rotate(-20deg);
+    }
+    25% {
+        transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(10deg);
+    }
+}
+
+#compass-needle:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(
+        -16deg,
+        rgb(29, 29, 29) 1%,
+        rgb(0, 0, 0) 50%,
+        rgba(216, 216, 216, 1) 51%,
+        rgba(244, 94, 80, 1) 53%,
+        rgba(255, 45, 45, 1) 100%
+    );
+    transform: skew(77deg);
+}
+
+#compass-needle:after {
+    content: '';
+
+    width: 10px;
+    height: 10px;
+    background: #4781c0;
+    border-radius: 50%;
+    box-shadow: inset 0 0 4px 2px #4d4d4d, 0 0 5px 1px white;
+
+    /* centering it */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* #compass:before {
     content: '';
     position: absolute;
     top: 50%;
@@ -32,16 +96,19 @@ body {
     height: 6px;
     width: 90%;
     background: #262626;
+    transform: rotate(-10deg);
     animation-name: move;
-    animation-duration: 4s;
+    animation-duration: 1s;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
 }
 
 @keyframes move {
     from {
-        transform: rotate(0deg);
+        transform: rotate(-10deg);
     }
     to {
-        transform: rotate(360deg);
+        transform: rotate(10deg);
     }
-}
+} */
