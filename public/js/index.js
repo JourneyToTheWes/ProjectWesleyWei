@@ -1,12 +1,14 @@
 // Typed.js implementation for the main section text
 var options = {
     strings: [
-        'My name is <i>Wesley Wei</i>. I am the best developer in the world!'
+        '<p>Hello</p> <p>&amp;</p> <p>Welcome!</p>',
+        'My name is <i>Wesley Wei</i>.\n I am the best developer in the world!'
     ],
-    typeSpeed: 50
+    typeSpeed: 50,
+    backSpeed: 40
 };
 
-var typed = new Typed('#main div p', options);
+var typed = new Typed('#main-banner-text-one', options);
 
 // Hovering effects for navbar
 var navButtonElem = document.getElementsByClassName('nav-button');

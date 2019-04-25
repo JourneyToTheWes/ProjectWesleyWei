@@ -27,17 +27,23 @@ html {
     /* border: 1px solid black; */
     z-index: 1;
     /* background: rgba(0, 0, 0, 0.3); */
-    display: table;
-    text-align: center;
+    /* display: table;
+    text-align: center; */
 }
 
-#main #main-banner-text {
+#main #main-banner-text-one {
     font-size: 5em;
     font-weight: bold;
     color: black;
-    display: table-cell;
-    vertical-align: middle;
+    margin: 0;
+    /* display: table-cell;
+    vertical-align: middle; */
     text-align: center;
+    /* white-space: pre; */
+}
+
+#main-banner-text-one p {
+    margin: 0;
 }
 
 /* Compass css styling */
