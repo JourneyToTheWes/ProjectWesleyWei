@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+html(lang="en")
+    include mixins/head
+    +head("Resume")
+    +styleLink("logo.css")
+    +styleLink("resume.css")
+    body
+        include logo
+        object#resume(data="/files/WesleyResume.pdf?#zoom=100", type="application/pdf")

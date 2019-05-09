@@ -11,6 +11,9 @@ app.use(express.static('public/js'));
 // Use Controllers
 app.use(require('./controllers/index'));
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log('Project Wesley Wei server is running');
+// Port that app is running on
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+    console.log('Project Wesley Wei server is running on port: ' + port);
 });

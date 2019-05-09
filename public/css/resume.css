@@ -1,0 +1,7 @@
+/* Style Resume Container */
+#resume {
+    height: 100vh;
+    width: 60vw;
+    margin: auto;
+    display: block;
+}

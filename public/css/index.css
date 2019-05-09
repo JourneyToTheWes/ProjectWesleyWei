@@ -7,18 +7,9 @@ html {
     font-family: 'Raleway', sans-serif;
 }
 
-/* Logo styling */
-#logo {
-    border: 1px solid black;
-    border-radius: 50%;
-    height: 100px;
-    margin: 25px;
-    width: 100px;
-}
-
 /* Main section styling */
 #main #main-banner {
-    width: 60%;
+    width: 50%;
     height: 30%;
     position: absolute;
     top: 50%;

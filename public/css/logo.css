@@ -1,0 +1,8 @@
+/* Logo styling */
+#logo {
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 100px;
+    margin: 25px;
+    width: 100px;
+}
