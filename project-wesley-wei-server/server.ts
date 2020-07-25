@@ -1,7 +1,18 @@
+const ConnectDB = require('./config/db');
+import App from './app';
 const express = require('express');
-const connectToDB = require('./config/db');
-
-const app = express();
 
 // Connect Database
-connectToDB();
+ConnectDB();
+
+// Initialize App
+const app = new App({
+    port: process.env.PORT || 5000,
+    controllers: [],
+    middleWares: [
+        express.json({ extended: false})
+    ]
+});
+
+app.listen();
+
