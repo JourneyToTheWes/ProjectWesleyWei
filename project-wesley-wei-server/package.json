@@ -1,0 +1,31 @@
+{
+  "name": "projectwesleywei",
+  "version": "3.0.0",
+  "description": "\"This website is dedicated to channel my inner web development creativity and from what I learned from Info 343 (client side web development). Here you can browse through my resume, videos, and projects that I worked on over the years. This project will keep on undergoing changes as I continue to gain more knowledge whether it be from class or personal curiosity.\"",
+  "main": "ug\": \"^2.0.3\"",
+  "scripts": {
+    "dev": "ts-node server.ts",
+    "build": "tsc -project ./tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JourneyToTheWes/ProjectWesleyWei.git"
+  },
+  "author": "Wesley Wei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JourneyToTheWes/ProjectWesleyWei/issues"
+  },
+  "homepage": "https://github.com/JourneyToTheWes/ProjectWesleyWei#readme",
+  "dependencies": {
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.25"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "@types/node": "^14.0.26",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
+}
