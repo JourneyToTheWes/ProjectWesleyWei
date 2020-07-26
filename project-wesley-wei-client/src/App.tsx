@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react';
 import { RootStoreContext } from './index';
+import Compass from './components/features/Compass/Compass';
 
 const App = () => {
-  const RootStore = useContext(RootStoreContext);
-  const { school } = RootStore.ResumeStore;
-  return (
-    <div className="App">
-      <h1>{`My school: ${school}`}</h1>
-    </div>
-  );
-}
+	const RootStore = useContext(RootStoreContext);
+	return (
+		<div className="App">
+			<Compass size="large" />
+		</div>
+	);
+};
 
 export default observer(App);
