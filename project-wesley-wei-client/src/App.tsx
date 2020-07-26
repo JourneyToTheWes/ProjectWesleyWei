@@ -1,14 +1,18 @@
 import React, { useContext } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { RootStoreContext } from './index';
-import Compass from './components/features/Compass/Compass';
+import Landing from './components/features/Layout/Landing';
+import './styles/App.css';
 
 const App = () => {
 	const RootStore = useContext(RootStoreContext);
 	return (
-		<div className="App">
-			<Compass size="large" />
-		</div>
+		<Router>
+			<Switch>
+				<Route exact path="/" component={Landing} />
+			</Switch>
+		</Router>
 	);
 };
 
