@@ -1,13 +1,9 @@
 {
-    "compilerOptions": {
-        "sourceMap": true,
-        "module": "commonjs",
-        "outDir": "./build",
-    },
-    "include": [
-        "**/*.ts"
-    ],
-    "exclude": [
-        "node_modules"
-    ]
+	"compilerOptions": {
+		"sourceMap": true,
+		"module": "commonjs",
+		"outDir": "./build"
+	},
+	"include": ["**/*.ts"],
+	"exclude": ["node_modules"]
 }
