@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const async = require('async');
 const app = express();
-const config = require('./config.json');
+const config = require('config');
 
 app.set('view engine', 'pug');
 app.use(express.static('public'));
@@ -16,21 +16,21 @@ var resumeDb;
 var projectsDb;
 var videosDb;
 
-MongoClient.connect(process.env.resumeURI || config.resumeURI, (err, client) => {
+MongoClient.connect(process.env.resumeURI || config.get('resumeURI'), (err, client) => {
 	if (err) {
 		return console.log(err);
 	}
 	resumeDb = client.db('Resume');
 });
 
-MongoClient.connect(process.env.projectsURI || config.projectsURI, (err, client) => {
+MongoClient.connect(process.env.projectsURI || config.get('projectsURI'), (err, client) => {
 	if (err) {
 		return console.log(err);
 	}
 	projectsDb = client.db('wesprojects');
 });
 
-MongoClient.connect(process.env.videosURI || config.videosURI, (err, client) => {
+MongoClient.connect(process.env.videosURI || config.get('videosURI'), (err, client) => {
 	if (err) {
 		return console.log(err);
 	}
