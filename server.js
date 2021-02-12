@@ -16,21 +16,21 @@ var resumeDb;
 var projectsDb;
 var videosDb;
 
-MongoClient.connect(config.resumeURI, (err, client) => {
+MongoClient.connect(process.env.resumeURI || config.resumeURI, (err, client) => {
 	if (err) {
 		return console.log(err);
 	}
 	resumeDb = client.db('Resume');
 });
 
-MongoClient.connect(config.projectsURI, (err, client) => {
+MongoClient.connect(process.env.projectsURI || config.projectsURI, (err, client) => {
 	if (err) {
 		return console.log(err);
 	}
 	projectsDb = client.db('wesprojects');
 });
 
-MongoClient.connect(config.videosURI, (err, client) => {
+MongoClient.connect(process.env.videosURI || config.videosURI, (err, client) => {
 	if (err) {
 		return console.log(err);
 	}
