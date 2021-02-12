@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const async = require('async');
 const app = express();
+const config = require('./config.json');
 
 app.set('view engine', 'pug');
 app.use(express.static('public'));
@@ -11,28 +12,25 @@ app.use(express.static('public/css'));
 app.use(express.static('node/modules'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var resumeUrl = 'mongodb://WesleyWei:WesleyResume@ds117759.mlab.com:17759/resume';
-var projectsUrl = 'mongodb://WesleyWei:WesleyProjects1@ds125871.mlab.com:25871/wesprojects';
-var videosUrl = 'mongodb://WesleyWei:WesleyVideos1@ds131551.mlab.com:31551/wesvideos';
 var resumeDb;
 var projectsDb;
 var videosDb;
 
-MongoClient.connect(resumeUrl (err, client) => {
+MongoClient.connect(config.resumeURI, (err, client) => {
 	if (err) {
 		return console.log(err);
 	}
 	resumeDb = client.db('Resume');
 });
 
-MongoClient.connect(projectsUrl, (err, client) => {
+MongoClient.connect(config.projectsURI, (err, client) => {
 	if (err) {
 		return console.log(err);
 	}
 	projectsDb = client.db('wesprojects');
 });
 
-MongoClient.connect(videosUrl, (err, client) => {
+MongoClient.connect(config.videosURI, (err, client) => {
 	if (err) {
 		return console.log(err);
 	}
