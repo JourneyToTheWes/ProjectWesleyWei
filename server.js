@@ -27,14 +27,14 @@ MongoClient.connect(process.env.projectsURI || config.get('projectsURI'), (err, 
 	if (err) {
 		return console.log(err);
 	}
-	projectsDb = client.db('wesprojects');
+	projectsDb = client.db('WesProjects');
 });
 
 MongoClient.connect(process.env.videosURI || config.get('videosURI'), (err, client) => {
 	if (err) {
 		return console.log(err);
 	}
-	videosDb = client.db('wesvideos');
+	videosDb = client.db('WesVideos');
 });
 
 app.get('/', (req, res) => {
