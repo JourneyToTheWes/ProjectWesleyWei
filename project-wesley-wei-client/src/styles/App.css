@@ -12,4 +12,7 @@ body,
 	height: 100px;
 	margin: 25px;
 	width: 100px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
 }
