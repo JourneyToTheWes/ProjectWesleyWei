@@ -20,6 +20,8 @@ jobs:
           cd /home/runner/work/_temp
           echo $(ls)
           /home/runner/.fly/bin/flyctl
+          echo fly pat: ${{secret.FLY_PAT}}
+          echo Fly path: ${{secrets.FLY_PAT}}
 
       - name: Set Flyctl to Path Variable
         run: |
