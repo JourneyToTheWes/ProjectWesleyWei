@@ -14,6 +14,10 @@ jobs:
       - name: Install Flyctl
         run: curl -L https://fly.io/install.sh | sh
 
+      - name: Set Flyctl to Path Variable
+        run: |
+          echo "/home/runner/.fly/bin" >> $GITHUB_PATH
+
       - name: Login to the Fly Platform
         run: flyctl auth login -t ${{secrets.FLY_PAT}}
 
