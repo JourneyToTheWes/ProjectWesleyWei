@@ -18,5 +18,6 @@ jobs:
         run: flyctl auth login -t ${{secrets.FLY_PAT}}
 
       - name: Deploy App to Fly
+        if: github.event_name == 'push'
         run: flyctl deploy
       
