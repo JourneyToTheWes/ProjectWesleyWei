@@ -17,7 +17,7 @@ jobs:
       - name: Output variables
         run: |
           whoami
-          cd ~ ;
+          cd ~/runners
           echo $(ls)
 
       # - name: Set Flyctl to Path Variable
