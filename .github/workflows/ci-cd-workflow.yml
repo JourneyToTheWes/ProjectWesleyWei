@@ -19,9 +19,9 @@ jobs:
 
       - name: Login to the Fly Platform
         run: |
+          flyctl auth login --access-token ${{ secrets.FLY_PAT }}
           flyctl wireguard websockets enable
           flyctl agent restart
-          flyctl auth login --access-token ${{ secrets.FLY_PAT }}
 
       - name: Deploy App to Fly
         if: github.event_name == 'push'
