@@ -20,15 +20,14 @@ jobs:
           cd /home/runner/work/_temp
           echo $(ls)
           /home/runner/.fly/bin/flyctl
-          echo fly pat: ${{secret.FLY_PAT}}
-          echo Fly path: ${{secrets.FLY_PAT}}
+          echo Fly pat: ${{ secrets.FLY_PAT }}
 
       - name: Set Flyctl to Path Variable
         run: |
           echo "/home/runner/.fly/bin" >> $GITHUB_PATH
 
       - name: Login to the Fly Platform
-        run: flyctl auth login -t ${{secrets.FLY_PAT}}
+        run: flyctl auth login -t ${{ secrets.FLY_PAT }}
 
       - name: Deploy App to Fly
         if: github.event_name == 'push'
