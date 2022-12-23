@@ -21,9 +21,9 @@ jobs:
           echo $(ls)
           /home/runner/.fly/bin/flyctl
 
-      # - name: Set Flyctl to Path Variable
-      #   run: |
-      #     export FLYCTL_INSTALL=""
+      - name: Set Flyctl to Path Variable
+        run: |
+          export PATH="/home/runner/.fly/bin/flyctl:$PATH"
 
       - name: Login to the Fly Platform
         run: flyctl auth login -t ${{secrets.FLY_PAT}}
