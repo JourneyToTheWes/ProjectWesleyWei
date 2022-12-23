@@ -19,6 +19,7 @@ jobs:
           whoami
           cd /home/runner/work/_temp
           echo $(ls)
+          /home/runner/.fly/bin/flyctl
 
       # - name: Set Flyctl to Path Variable
       #   run: |
