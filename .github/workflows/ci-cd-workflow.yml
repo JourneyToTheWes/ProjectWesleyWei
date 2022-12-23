@@ -1,0 +1,22 @@
+name: Project WestWay CI/CD Workflow
+on: [push, pull_request]
+
+jobs:
+  build-client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout ProjectWesleyWei Repository
+        uses: actions/checkout@v3 # action that checks out repository onto the runner
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Install Flyctl
+        run: curl -L https://fly.io/install.sh | sh
+
+      - name: Login to the Fly Platform
+        run: flyctl auth login -t ${{secrets.FLY_PAT}}
+
+      - name: Deploy App to Fly
+        run: flyctl deploy
+      
