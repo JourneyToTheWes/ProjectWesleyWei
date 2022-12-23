@@ -14,6 +14,15 @@ jobs:
       - name: Install Flyctl
         run: curl -L https://fly.io/install.sh | sh
 
+      - name: Output variables
+        run: |
+          echo "whoamI: ${{whoami}}"
+          echo $(ls)
+
+      # - name: Set Flyctl to Path Variable
+      #   run: |
+      #     export FLYCTL_INSTALL=""
+
       - name: Login to the Fly Platform
         run: flyctl auth login -t ${{secrets.FLY_PAT}}
 
