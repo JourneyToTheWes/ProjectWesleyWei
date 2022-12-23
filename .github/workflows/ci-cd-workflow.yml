@@ -16,7 +16,7 @@ jobs:
 
       - name: Output variables
         run: |
-          echo "whoamI: ${{whoami}}"
+          whoami
           echo $(ls)
 
       # - name: Set Flyctl to Path Variable
