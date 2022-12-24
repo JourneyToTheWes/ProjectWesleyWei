@@ -3,6 +3,7 @@ on: [push, pull_request]
 
 jobs:
   build-client:
+    if: github.event_name == 'push' && startsWith(github.ref_name, 'model')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout ProjectWesleyWei Repository
