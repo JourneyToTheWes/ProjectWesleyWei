@@ -19,7 +19,7 @@ jobs:
           echo "/home/runner/.fly/bin" >> $GITHUB_PATH
 
       - name: Login to the Fly Platform
-        run: flyctl auth login -t ${{secrets.FLY_PAT}}
+        run: echo -ne '\n' | flyctl auth login -i --email ${{secrets.FLY_IO_EMAIL}} --password ${{secrets.FLY_IO_PASSWORD}}
 
       - name: Deploy App to Fly
         if: github.event_name == 'push'
