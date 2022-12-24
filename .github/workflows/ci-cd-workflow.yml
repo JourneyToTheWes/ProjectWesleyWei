@@ -6,21 +6,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout ProjectWesleyWei Repository
+        if: github.event_name == 'push' && contains(github.ref_name, 'model')
         uses: actions/checkout@v3 # action that checks out repository onto the runner
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Install Flyctl
+        if: github.event_name == 'push' && contains(github.ref_name, 'model')
         run: curl -L https://fly.io/install.sh | sh
 
       - name: Set Flyctl to Path Variable
+        if: github.event_name == 'push' && contains(github.ref_name, 'model')
         run: echo "/home/runner/.fly/bin" >> $GITHUB_PATH
 
       - name: Login to the Fly Platform
+        if: github.event_name == 'push' && contains(github.ref_name, 'model')
         run: echo -ne '\n' | flyctl auth login -i --email ${{secrets.FLY_IO_EMAIL}} --password ${{secrets.FLY_IO_PASSWORD}}
 
       - name: Deploy App to Fly
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && contains(github.ref_name, 'model')
         run: flyctl deploy
       
