@@ -136,7 +136,13 @@
 	background-color: #555;
 }
 
+#bio-p hr {
+    border-top: 1px solid;
+}
+
 #bioTxtImg {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     width: 100%;
     height: 100%;
 }
