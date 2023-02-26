@@ -1,26 +1,25 @@
 import React from 'react';
 import Compass from '../Compass/Compass';
+import './styles/Projects.css';
 
 const Projects = () => {
     return (
         <>
-            <header>
+            <header className="projects-header">
                 <div>
                     <img
-                        id="logo"
+                        className="logo"
                         src={require('../../../images/WestWay.JPG')}
                         alt="West Way Logo"
                     />
                 </div>
             </header>
-            <section>
+            <div className="projects-section">
                 <div className="projects-menu-container">
                     <h1>Projects</h1>
                 </div>
-            </section>
-            <section>
                 <Compass size="large" />
-            </section>
+            </div>
         </>
     );
 };

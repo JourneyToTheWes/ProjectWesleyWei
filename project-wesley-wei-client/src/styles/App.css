@@ -6,12 +6,15 @@ body,
 }
 
 /* Logo styling */
-#logo {
+.logo {
 	border: 1px solid black;
 	border-radius: 50%;
 	height: 100px;
 	margin: 25px;
 	width: 100px;
+}
+
+.top-left-abs {
 	position: absolute;
 	top: 0px;
 	left: 0px;

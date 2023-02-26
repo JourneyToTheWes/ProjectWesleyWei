@@ -17,7 +17,7 @@ const Landing = () => {
 				<header>
 					<div>
 						<img
-							id="logo"
+							className="logo top-left-abs"
 							src={require('../../../images/WestWay.JPG')}
 							alt="West Way Logo"
 						/>

@@ -1,0 +1,10 @@
+.projects-header {
+    display: block;
+    overflow: auto;
+}
+
+.projects-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
