@@ -1,0 +1,13 @@
+.navbar-container {
+    position: absolute;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.navbar-link {
+    text-decoration: none;
+	color: black;
+	font-size: 3em;
+}

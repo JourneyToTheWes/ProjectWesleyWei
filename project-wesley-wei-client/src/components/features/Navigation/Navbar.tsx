@@ -1,16 +1,24 @@
 import React from 'react';
-import NavSection from './NavSection';
-import styles from './styles/Navbar.module.css';
+import './styles/Navbar.css';
 
-const Navbar = () => {
+interface INavbarProps {
+	className: string;
+	navSectionNames: Array<string>;
+}
+
+const Navbar: React.FC<INavbarProps> = ({ className, navSectionNames }) => {
 	const renderNavSections = () => {
-		const navSectionNames = ['About', 'Projects', 'Resume', 'Videos'];
 		return navSectionNames.map((navSectionName) => (
-			<NavSection navSectionName={navSectionName} />
+			<a
+				href=""
+				className="navbar-link"
+			>
+				{navSectionName}
+			</a>
 		));
 	};
 
-	return <nav className={styles.navbar}>{renderNavSections()}</nav>;
+	return <nav className={`${className} navbar-container`}>{renderNavSections()}</nav>;
 };
 
 export default Navbar;
