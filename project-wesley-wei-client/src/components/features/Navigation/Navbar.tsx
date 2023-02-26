@@ -3,17 +3,22 @@ import './styles/Navbar.css';
 
 interface INavbarProps {
 	className: string;
-	navSectionNames: Array<string>;
+	navSections: Array<INavSection>;
 }
 
-const Navbar: React.FC<INavbarProps> = ({ className, navSectionNames }) => {
+interface INavSection {
+	name: string;
+	href: string;
+}
+
+const Navbar: React.FC<INavbarProps> = ({ className, navSections }) => {
 	const renderNavSections = () => {
-		return navSectionNames.map((navSectionName) => (
+		return navSections.map((navSection) => (
 			<a
-				href=""
+				href={navSection.href}
 				className="navbar-link"
 			>
-				{navSectionName}
+				{navSection.name}
 			</a>
 		));
 	};

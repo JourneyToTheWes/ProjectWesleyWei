@@ -26,7 +26,15 @@ const Landing = () => {
 				<section>
 					<Compass size="large" />
 				</section>
-				<Navbar className="westway-navbar" navSectionNames={['About', 'Projects', 'Resume', 'Videos']} />
+				<Navbar
+					className="westway-navbar"
+					navSections={[
+						{ name: 'About', href: '/about' },
+						{ name: 'Projects', href: '/projects' },
+						{ name: 'Resume', href: '/resume' },
+						{ name: 'Videos', href: '/videos' }
+					]}
+				/>
 			</div>
 		</>
 	);
