@@ -1,16 +1,25 @@
 import React from 'react';
 import Compass from '../Compass/Compass';
 import './styles/Projects.css';
+import RootStore from '../../../stores/RootStore';
 
-const Projects = () => {
+interface IProjects {
+    store: RootStore;
+}
+
+const Projects: React.FC<IProjects> = ({ store }) => {
+    const { ProjectStore } = store;
+
     const renderProjects = () => {
-        return (
-            <div className="project">
-                <h3 className="project-name">Cuisinify</h3>
-                <span className="project-date">Jan. 2017</span>
-                <span className="project-border"></span>
-            </div>
-        );
+        return ProjectStore.projects.map(project => {
+            return (
+                <div className="project">
+                    <h3 className="project-name">{project.title}</h3>
+                    <span className="project-date">{project.date}</span>
+                    <span className="project-border"></span>
+                </div>
+            );
+        });
     };
 
     return (
