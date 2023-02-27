@@ -12,6 +12,7 @@ body,
 	height: 100px;
 	margin: 25px;
 	width: 100px;
+	cursor: pointer;
 }
 
 .top-left-abs {

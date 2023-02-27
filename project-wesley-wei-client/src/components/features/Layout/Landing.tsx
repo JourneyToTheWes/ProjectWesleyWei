@@ -20,6 +20,7 @@ const Landing = () => {
 							className="logo top-left-abs"
 							src={require('../../../images/WestWay.JPG')}
 							alt="West Way Logo"
+							onClick={ () => window.location.href = '/' }
 						/>
 					</div>
 				</header>

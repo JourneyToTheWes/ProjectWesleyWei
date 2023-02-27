@@ -1,10 +1,30 @@
 .projects-header {
     display: block;
-    overflow: auto;
 }
 
 .projects-section {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    margin: 0 5rem;
+}
+
+.projects-section >
+.projects-compass-container {
+    width: 500px;
+}
+
+.project > .project-name {
+    margin: 0;
+}
+
+.project > .project-date {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.project > .project-border {
+    display: block;
+    height: 1px;
+    width: 50%;
+    border-bottom: 2px solid #EDB116;
 }
