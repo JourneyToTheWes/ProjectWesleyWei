@@ -1,8 +1,8 @@
 html,
 body,
 .app {
-	height: 100vh;
-	width: 100vw;
+	height: 100%;
+	width: 100%;
 }
 
 /* Logo styling */
@@ -20,3 +20,29 @@ body,
 	top: 0px;
 	left: 0px;
 }
+
+/* Start Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+	width: 0.5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: rgba(237, 177, 22, 0.8);
+	border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(237, 177, 22, 1);
+}
+
+/* End Scrollbar */

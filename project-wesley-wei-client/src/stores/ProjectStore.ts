@@ -4,7 +4,8 @@ import axios from 'axios';
 
 class ProjectStore {
     rootStore: RootStore;
-    @observable projects: Project[] = [];
+    @observable isProjectLoaded: boolean = false;
+    @observable projects: IProject[] = [];
 
     constructor(rootStore: RootStore) {
         this.rootStore = rootStore;
@@ -17,6 +18,7 @@ class ProjectStore {
             console.log(res);
             if (res.data) {
                 this.projects = res.data;
+                this.isProjectLoaded = true;
             }
         } catch (err) {
             console.error(err);
@@ -40,7 +42,7 @@ class ProjectStore {
 //     }
 // }
 
-interface Project {
+export interface IProject {
     _id: string;
     title: string;
     date: string;

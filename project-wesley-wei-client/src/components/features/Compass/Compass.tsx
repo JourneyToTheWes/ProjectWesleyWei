@@ -2,12 +2,13 @@ import React from 'react';
 import './styles/Compass.css';
 
 interface ICompassProps {
+	className?: string;
 	size: 'small' | 'medium' | 'large';
 }
 
-const Compass: React.FC<ICompassProps> = ({ size }) => {
+const Compass: React.FC<ICompassProps> = ({ className, size }) => {
 	return (
-		<div className={'compass ' + size}>
+		<div className={`compass ${size} ${className}`}>
 			<span>N</span>
 			<span>E</span>
 			<span>S</span>
