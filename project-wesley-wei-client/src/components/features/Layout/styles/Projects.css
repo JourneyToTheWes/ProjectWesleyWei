@@ -50,9 +50,12 @@
     /* Back of compass appearance */
     height: 460px;
     width: 460px;
-    background: rgb(150, 150, 150);
+    background: #CACACA;
     border-radius: 50%;
     transform: rotateY(180deg);
+    box-shadow: 0.4rem 0.4rem 0.4rem 0.1rem rgba(150, 150, 150);
+    transition: 1s;
+    transition-timing-function: ease;
     /* Back of compass appearance */
 
     position: absolute;
@@ -71,15 +74,32 @@
     align-items: center;
 }
 
+.projects-compass-container
+.compass-back:hover {
+    box-shadow: 0.1rem 0.1rem 0.1rem 0 rgba(150, 150, 150);
+}
+
 .compass-back-content {
     height: 65%;
     width: 65%;
-    overflow: auto;
+    overflow-y: scroll;
+    background-color: white;
+    border: 0.5rem solid white;
+    border-radius: 8%;
 }
 
 .compass-back-content > img {
     height: auto;
     width: 100%;
+}
+
+.compass-back-content > span > u {
+    display: block;
+    margin-top: 1rem;
+}
+
+.compass-back-content > p {
+    margin-top: 0;
 }
 /* End: Compass flipping styling */
 
@@ -95,6 +115,10 @@
     width: 80%;
     overflow-y: auto;
     padding: 1rem;
+}
+
+.project {
+    width: 60%; /* Hover only over a smaller portion to display the project */
 }
 
 .project > .project-name {

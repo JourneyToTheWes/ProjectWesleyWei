@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Compass from '../Compass/Compass';
 import RootStore from '../../../stores/RootStore';
 import { observer } from 'mobx-react-lite';
-// import { IProject } from '../../../stores/ProjectStore';
 import './styles/Projects.css';
 
 interface IProjects {
@@ -11,21 +10,28 @@ interface IProjects {
 
 const Projects: React.FC<IProjects> = ({ store }) => {
     const { ProjectStore } = store;
-
     const [currentHoveredProject, setCurrentHoveredProject] = useState<any>(null);
+    const [isOnCompassBack, setIsOnCompassBack] = useState<boolean>(false);
+    const [compassFlipTimer, setCompassFlipTImer] = useState<number>(5000);
 
-    // const [projects, setProjects] = useState<IProject[]>([]);
-    // useEffect(() => {
-    //     setProjects(ProjectStore.projects);
-    // }, [ProjectStore.isProjectLoaded]);
+    useEffect(() => {
+        if (compassFlipTimer === 0 && !isOnCompassBack) {
+            setCurrentHoveredProject(null);
+            setCompassFlipTImer(5000);
+        }
+    }, [compassFlipTimer, isOnCompassBack]);
 
     const renderProjects = () => {
         return ProjectStore.projects.map(project => {
             return (
                 <div className="project"
                     onMouseEnter={() => {
-                        console.log(`hover over ${project.title}`);
                         setCurrentHoveredProject(project);
+                        window.setTimeout(() => {
+                            // if (currentHoveredProject.title === project.title) {
+                            setCompassFlipTImer(0);
+                            // }
+                        }, compassFlipTimer);
                     }}
                     // onMouseLeave={() => setCurrentHoveredProject(null)}
                 >
@@ -55,7 +61,7 @@ const Projects: React.FC<IProjects> = ({ store }) => {
                     <p>
                         A project always starts from one point and leads to
                         another direction. Same with all of these projects.
-                        Click or hover to learn more.
+                        <b> Click</b> or <b>hover</b> to learn more.
                     </p>
                     <div className="project-list-container">
                         {ProjectStore.isProjectLoaded ? renderProjects() : <></>}
@@ -67,13 +73,21 @@ const Projects: React.FC<IProjects> = ({ store }) => {
                             {/* Front of compass */}
                             <Compass size="large" className={currentHoveredProject ? "hovered" : ""} />
                             {/* Back of compass */}
-                            <div className="compass-back">
+                            <div
+                                className="compass-back"
+                                onMouseEnter={() => setIsOnCompassBack(true)}
+                                onMouseLeave={() => setIsOnCompassBack(false)}
+                            >
                                 {
-                                    currentHoveredProject &&
-                                    <div className="compass-back-content">
-                                        <img src={require(`../../../${currentHoveredProject.images[0]}`)} alt="" />
-                                        <p>{currentHoveredProject.description}</p>
-                                    </div>
+                                    currentHoveredProject &&                                    
+                                        <div className="compass-back-content">
+                                            <h3>{currentHoveredProject.title}</h3>
+                                            <img src={require(`../../../${currentHoveredProject.images[0]}`)} alt="" />
+                                            <span>
+                                                <u>Description</u>
+                                            </span>
+                                            <p>{currentHoveredProject.description}</p>
+                                        </div>                    
                                 }
                             </div>
                         </div>
