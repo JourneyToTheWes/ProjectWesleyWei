@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Compass from '../Compass/Compass';
 import RootStore from '../../../stores/RootStore';
 import { observer } from 'mobx-react-lite';
+import { Link } from 'react-router-dom';
 import './styles/Projects.css';
 
 interface IProjects {
@@ -22,11 +23,11 @@ const Projects: React.FC<IProjects> = ({ store }) => {
     }, [compassFlipTimer, isOnCompassBack]);
 
     const renderProjects = () => {
-        return ProjectStore.projects.map(project => {
+        return ProjectStore.projects.map(currProject => {
             return (
-                <div className="project"
+                <div className="project"                        
                     onMouseEnter={() => {
-                        setCurrentHoveredProject(project);
+                        setCurrentHoveredProject(currProject);
                         window.setTimeout(() => {
                             // if (currentHoveredProject.title === project.title) {
                             setCompassFlipTImer(0);
@@ -34,11 +35,17 @@ const Projects: React.FC<IProjects> = ({ store }) => {
                         }, compassFlipTimer);
                     }}
                     // onMouseLeave={() => setCurrentHoveredProject(null)}
-                    key={project._id}
+                    key={currProject._id}
                 >
-                    <h3 className="project-name">{project.title}</h3>
-                    <span className="project-date">{project.date}</span>
-                    <span className="project-border"></span>
+                    <Link
+                        to={currProject._id}
+                        state={{ project: JSON.parse(JSON.stringify(currProject)) }}
+                        className="project-link"
+                    >
+                        <h3 className="project-name">{currProject.title}</h3>
+                        <span className="project-date">{currProject.date}</span>
+                        <span className="project-border"></span>                    
+                    </Link>
                 </div>
             );
         });

@@ -167,16 +167,21 @@
     width: 60%; /* Hover only over a smaller portion to display the project */
 }
 
-.project > .project-name {
+.project > .project-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.project .project-name {
     margin: 0;
 }
 
-.project > .project-date {
+.project .project-date {
     display: block;
     margin-bottom: 1rem;
 }
 
-.project > .project-border {
+.project .project-border {
     display: block;
     height: 1px;
     width: 50%;
