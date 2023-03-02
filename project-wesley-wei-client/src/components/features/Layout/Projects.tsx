@@ -34,6 +34,7 @@ const Projects: React.FC<IProjects> = ({ store }) => {
                         }, compassFlipTimer);
                     }}
                     // onMouseLeave={() => setCurrentHoveredProject(null)}
+                    key={project._id}
                 >
                     <h3 className="project-name">{project.title}</h3>
                     <span className="project-date">{project.date}</span>
@@ -71,15 +72,24 @@ const Projects: React.FC<IProjects> = ({ store }) => {
                     <div className={`flip-container`}>
                         <div className={`flipper ${currentHoveredProject ? "hovered" : ""}`}>
                             {/* Front of compass */}
-                            <Compass size="large" className={currentHoveredProject ? "hovered" : ""} />
+                            <Compass size="large" />
                             {/* Back of compass */}
                             <div
                                 className="compass-back"
                                 onMouseEnter={() => setIsOnCompassBack(true)}
                                 onMouseLeave={() => setIsOnCompassBack(false)}
                             >
+
+                                <div className="compass-back-border"></div>
+                                {/* <div className="compass-back-logo-container"> */}
+                                    {/* <img
+                                        className="compass-back-logo"
+                                        src={require('../../../images/WestWay.JPG')}
+                                        alt="West Way Logo"                                    
+                                    /> */}
+                                {/* </div> */}
                                 {
-                                    currentHoveredProject &&                                    
+                                    currentHoveredProject &&                                                                                
                                         <div className="compass-back-content">
                                             <h3>{currentHoveredProject.title}</h3>
                                             <img src={require(`../../../${currentHoveredProject.images[0]}`)} alt="" />
@@ -87,7 +97,7 @@ const Projects: React.FC<IProjects> = ({ store }) => {
                                                 <u>Description</u>
                                             </span>
                                             <p>{currentHoveredProject.description}</p>
-                                        </div>                    
+                                        </div>
                                 }
                             </div>
                         </div>

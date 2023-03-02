@@ -8,7 +8,7 @@ interface ICompassProps {
 
 const Compass: React.FC<ICompassProps> = ({ className, size }) => {
 	return (
-		<div className={`compass ${size} ${className}`}>
+		<div className={`compass ${size} ${className ? className : ''}`}>
 			<span>N</span>
 			<span>E</span>
 			<span>S</span>
