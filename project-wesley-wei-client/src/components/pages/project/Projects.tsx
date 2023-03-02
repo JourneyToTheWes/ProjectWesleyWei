@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Compass from 'components/common/compass/Compass';
+import Header from 'components/layout/header/Header';
 import RootStore from 'stores/RootStore';
 import { observer } from 'mobx-react-lite';
 import { Link } from 'react-router-dom';
@@ -53,16 +54,7 @@ const Projects: React.FC<IProjects> = ({ store }) => {
 
     return (
         <>
-            <header className="projects-header">
-                <div>
-                    <img
-                        className="logo"
-                        src={require('../../../images/WestWay.JPG')}
-                        alt="West Way Logo"
-                        onClick={ () => window.location.href = '/' }
-                    />
-                </div>
-            </header>
+            <Header />
             <div className="projects-section">
                 <div className="projects-menu-container">
                     <h1>Projects</h1>
@@ -88,13 +80,6 @@ const Projects: React.FC<IProjects> = ({ store }) => {
                             >
 
                                 <div className="compass-back-border"></div>
-                                {/* <div className="compass-back-logo-container"> */}
-                                    {/* <img
-                                        className="compass-back-logo"
-                                        src={require('../../../images/WestWay.JPG')}
-                                        alt="West Way Logo"                                    
-                                    /> */}
-                                {/* </div> */}
                                 {
                                     currentHoveredProject &&                                                                                
                                         <div className="compass-back-content">

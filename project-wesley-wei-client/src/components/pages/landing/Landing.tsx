@@ -2,6 +2,7 @@ import React from 'react';
 import Compass from 'components/common/compass/Compass';
 import Navbar from 'components/layout/navigation/Navbar';
 import Ocean from 'components/common/3DModels/Ocean';
+import Header from 'components/layout/header/Header';
 import { Canvas } from '@react-three/fiber';
 import { Sky } from '@react-three/drei';
 import './styles/Landing.css';
@@ -14,16 +15,7 @@ const Landing = () => {
 					<Ocean />			
 					<Sky distance={450000} sunPosition={[0, 1, 0]} inclination={0} azimuth={0.25} />
 				</Canvas>
-				<header>
-					<div>
-						<img
-							className="logo top-left-abs"
-							src={require('../../../images/WestWay.JPG')}
-							alt="West Way Logo"
-							onClick={ () => window.location.href = '/' }
-						/>
-					</div>
-				</header>
+				<Header position='top-left-abs' />
 				<section>
 					<Compass size="large" />
 				</section>
