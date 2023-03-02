@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { IProject } from '../../../stores/ProjectStore';
+import { IProject } from 'stores/ProjectStore';
 
 interface IProjectState {
     project: IProject;

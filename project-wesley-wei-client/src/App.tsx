@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { RootStoreContext } from './index';
-import Landing from './components/features/Layout/Landing';
-import Projects from './components/features/Layout/Projects';
-import Project from './components/features/Layout/Project';
+import Landing from 'components/pages/landing/Landing';
+import Projects from 'components/pages/project/Projects';
+import Project from 'components/pages/project/Project';
 import './styles/App.css';
 
 const App = () => {

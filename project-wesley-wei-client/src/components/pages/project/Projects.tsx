@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Compass from '../Compass/Compass';
-import RootStore from '../../../stores/RootStore';
+import Compass from 'components/common/compass/Compass';
+import RootStore from 'stores/RootStore';
 import { observer } from 'mobx-react-lite';
 import { Link } from 'react-router-dom';
 import './styles/Projects.css';
