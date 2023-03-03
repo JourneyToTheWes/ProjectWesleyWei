@@ -40,6 +40,7 @@ export interface IProject {
     date: string;
     description: string[];
     images: string[];
+    imagesDir: string;
 }
 
 export default ProjectStore;

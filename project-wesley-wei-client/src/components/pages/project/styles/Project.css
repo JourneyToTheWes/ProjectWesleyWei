@@ -1,0 +1,24 @@
+.app-header > div {
+    width: 100%;
+	height: 35vh;
+    color: white;
+}
+
+.app-header h1 {
+    font-size: 4.5rem;
+}
+
+.app-header {
+    background-position: center;
+	background-size: cover;
+	background-color: white;
+	background-blend-mode: multiply;
+}
+
+.project-container {
+    min-height: 100%;
+}
+
+.project-container > .project-cover {
+    height: 200px;
+}
