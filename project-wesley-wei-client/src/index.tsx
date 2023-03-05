@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import RootStore from './stores/RootStore';
+import "pure-react-carousel/dist/react-carousel.es.css";
 const rootStoreInstance = new RootStore();
 export const RootStoreContext = React.createContext(rootStoreInstance);
 

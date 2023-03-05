@@ -6,12 +6,16 @@ interface IHeader {
     position?: "top-left-abs" | "top-right-abs" |
     "bottom-left-abs" | "bottom-right-abs";
     bgImageSrc?: string; // src of bg image to use on header
+    className?: string;
 }
 
-const Header: React.FC<IHeader> = ({ children, position, bgImageSrc }) => {
+const Header: React.FC<IHeader> = ({ children, position, bgImageSrc, className }) => {
     return (
         <header
-            className={`app-header${position ? ' ' + position : ''}`}
+            className={
+                `app-header${position ? ' ' + position : ''}
+                ${className ? ' ' + className : ''}`
+            }
             style={{
                 backgroundImage: bgImageSrc
                     ? `url(${require(`images/${bgImageSrc}`)})`
