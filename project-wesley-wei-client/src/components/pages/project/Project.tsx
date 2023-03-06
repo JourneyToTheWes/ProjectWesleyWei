@@ -12,7 +12,7 @@ import {
     ImageWithZoom
 } from 'pure-react-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import './styles/Project.css';
 
 interface IProjectState {
@@ -22,8 +22,6 @@ interface IProjectState {
 const Project = () => {
     const state = useLocation().state as IProjectState;
     const project = state?.project;
-
-    // const images = require.context('../../../images', true);
 
     /**
      * Gets the project cover image path if there exists one,
@@ -37,6 +35,41 @@ const Project = () => {
             ? `${project.imagesDir}/project-cover`
             : 'cloud.png';
     };
+
+    /**
+     * Returns key points separated by a pipe, "|".
+     * 
+     * @returns a "|" delimited string of project key points
+     */
+    const renderKeyPoints = (): string => {
+        let keyPointsString = '';
+
+        ['Key Point 1', 'Key Point 2', 'Key Point 3'].forEach((keyPoint, index, keyPoints) => {
+            if (index === keyPoints.length - 1) {
+                keyPointsString += keyPoint;
+            } else {
+                keyPointsString += keyPoint + ' | ';
+            }
+        })
+
+        return keyPointsString;
+    }
+
+    /**
+     * Takes project "learn more" links and generates list
+     * elements from them pointing to the project links.
+     * 
+     * @returns an array of li elements with learn more links
+     */
+    const renderLearnMoreLinks = (): React.ReactNode[] => {
+        return [
+            {link: 'https://example.com', name: 'example'},
+            {link: 'https://example.com', name: 'example'},
+            {link: 'https://example.com', name: 'example'}
+        ].map(linkObj => {
+            return <li><a href={linkObj.link} target="_blank">{linkObj.name}</a></li>
+        })
+    }
 
     return (
         <>
@@ -119,19 +152,32 @@ const Project = () => {
                             pharetra.
                         </p>
                     </section>
+                    <section className="project-points">
+                        <div className="key-points">
+                            <h3>Key Points</h3>
+                            <p>
+                                {renderKeyPoints()}
+                            </p>
+                        </div>
+                        <div className="learn-more">
+                            <h3>Learn More</h3>
+                            <ul className="learn-more-links">
+                                {renderLearnMoreLinks()}
+                            </ul>
+                        </div>
+                    </section>
                 </div>
                 <div className="project-right">
                     <CarouselProvider
-                        naturalSlideWidth={200}
-                        naturalSlideHeight={150}
+                        naturalSlideWidth={300}
+                        naturalSlideHeight={180}
                         totalSlides={project.images.length}
                     >
                         <Slider>
                             {
                                 project.images.map((image, index) => {                                
                                     return (
-                                        <Slide key={index} index={index}>
-                                            {/* <Image src={image} /> */}
+                                        <Slide key={index} index={index}>                                            
                                             <ImageWithZoom src={`/assets/${image}`} />
                                         </Slide>
                                     )
@@ -139,14 +185,12 @@ const Project = () => {
                             }                            
                         </Slider>
                         <div className="carousel-controls">
-                            <ButtonBack className="carousel-btn">
-                                {/* <i className="arrow"></i> */}
-                                <FontAwesomeIcon className="carousel-btn-arrow" icon={faArrowLeft} />
+                            <ButtonBack className="carousel-btn">                                
+                                <FontAwesomeIcon className="carousel-btn-arrow" icon={faChevronLeft} />
                             </ButtonBack>
                             <DotGroup className="carousel-dot-group" />
-                            <ButtonNext className="carousel-btn">
-                                {/* <i className="arrow"></i> */}
-                                <FontAwesomeIcon className="carousel-btn-arrow" icon={faArrowRight} />
+                            <ButtonNext className="carousel-btn">                                
+                                <FontAwesomeIcon className="carousel-btn-arrow" icon={faChevronRight} />
                             </ButtonNext>
                         </div>
                     </CarouselProvider>

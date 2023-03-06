@@ -18,11 +18,49 @@
 .project-container {
     margin: 3rem;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media screen and (min-width: 990px) {
+    .project-container
+    > .project-left {
+        width: 50%;
+    }
 }
 
 .project-container
-> .project-left {
-    width: 50%;
+> .project-left
+.project-points {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0 1rem 0;
+}
+
+.project-container
+> .project-left
+.key-points {
+    background-color: #EDB116;
+    padding: 0 1rem 0 1rem;
+}
+
+.project-container
+> .project-left
+.learn-more {
+    background-color: rgba(150, 150, 150, 0.2);
+    padding: 0 1rem 0 1rem;
+}
+
+.project-container
+> .project-left
+.learn-more > .learn-more-links {
+    padding: 0;
+}
+
+.project-container
+> .project-left
+.learn-more > .learn-more-links li {
+    list-style: none;
 }
 
 .project-container
@@ -77,11 +115,6 @@ to add our own styles */
 .carousel-btn {
     width: 2rem;
     height: 2rem;
-    /* border-radius: 50%;
-    border: none;
-    border: solid #EDB116;
-    border-width: 0 3px 3px 0; */
-    /* display: inline-block; */
     margin: 0 1rem 0 1rem;
     padding: 3px;
     border-radius: 50%;
@@ -89,23 +122,7 @@ to add our own styles */
     border: 1px solid rgba(150, 150, 150, 0.2);
 }
 
-/* .left-carousel-btn {
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
-}
-
-.right-carousel-btn {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-} */
-
 .carousel-btn-arrow {
-    /* width: 0.5rem;
-    height: 0.5rem; */
-    /* border: solid #EDB116;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px; */
     color: #EDB116;
 }
 /* End carousel styling */
