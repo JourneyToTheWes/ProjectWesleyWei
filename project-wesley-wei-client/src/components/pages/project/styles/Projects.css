@@ -101,10 +101,11 @@
 .compass-back-content {
     height: 65%;
     width: 65%;
-    overflow-y: scroll;
+    overflow-y: auto;
     background-color: white;
     border: 0.5rem solid white;
     border-radius: 8%;
+    z-index: 1;
 }
 
 .compass-back-content > img {
@@ -143,9 +144,9 @@
     margin-top: 0;
     padding: 0.3rem;
     width: max-content;
-    border: 2px solid rgba(150, 150, 150, 0.7);
+    border: 2px solid rgba(150, 150, 150, 0.5);
     border-radius: 15px;
-    background-color: #CACACA;
+    background-color: #DFDFDF;
     position: static;
     z-index: 1;
 }
@@ -167,7 +168,7 @@
 .project-list-container
 .project-year-container::before {
     content: '';
-    height: calc(100% + 0.5rem);
+    height: calc(100% + 0.7rem);
     width: 0.3rem;
     background-color: #CACACA;
     border-radius: 10px;

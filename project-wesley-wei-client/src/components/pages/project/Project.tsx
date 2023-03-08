@@ -71,6 +71,22 @@ const Project = () => {
         })
     }
 
+    /**
+     * Generates skills in the form of stylized pills.
+     * 
+     * @returns skills in the form of pills
+     */
+    const renderSkillPills = (): React.ReactNode[] => (
+        ['R', 'Shiny'].map((skill, index) =>
+            <div
+                className="skill-pill"
+                key={skill + index}
+            >
+                {skill}
+            </div>    
+        )
+    );
+
     return (
         <>
             <Header
@@ -85,6 +101,11 @@ const Project = () => {
                         <h1>{project.title}</h1>
                         <span>Timeline: {project.date}</span>
                         <span>Contributors: </span>
+                        <span>Demonstrated Skills:
+                            <div className="skills-pill-container">
+                                {renderSkillPills()}
+                            </div>
+                        </span>
                     </section>
                     <section className="project-intro">
                         <h3>Introduction</h3>

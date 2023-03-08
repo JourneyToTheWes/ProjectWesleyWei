@@ -29,6 +29,33 @@
     }
 }
 
+/* Start: Skill Pills */
+.project-container
+> .project-left
+.skills-pill-container {
+    display: flex;
+}
+
+.project-container
+> .project-left
+.skills-pill-container
+.skill-pill {
+    background: rgb(237,177,22);
+    background: linear-gradient(
+        180deg,
+        rgba(237,177,22,0.5) 0%,
+        rgba(237,177,22,1) 50%,
+        rgba(237,177,22,0.5) 100%
+    );
+    border: 1.5px solid #EDB116;
+    border-radius: 25px;
+    box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.35);
+    color: white;
+    margin: 0.3rem 0.3rem 0.3rem 0;
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+}
+/* End: Skill Pills*/
+
 .project-container
 > .project-left
 .project-points {
@@ -42,6 +69,7 @@
 .key-points {
     background-color: #EDB116;
     padding: 0 1rem 0 1rem;
+    color: white;
 }
 
 .project-container
