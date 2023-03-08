@@ -23,32 +23,55 @@ const Projects: React.FC<IProjects> = ({ store }) => {
         }
     }, [compassFlipTimer, isOnCompassBack]);
 
+    /**
+     * Renders projects in a timeline with containers of projects
+     * denoting each year that the project was last worked in.
+     * 
+     * @returns React Node elements with projects in a timeline structure
+     */
     const renderProjects = () => {
-        return ProjectStore.projects.map(currProject => {
+        return [...ProjectStore.getSortedProjectYears()].map(projectYear => {
+            // Mapping through each year to create a timeline of
+            // projects for that given year
+            const projectsInYear = ProjectStore.projectMap[parseInt(projectYear)];
             return (
-                <div className="project"                        
-                    onMouseEnter={() => {
-                        setCurrentHoveredProject(currProject);
-                        window.setTimeout(() => {
-                            // if (currentHoveredProject.title === project.title) {
-                            setCompassFlipTImer(0);
-                            // }
-                        }, compassFlipTimer);
-                    }}
-                    // onMouseLeave={() => setCurrentHoveredProject(null)}
-                    key={currProject._id}
-                >
-                    <Link
-                        to={currProject._id}
-                        state={{ project: JSON.parse(JSON.stringify(currProject)) }}
-                        className="project-link"
-                    >
-                        <h3 className="project-name">{currProject.title}</h3>
-                        <span className="project-date">{currProject.date}</span>
-                        <span className="project-border"></span>                    
-                    </Link>
+                <div className="project-year-container">
+                    <h3 className="project-year-heading">{projectYear}</h3>
+                    {
+                        projectsInYear.map((currProject, index) => {
+                            return (
+                                <div className="project"                        
+                                    onMouseEnter={() => {
+                                        setCurrentHoveredProject(currProject);
+                                        window.setTimeout(() => {
+                                            // if (currentHoveredProject.title === project.title) {
+                                            setCompassFlipTImer(0);
+                                            // }
+                                        }, compassFlipTimer);
+                                    }}
+                                    // onMouseLeave={() => setCurrentHoveredProject(null)}
+                                    key={currProject._id}
+                                >
+                                    <Link
+                                        to={currProject._id}
+                                        state={{ project: JSON.parse(JSON.stringify(currProject)) }}
+                                        className="project-link"
+                                    >
+                                        <h3 className="project-name">{currProject.title}</h3>
+                                        <span className="project-date">{currProject.date}</span>
+                                        {
+                                            // Do not render the project border for the last
+                                            // project in that project container
+                                            projectsInYear.length - 1 !== index &&
+                                                <span className="project-border"></span>                    
+                                        }
+                                    </Link>
+                                </div>
+                            );
+                        })
+                    }
                 </div>
-            );
+            )
         });
     };
 
