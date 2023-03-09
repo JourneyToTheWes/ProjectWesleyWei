@@ -107,7 +107,7 @@ const Projects: React.FC<IProjects> = ({ store }) => {
                                     currentHoveredProject &&                                                                                
                                         <div className="compass-back-content">
                                             <h3>{currentHoveredProject.title}</h3>
-                                            <img src={require(`../../../${currentHoveredProject.images[0]}`)} alt="" />
+                                            <img src={`/assets/${currentHoveredProject.images[0]}`} alt="" />
                                             <span>
                                                 <u>Description</u>
                                             </span>
