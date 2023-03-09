@@ -1,0 +1,223 @@
+.compass {
+	background: white;
+	border: solid rgb(150, 150, 150, 0.5);
+	border-radius: 50%;
+	box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+	transform: translate(0%, 0%); /* Translates tx and ty 0% of itself */
+}
+
+.compass.small {
+	height: 100px;
+	width: 100px;
+	border-width: 10px;
+}
+
+.compass.medium {
+	height: 200px;
+	width: 200px;
+	border-width: 20px;
+}
+
+.compass.large {
+	height: 400px;
+	width: 400px;
+	border-width: 30px;
+}
+
+/* Compass inner dotted circle */
+.compass:before {
+	content: '';
+	border: dotted black;
+	border-radius: 50%;
+	position: absolute;
+}
+
+.compass.small:before {
+	border-width: 2px;
+	left: 20px;
+	right: 20px;
+	bottom: 20px;
+	top: 20px;
+}
+
+.compass.medium:before {
+	border-width: 3px;
+	left: 40px;
+	right: 40px;
+	bottom: 40px;
+	top: 40px;
+}
+
+.compass.large:before {
+	border-width: 5px;
+	left: 60px;
+	right: 60px;
+	bottom: 60px;
+	top: 60px;
+}
+/* Compass inner dotted circle */
+
+/* Compass Directions (span(s)) */
+.compass span {
+	font-weight: bold;
+	position: absolute;
+}
+
+.compass.small span {
+	font-size: 10px;
+}
+
+.compass.medium span {
+	font-size: 20px;
+}
+
+.compass.large span {
+	font-size: 30px;
+}
+
+/* North */
+.compass.small span:nth-child(1) {
+	left: 45px;
+	top: 3px;
+}
+
+.compass.medium span:nth-child(1) {
+	left: 90px;
+	top: 5px;
+}
+
+.compass.large span:nth-child(1) {
+	left: 190px;
+	top: 10px;
+}
+
+/* East */
+.compass.small span:nth-child(2) {
+	left: 90px;
+	top: 45px;
+}
+
+.compass.medium span:nth-child(2) {
+	left: 180px;
+	top: 90px;
+}
+
+.compass.large span:nth-child(2) {
+	left: 370px;
+	top: 190px;
+}
+
+/* South */
+.compass.small span:nth-child(3) {
+	left: 45px;
+	top: 85px;
+}
+
+.compass.medium span:nth-child(3) {
+	left: 90px;
+	top: 170px;
+}
+
+.compass.large span:nth-child(3) {
+	left: 190px;
+	top: 360px;
+}
+
+/* West */
+.compass.small span:nth-child(4) {
+	left: 5px;
+	top: 45px;
+}
+
+.compass.medium span:nth-child(4) {
+	left: 10px;
+	top: 90px;
+}
+
+.compass.large span:nth-child(4) {
+	left: 10px;
+	top: 190px;
+}
+/* Compass Directions (span(s)) */
+
+/* Compass Needle */
+.compass-needle {
+	width: 45%;
+	height: 10%;
+
+	/* Centering it */
+	position: absolute;
+	left: 50%;
+	top: 50%;
+
+	animation: point-west 2s cubic-bezier(0, 1, 0.71, 0.13) infinite alternate;
+}
+
+.compass.small .compass-needle {
+	margin-left: -25px;
+	margin-top: -5px;
+}
+
+.compass.medium .compass-needle {
+	margin-left: -50px;
+	margin-top: -10px;
+}
+
+.compass.large .compass-needle {
+	margin-left: -89px;
+	margin-top: -18px;
+}
+
+/* CSS3 animation to make the compass needle point west */
+@keyframes point-west {
+	0% {
+		transform: rotate(-20deg);
+	}
+	25% {
+		transform: rotate(-10deg);
+	}
+	50% {
+		transform: rotate(-5deg);
+	}
+	75% {
+		transform: rotate(5deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
+.compass-needle:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: linear-gradient(
+		-16deg,
+		rgb(29, 29, 29) 1%,
+		rgb(0, 0, 0) 50%,
+		rgba(216, 216, 216, 1) 51%,
+		rgba(244, 94, 80, 1) 53%,
+		rgba(255, 45, 45, 1) 100%
+	);
+	transform: skew(77deg);
+}
+
+.compass-needle:after {
+	content: '';
+
+	width: 10px;
+	height: 10px;
+	background: #4781c0;
+	border-radius: 50%;
+	box-shadow: inset 0 0 4px 2px #4d4d4d, 0 0 5px 1px white;
+
+	/* centering it */
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+/* Compas Needle */

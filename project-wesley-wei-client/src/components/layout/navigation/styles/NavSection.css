@@ -1,0 +1,26 @@
+.navbar-section {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	z-index: 2;
+}
+
+.navbar-section-content > p {
+	word-break: break-all;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	margin: 30px;
+}
+
+.navbar-section > a {
+	text-decoration: none;
+	color: black;
+	font-size: 3em;
+	border-bottom: 3px solid black;
+	margin-bottom: 30px;
+	position: absolute;
+	bottom: 0;
+}
