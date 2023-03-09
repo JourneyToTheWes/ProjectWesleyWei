@@ -1,0 +1,35 @@
+.resume-section {
+    display: flex;
+    justify-content: center;
+}
+
+.resume-menu-container {
+    /* margin: 1rem; */
+}
+
+.resume-menu-container
+> .resume-download-btn {
+    background: none;
+    border: 2px solid #EDB116;
+    padding: 0.75rem;
+    cursor: pointer;
+}
+
+.resume-menu-container
+> .resume-download-btn
+> .resume-download-icon {
+    color: black;
+    padding-left: 0.3rem;
+}
+
+.resume-categories > ul {
+    padding-left: 0;
+}
+
+.resume-categories > ul > li {
+    list-style: none;
+    font-size: xx-large;
+    width: max-content;
+    cursor: pointer;
+    /* font-weight: 500; */
+}

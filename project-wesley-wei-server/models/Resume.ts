@@ -58,6 +58,16 @@ const ResumeSchema = new mongoose.Schema({
 			required: true,
 		},
 	},
+	categories: [{
+		name: {
+			type: String,
+			required: true,
+		},
+		value: {
+			type: String,
+			required: true,
+		}
+	}]
 });
 
 const Resume = mongoose.model('resume', ResumeSchema, 'resume');
