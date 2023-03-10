@@ -56,32 +56,32 @@ export interface IResumeMap {
     categories: ICategories[];
 }
 
-interface IHonorsAndAwards {
+export interface IHonorsAndAwards {
     date: string;
     title: string;
 }
 
-interface ILeadership {
+export interface ILeadership {
     date: string;
     title: string;
     position: string;
     description: string;
 }
 
-interface ISkills {
+export interface ISkills {
     title: string;
     body?: {
         [key: string]: string;
     }
 }
 
-interface IWorkExperience {
+export interface IWorkExperience {
     title: string;
     date: string;
     experience: string | string[];
 }
 
-interface ICategories {
+export interface ICategories {
     name: string;
     value: string;
 }

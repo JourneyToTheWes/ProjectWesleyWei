@@ -1,10 +1,24 @@
 .resume-section {
     display: flex;
     justify-content: center;
+    margin: 0 2rem 0 2rem;
+}
+
+@media screen and (max-width: 992px)  {
+    .resume-section {
+        flex-wrap: wrap;
+    }    
+}
+
+@media screen and (min-width: 992px)  {
+    .resume-menu-container {
+        /* margin: 1rem; */
+        width: 50%;
+    }    
 }
 
 .resume-menu-container {
-    /* margin: 1rem; */
+    margin: 1rem;
 }
 
 .resume-menu-container
@@ -33,3 +47,19 @@
     cursor: pointer;
     /* font-weight: 500; */
 }
+
+.resume-categories > ul
+> .resume-category.is-selected {
+    color: #EDB116;
+}
+
+/* Start: Resume content container */
+.resume-content-container {
+    background-color: white;
+    border: 3rem solid rgba(150, 150, 150, 0.3);
+    height: 55vh;
+    width: 50%;
+    margin: 1rem;
+    overflow-y: auto;
+}
+/* End: Resume content container */
