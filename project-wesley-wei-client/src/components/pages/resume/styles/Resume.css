@@ -4,19 +4,6 @@
     margin: 0 2rem 0 2rem;
 }
 
-@media screen and (max-width: 992px)  {
-    .resume-section {
-        flex-wrap: wrap;
-    }    
-}
-
-@media screen and (min-width: 992px)  {
-    .resume-menu-container {
-        /* margin: 1rem; */
-        width: 50%;
-    }    
-}
-
 .resume-menu-container {
     margin: 1rem;
 }
@@ -55,11 +42,76 @@
 
 /* Start: Resume content container */
 .resume-content-container {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0);
     border: 3rem solid rgba(150, 150, 150, 0.3);
     height: 55vh;
-    width: 50%;
     margin: 1rem;
     overflow-y: auto;
 }
 /* End: Resume content container */
+
+@media screen and (max-width: 992px)  {
+    .resume-section {
+        flex-wrap: wrap;
+    }
+
+    .resume-menu-container
+    .resume-categories ul {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .resume-menu-container
+    .resume-categories
+    li.resume-category {
+        font-size: large;
+    }
+
+    .resume-menu-container
+    .resume-categories
+    li.resume-category:not(:last-child)::after {
+        content: '|';
+        color: black;
+        margin: 0 0.5rem 0 0.5rem;
+    }
+
+    .resume-content-container {
+        border-width: 2rem;
+    }
+}
+
+/* Mobile device styles */
+@media screen and (max-width: 500px) {
+    .resume-section {
+        margin: 0.5rem;
+    }
+    
+    .resume-menu-container h1 {
+        margin-top: 0;
+    }
+
+    .resume-content-container {
+        border-width: 1rem;
+    }
+}
+
+@media screen and (min-width: 992px)  {
+    .resume-menu-container {
+        width: 50%;
+    }
+
+    .resume-content-container {
+        width: 50%;
+    }
+}
+
+/* .resume-content-container {
+    position: relative;
+} */
+
+.compass.resume-compass {
+    position: absolute;
+    /* top: -55px;
+    right: -55px; */
+    z-index: -1;
+}
