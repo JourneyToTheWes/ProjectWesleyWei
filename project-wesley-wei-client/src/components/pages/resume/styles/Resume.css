@@ -18,7 +18,14 @@
 
 .resume-menu-container
 > .resume-download-btn
-> .resume-download-icon {
+> a {
+    text-decoration: none;
+    color: black;
+}
+
+.resume-menu-container
+> .resume-download-btn
+.resume-download-icon {
     color: black;
     padding-left: 0.3rem;
 }

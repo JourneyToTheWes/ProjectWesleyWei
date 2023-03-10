@@ -40,28 +40,23 @@ const Resume: React.FC<IResume> = ({ store }) => {
     const resumeMap: IResumeMap = JSON.parse(JSON.stringify(store.ResumeStore.resumeMap));
     const [currentResumeSection, setCurrentResumeSection] =
         useState<string>(ResumeCategory.WORK_EXPERIENCE.value);
-    // const [isComponentLoaded, setIsComponentLoaded] = useState<boolean>(false);
-    // const [isWindowResized, setIsWindowResized] = useState<boolean>(false);
 
     useEffect(() => {
         const onPageLoadOrWindowResize = () => {
-            // if (!isComponentLoaded) {
-            //     setIsComponentLoaded(true);
-            // }
             renderResumeCompassPosition();
         };
 
-        // const onWindowResize = () => {
-        //     // setIsWindowResized(true);
-        //     renderResumeCompassPosition();
-        // }
+        window.addEventListener('resize', onPageLoadOrWindowResize, true);
 
-        window.addEventListener('resize', onPageLoadOrWindowResize, false);
-
+        console.log(document.readyState);
         if (document.readyState === 'complete') {
             onPageLoadOrWindowResize();
         } else {
-            window.addEventListener('load', onPageLoadOrWindowResize, false);
+            document.onreadystatechange = () => {
+                if (document.readyState === 'complete') {                    
+                    onPageLoadOrWindowResize();
+                }
+            }
             return cleanupComponent(onPageLoadOrWindowResize);
         }
     }, []);
@@ -89,19 +84,9 @@ const Resume: React.FC<IResume> = ({ store }) => {
         ));
     };
 
-    // const renderResumeTimeline = (
-    //     resumeSectionObject: IHonorsAndAwards[] | ILeadership[] | IWorkExperience[]
-    // ) => {
-    //     console.log(resumeSectionObject);
-    //     return <div>
-            
-    //     </div>
-    // };
-
     const renderResumeSection = (resumeSection: string) => {
         switch (resumeSection) {
             case ResumeCategory.HONORS_AND_AWARDS.value:
-                // return renderResumeTimeline(resumeMap.honorsAndAwards);
                 return <div>
                     {
                         resumeMap.honorsAndAwards.map((honorOrAward, index) => {
@@ -115,7 +100,6 @@ const Resume: React.FC<IResume> = ({ store }) => {
                     }
                 </div>
             case ResumeCategory.LEADERSHIP.value:
-                // return renderResumeTimeline(resumeMap.leadership);
                 return <div>
                     {
                         resumeMap.leadership.map((leadership, index) => {
@@ -131,7 +115,6 @@ const Resume: React.FC<IResume> = ({ store }) => {
                     }
                 </div>
             case ResumeCategory.WORK_EXPERIENCE.value:
-                // return renderResumeTimeline(resumeMap.workExperience);
                 return <div>
                     {
                         resumeMap.workExperience.map((workExperience, index) => {
@@ -177,26 +160,19 @@ const Resume: React.FC<IResume> = ({ store }) => {
     };
 
     const getCompassStyle = () => {
-        console.log('get compass style!!!')
-        const resumeContentContainer = document.getElementsByClassName('resume-content-container')[0];
-        console.log(resumeContentContainer);
-        
+        const resumeContentContainer = document.getElementsByClassName('resume-content-container')[0];        
         const position = resumeContentContainer.getBoundingClientRect();
         const left = position.right;
         const top = position.top;
-        console.log(left);
-        console.log(top);
-        // setIsWindowResized(false);
         return { "left": left - 85, "top": top - 35 };
     };
 
     const renderResumeCompassPosition = () => {
         const resumeCompass = document.getElementsByClassName("resume-compass")[0] as HTMLElement;
-        console.log(resumeCompass);
         const compassStyle = getCompassStyle();
-        console.log(compassStyle);
         resumeCompass.style.top = `${compassStyle.top}px`;
         resumeCompass.style.left = `${compassStyle.left}px`;
+        resumeCompass.classList.remove('hidden');
     };
 
     return (
@@ -214,10 +190,15 @@ const Resume: React.FC<IResume> = ({ store }) => {
                             </p>
                             <button
                                 className="resume-download-btn"
-                                onClick={() => console.log('Downloading resume...')}
+                                onClick={() => console.log('Downloading resume...')}                                
                             >
-                                Download CV
-                                <FontAwesomeIcon className="resume-download-icon" icon={faFileDownload} />
+                                <a
+                                    href="/assets/resumes/WesResume_12-29-22.pdf"
+                                    download="wesley-wei-resume"
+                                >
+                                    Download CV
+                                    <FontAwesomeIcon className="resume-download-icon" icon={faFileDownload} />                                
+                                </a>
                             </button>
                             <div className="resume-categories">
                                 <ul>
@@ -226,9 +207,7 @@ const Resume: React.FC<IResume> = ({ store }) => {
                             </div>
                         </div>
                         <div className="resume-content-container">
-                            <Compass
-                                className="resume-compass" size="small"
-                            />
+                            <Compass className="resume-compass hidden" size="small" />
                             {renderResumeSection(currentResumeSection)}
                         </div>
                     </div>

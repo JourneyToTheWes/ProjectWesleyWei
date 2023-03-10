@@ -33,3 +33,7 @@ body, #root {
 }
 
 /* End Scrollbar */
+
+.hidden {
+	display: none;
+}
