@@ -44,12 +44,15 @@ const Resume: React.FC<IResume> = ({ store }) => {
     useEffect(() => {
         const onPageLoadOrWindowResize = () => {
             renderResumeCompassPosition();
+            renderResumeTimelineElements();
         };
 
         window.addEventListener('resize', onPageLoadOrWindowResize, true);
 
-        console.log(document.readyState);
         if (document.readyState === 'complete') {
+            // Any time a resume category is selected we want
+            // the compass or the timeline elements to dynamically
+            // re-render
             onPageLoadOrWindowResize();
         } else {
             document.onreadystatechange = () => {
@@ -59,7 +62,7 @@ const Resume: React.FC<IResume> = ({ store }) => {
             }
             return cleanupComponent(onPageLoadOrWindowResize);
         }
-    }, []);
+    }, [currentResumeSection]);
 
     const cleanupComponent = (onPageLoadOrWindowResize: () => void) => {
         window.removeEventListener('load', onPageLoadOrWindowResize);
@@ -91,9 +94,12 @@ const Resume: React.FC<IResume> = ({ store }) => {
                     {
                         resumeMap.honorsAndAwards.map((honorOrAward, index) => {
                             return (
-                                <div className="resume-timeline-element" key={honorOrAward.title + index}>
-                                    <h3>{honorOrAward.title}</h3>
-                                    <span>{honorOrAward.date}</span>                                                              
+                                <div
+                                    className={`resume-timeline-element ${index % 2 == 0 ? 'left' : 'right'}`}
+                                    key={honorOrAward.title + index}
+                                >
+                                    <h3 className="resume-timeline-heading">{honorOrAward.title}</h3>
+                                    <span className="resume-timeline-date">{honorOrAward.date}</span>                                                              
                                 </div>
                             )
                         })
@@ -104,9 +110,12 @@ const Resume: React.FC<IResume> = ({ store }) => {
                     {
                         resumeMap.leadership.map((leadership, index) => {
                             return (
-                                <div className="resume-timeline-element" key={leadership.title + index}>
-                                    <h3>{leadership.title}</h3>
-                                    <span>{leadership.date}</span>
+                                <div
+                                    className={`resume-timeline-element ${index % 2 == 0 ? 'left' : 'right'}`}
+                                    key={leadership.title + index}
+                                >
+                                    <h3 className="resume-timeline-heading">{leadership.title}</h3>
+                                    <span className="resume-timeline-date">{leadership.date}</span>
                                     <span>{leadership.position}</span>
                                     <p>{leadership.description}</p>                            
                                 </div>
@@ -119,9 +128,12 @@ const Resume: React.FC<IResume> = ({ store }) => {
                     {
                         resumeMap.workExperience.map((workExperience, index) => {
                             return (
-                                <div className="resume-timeline-element" key={workExperience.title + index}>
-                                    <h3>{workExperience.title}</h3>
-                                    <span>{workExperience.date}</span>
+                                <div
+                                    className={`resume-timeline-element ${index % 2 == 0 ? 'left' : 'right'}`}
+                                    key={workExperience.title + index}
+                                >
+                                    <h3 className="resume-timeline-heading">{workExperience.title}</h3>
+                                    <span className="resume-timeline-date">{workExperience.date}</span>
                                     <p>{workExperience.experience}</p>                            
                                 </div>
                             )
@@ -168,11 +180,33 @@ const Resume: React.FC<IResume> = ({ store }) => {
     };
 
     const renderResumeCompassPosition = () => {
-        const resumeCompass = document.getElementsByClassName("resume-compass")[0] as HTMLElement;
+        const resumeCompass = document.getElementsByClassName('resume-compass')[0] as HTMLElement;
         const compassStyle = getCompassStyle();
         resumeCompass.style.top = `${compassStyle.top}px`;
         resumeCompass.style.left = `${compassStyle.left}px`;
         resumeCompass.classList.remove('hidden');
+    };
+
+    const renderResumeTimelineElements = () => {
+        const resumeTimelineElements = Array.from(document.getElementsByClassName('resume-timeline-element'));
+        resumeTimelineElements.forEach(resumeTimelineElement => {
+            console.log(resumeTimelineElement);
+            // Get offset width of timeline date to absolutely
+            // offset the date by that width +/- 25% to get the date
+            // on the outside next to the timeline circle
+            if (resumeTimelineElement.classList.contains('left')) {
+                const resumeTimelineDate = resumeTimelineElement.querySelector('.resume-timeline-date') as HTMLElement;
+                const dateWidth = resumeTimelineDate.offsetWidth;
+                resumeTimelineDate.style.right = `calc(-25% - ${dateWidth}px`;
+            } else {
+                // Right timeline element
+                const resumeTimelineDate = resumeTimelineElement.querySelector('.resume-timeline-date') as HTMLElement;
+                console.log(resumeTimelineDate);
+                const dateWidth = resumeTimelineDate.offsetWidth;
+                console.log(dateWidth);
+                resumeTimelineDate.style.left = `calc(-25% - ${dateWidth}px`;
+            }
+        });
     };
 
     return (
@@ -206,7 +240,7 @@ const Resume: React.FC<IResume> = ({ store }) => {
                                 </ul>
                             </div>
                         </div>
-                        <div className="resume-content-container">
+                        <div className="resume-content-container">                            
                             <Compass className="resume-compass hidden" size="small" />
                             {renderResumeSection(currentResumeSection)}
                         </div>

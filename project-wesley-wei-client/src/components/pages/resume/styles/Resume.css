@@ -55,6 +55,91 @@
     margin: 1rem;
     overflow-y: auto;
 }
+
+/* Start: Resume timeline */
+.resume-timeline-element {
+    /* margin: 1rem; */
+    /* padding: 0.5rem; */
+    background-color: rgba(150, 150, 150, 0.3);
+}
+
+.resume-timeline-element.left {
+    position: relative;
+    width: 45%;
+}
+
+.resume-timeline-element.left::after {
+    content: '';
+    height: calc(100% + 20px);
+    width: 5px;
+    position: absolute;
+    right: calc(-10% - 5px);
+    top: 0;
+    background-color: rgba(150, 150, 150, 0.3);;
+}
+
+/* Right side resume timeline circle */
+.resume-timeline-element.left
+> .resume-timeline-heading::before {
+    content: '';
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background-color: white;
+    border: 3px solid rgba(150, 150, 150, 0.3);
+    position: absolute;
+    right: calc(-10% - 13px);
+    z-index: 1;
+}
+
+.resume-timeline-element.left
+> .resume-timeline-date {
+    display: block;
+    position: absolute;
+    top: 0;
+}
+
+.resume-timeline-element.right {
+    position: relative;
+    left: 55%;
+    width: 45%;
+}
+
+.resume-timeline-element.right::before {
+    content: '';
+    height: calc(100% + 20px);
+    width: 5px;
+    position: absolute;
+    left: calc(-10% - 5px);
+    background-color: rgba(150, 150, 150, 0.3);;
+}
+
+/* Right side resume timeline circle */
+.resume-timeline-element.right
+> .resume-timeline-heading::before {
+    content: '';
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background-color: white;
+    border: 3px solid rgba(150, 150, 150, 0.3);
+    position: absolute;
+    left: calc(-10% - 14px);
+    z-index: 1;
+}
+
+.resume-timeline-element.right
+> .resume-timeline-date {
+    display: block;
+    position: absolute;
+    top: 0;
+}
+
+.resume-timeline-element:last-child::before,
+.resume-timeline-element:last-child::after {
+    height: 100%;
+}
+/* End: Resume timeline */
 /* End: Resume content container */
 
 @media screen and (max-width: 992px)  {
