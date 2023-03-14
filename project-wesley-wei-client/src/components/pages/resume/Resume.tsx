@@ -188,9 +188,8 @@ const Resume: React.FC<IResume> = ({ store }) => {
     };
 
     const renderResumeTimelineElements = () => {
-        const resumeTimelineElements = Array.from(document.getElementsByClassName('resume-timeline-element'));
+        const resumeTimelineElements = Array.from(document.getElementsByClassName('resume-timeline-element')) as HTMLElement[];
         resumeTimelineElements.forEach(resumeTimelineElement => {
-            console.log(resumeTimelineElement);
             // Get offset width of timeline date to absolutely
             // offset the date by that width +/- 25% to get the date
             // on the outside next to the timeline circle
@@ -198,13 +197,13 @@ const Resume: React.FC<IResume> = ({ store }) => {
                 const resumeTimelineDate = resumeTimelineElement.querySelector('.resume-timeline-date') as HTMLElement;
                 const dateWidth = resumeTimelineDate.offsetWidth;
                 resumeTimelineDate.style.right = `calc(-25% - ${dateWidth}px`;
+                resumeTimelineDate.style.top = '1rem';
             } else {
                 // Right timeline element
                 const resumeTimelineDate = resumeTimelineElement.querySelector('.resume-timeline-date') as HTMLElement;
-                console.log(resumeTimelineDate);
                 const dateWidth = resumeTimelineDate.offsetWidth;
-                console.log(dateWidth);
                 resumeTimelineDate.style.left = `calc(-25% - ${dateWidth}px`;
+                resumeTimelineDate.style.top = '1rem';
             }
         });
     };
