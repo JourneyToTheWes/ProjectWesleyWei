@@ -90,7 +90,7 @@
     /* right: calc(-10% - 5px); */
     right: calc((0% - ((100% * 7.5) / 40)) + (5px + 0.6rem + 1.5px));
     top: 0;
-    background-color: rgba(150, 150, 150, 0.3);
+    background-color: #DFDFDF;
 }
 
 .resume-timeline-element
@@ -136,7 +136,7 @@
     position: absolute;
     /* left: calc(-10% - 5px); */
     left: calc((0% - ((100% * 7.5) / 40)) + (10px + 0.7rem + 1.5px));
-    background-color: rgba(150, 150, 150, 0.3);
+    background-color: #DFDFDF;
 }
 
 /* Right side resume timeline circle */
