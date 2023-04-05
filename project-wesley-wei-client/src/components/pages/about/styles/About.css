@@ -13,3 +13,32 @@
     z-index: -1;
     position: relative;
 }
+
+#about .about-fg-img {
+    width: auto;
+    height: 75vh;
+    position: absolute;
+    /* left: 50%;
+    top: 150%;
+    margin-top: -270px;
+    margin-left: -200px; */
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 150%;
+    bottom: 150%;
+    text-align: center;
+}
+
+.about-header {
+    text-shadow: 0 0 1rem black;
+    color: white;
+    position: absolute;
+    left: 1rem;
+    bottom: -100%;
+}
+
+.about-header span {
+    color: #edb116;
+    font-size: 180%;
+}

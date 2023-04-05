@@ -16,7 +16,7 @@ const Landing = () => {
 					<Ocean />			
 					<Sky distance={450000} sunPosition={[0, 1, 0]} inclination={0} azimuth={0.25} />
 				</Canvas>
-				<Header position='top-left-abs' />
+				<Header fixed position="top-left-abs" />
 				<section>
 					<Compass size="large" />
 				</section>
