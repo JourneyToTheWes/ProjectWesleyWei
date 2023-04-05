@@ -3,6 +3,10 @@
     bottom: 1rem;
 }
 
+.landing-container {
+    width: 100%;
+}
+
 /* Override compass styles to style compass
    specific to the Landing component */
 .landing-container .compass {
