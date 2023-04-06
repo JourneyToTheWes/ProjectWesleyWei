@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaInstagram, FaLinkedin, FaSnapchat, FaYoutube } from "react-icons/fa";
 import './styles/About.css';
 
 const About = () => {
@@ -52,6 +53,30 @@ const About = () => {
                         with many activities. My hobbies include: playing the violin, playing table tennis,
                         dancing, and cooking. A fun fact would be that I am nationally ranked in table tennis!
                     </p>
+                </div>
+                <div className="social-bar">
+                    <ul>
+                        <li className="social-bar-btn">
+                            <a href="https://www.youtube.com/channel/UCHSsr_f2vnk1p5YlCfj82lg" target="_blank">
+                                <FaYoutube />
+                            </a>
+                        </li>
+                        <li className="social-bar-btn">
+                            <a href="https://www.linkedin.com/in/wes-wei/" target="_blank">
+                                <FaLinkedin />
+                            </a>
+                        </li>
+                        <li className="social-bar-btn">
+                            <a href="https://www.instagram.com/journeytothewes/" target="_blank">
+                                <FaInstagram />
+                            </a>
+                        </li>
+                        <li className="social-bar-btn">
+                            <a href="https://www.snapchat.com/add/curiouswes" target="_blank">
+                                <FaSnapchat />
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
