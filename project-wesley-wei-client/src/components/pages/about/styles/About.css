@@ -80,9 +80,14 @@
 
 .about-section-two
 > .fg-block-1 > .about-me-img {
-    width: 80%;
+    /* width: 80%; */
+    max-width: 80%;
+    max-height: 60%;
+    object-fit: contain;
     position: relative;
-    left: 10%;
+    margin: auto;
+    display: block;
+    text-align: center;
 }
 
 .about-section-two
@@ -137,6 +142,9 @@
     list-style: none;
     display: flex;
     flex-direction: row;
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .about-section-two
@@ -166,5 +174,103 @@
     transform: scale(1.3, 1.3);
     border: 1px solid rgba(237, 177, 22, 1);
     color: rgba(237, 177, 22, 1);
+}
+
+@media screen and (max-width: 800px) {
+    #about .about-section-two {
+        position: relative;
+        width: 100vw;
+        height: max-content;
+    }
+
+    .about-section-two
+    > .bg-block {
+        display: none;
+    }
+    
+    .about-section-two
+    > .fg-block-1 {
+        background-color: #D9D9D9;
+        box-shadow: 0.25rem 0.25rem 4px 1px rgba(0, 0, 0, 0.25);
+        height: 100%;
+        width: calc(100% - 3rem);
+        margin: 5rem auto 1rem auto;
+        position: relative;
+        left: 0;
+        border: 1rem solid #edb116;
+    }
+    
+    .about-section-two
+    > .fg-block-2 {
+        background-color: #D9D9D9;
+        box-shadow: 0.25rem 0.25rem 4px 1px rgba(0, 0, 0, 0.25);
+        width: 95%;
+        position: relative;
+        left: 2.5%;
+        /* top: 40%;
+        left: 45%; */
+        overflow-y: auto;
+    }
+    
+    .about-section-two
+    > .fg-block-2 > p {
+        margin: 1rem;
+        font-size: 90%;
+    }
+    
+    .about-section-two
+    > .fg-block-2 > p > span {
+        color: #edb116;
+    }
+    
+    .about-section-two
+    .social-bar {
+        position: absolute;
+        right: 3rem;
+        bottom: 1rem;
+    }
+    
+    .about-section-two
+    .social-bar > ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .about-section-two
+    .social-bar
+    > ul
+    > .social-bar-btn a {
+        width: 80px;
+        height: 80px;
+        font-size: 30px;
+        border-radius: 50%;
+        margin: 1rem;
+        border: 1px solid rgba(237, 177, 22, 0.5);
+        color: rgba(237, 177, 22, 0.5);
+        transition: all 0.5s ease-in-out;
+    
+        /* Center the fa icons */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .about-section-two
+    .social-bar
+    > ul
+    .social-bar-btn
+    > a:hover {
+        transform: scale(1.3, 1.3);
+        border: 1px solid rgba(237, 177, 22, 1);
+        color: rgba(237, 177, 22, 1);
+    }
+
+    .about-section-two
+    .social-bar {
+        position: relative;
+        left: 0;
+        margin-top: 2rem;
+    }
 }
 /* End: About Section Two */

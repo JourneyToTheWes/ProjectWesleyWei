@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Compass from 'components/common/compass/Compass';
 import Navbar from 'components/layout/navigation/Navbar';
 import Ocean from 'components/common/3DModels/Ocean';
@@ -9,6 +9,16 @@ import About from '../about/About';
 import './styles/Landing.css';
 
 const Landing = () => {
+	const [windowWidth, setWindowWidth] = useState<undefined | number>(undefined);
+
+	useEffect(() => {
+		if (window) {
+			window.addEventListener('resize', () => {
+				setWindowWidth(window.innerWidth);
+			});
+		}
+	}, []);
+
 	return (
 		<>
 			<div className="landing-container">
@@ -18,7 +28,7 @@ const Landing = () => {
 				</Canvas>
 				<Header fixed position="top-left-abs" />
 				<section>
-					<Compass size="large" />
+					<Compass size={ windowWidth && windowWidth > 500 ? "large" : "medium" }/>
 				</section>
 				<Navbar
 					className="westway-navbar"
