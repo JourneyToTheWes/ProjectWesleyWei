@@ -4,6 +4,11 @@
     align-items: center;
 }
 
+.app-header.fixed {
+	position: fixed;
+	z-index: 100;
+}
+
 .top-left-abs {
 	position: absolute;
 	top: 0px;
