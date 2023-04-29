@@ -12,6 +12,13 @@ interface IVideos {
 const Videos: React.FC<IVideos> = ({ store }) => {
     const videoStore = store.VideoStore;
 
+    /**
+     * Gets video selection row HTML elements where each row is
+     * a different video category. Within each video selection
+     * row contains iframe videos.
+     * 
+     * @returns React.ReactNode [] elements of video selection rows as divs
+     */
     const getVideoSelectionRows = () => {
         if (videoStore.areVideosLoaded) {
             return Object.keys(videoStore.videoMap).map(videoCategory => {
@@ -37,11 +44,14 @@ const Videos: React.FC<IVideos> = ({ store }) => {
                 )
             });
         }
+
+        return <></>;
     };
 
     return (
         <>
             <Header
+                className="videos-header"
                 children={<Compass size="small" />}
             />
             <div className="main-video-section">
