@@ -96,7 +96,7 @@
 
     .main-video-section
     .main-video-container {
-        width: 100%;
+        width: auto;
         height: 100%;
     }
 }
