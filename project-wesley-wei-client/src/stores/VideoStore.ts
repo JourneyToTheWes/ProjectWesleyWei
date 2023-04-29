@@ -6,6 +6,8 @@ class VideoStore {
     rootStore: RootStore;
     @observable areVideosLoaded: boolean = false;
     @observable videos: IVideo[] = [];
+    @observable videoMap: IVideoMap = {};
+    @observable mainVideoSelectionUrl: string = '';
 
     constructor(rootStore: RootStore) {
         /**
@@ -23,9 +25,24 @@ class VideoStore {
     async loadVideos() {
         try {
             const res = await axios.get(`api/videos`);
-            console.log(res);
+
             if (res.data) {
                 this.videos = res.data;
+
+                // Create Video Map with category as key and video URL array as value
+                const localVideoMap: IVideoMap = {};
+                res.data.forEach((video: IVideo) => {
+                    if (video.category in localVideoMap) {
+                        localVideoMap[video.category].push(video.url);
+                    } else {
+                        localVideoMap[video.category] = [video.url];
+                    }
+                });
+
+                this.videoMap = localVideoMap;
+
+                this.mainVideoSelectionUrl = res.data[0].url;
+
                 this.areVideosLoaded = true;
             }
         } catch (err) {
@@ -38,6 +55,10 @@ export interface IVideo {
     _id: string;
     category: string;
     url: string;
+}
+
+export interface IVideoMap {
+    [key: string]: string[];
 }
 
 export default VideoStore;

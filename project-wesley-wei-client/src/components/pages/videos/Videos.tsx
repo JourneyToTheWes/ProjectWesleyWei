@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import RootStore from 'stores/RootStore';
 import { observer } from 'mobx-react';
 import Header from 'components/layout/header/Header';
@@ -11,7 +11,33 @@ interface IVideos {
 
 const Videos: React.FC<IVideos> = ({ store }) => {
     const videoStore = store.VideoStore;
-    const [mainVideoUrl, setMainVideoUrl] = useState<string>(videoStore.videos[0].url);
+
+    const getVideoSelectionRows = () => {
+        if (videoStore.areVideosLoaded) {
+            return Object.keys(videoStore.videoMap).map(videoCategory => {
+                const videoUrls = videoStore.videoMap[videoCategory];
+                return (
+                    <div className="video-selection-row-container">
+                        <h2>{videoCategory}</h2>
+                        <div className="video-selection-row">
+                            {
+                                videoUrls.map(videoUrl =>
+                                    <div
+                                        className="individual-video-container"
+                                        onClick={() => {                                    
+                                            videoStore.mainVideoSelectionUrl = videoUrl;
+                                        }}
+                                    >
+                                        <iframe loading="lazy" src={videoUrl} />
+                                    </div>
+                                )
+                            }
+                        </div>                    
+                    </div>
+                )
+            });
+        }
+    };
 
     return (
         <>
@@ -29,9 +55,12 @@ const Videos: React.FC<IVideos> = ({ store }) => {
                 </div>
                 <div className="main-video-container">
                     {
-                        videoStore.areVideosLoaded && <iframe src={mainVideoUrl}></iframe>
+                        videoStore.areVideosLoaded && <iframe src={videoStore.mainVideoSelectionUrl} />
                     }
                 </div>
+            </div>
+            <div className="video-selection-container">
+                    {videoStore.areVideosLoaded && getVideoSelectionRows()}
             </div>
         </>
     );
