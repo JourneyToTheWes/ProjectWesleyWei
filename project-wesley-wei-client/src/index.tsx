@@ -1,19 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import RootStore from './stores/RootStore';
+import "pure-react-carousel/dist/react-carousel.es.css";
 const rootStoreInstance = new RootStore();
 export const RootStoreContext = React.createContext(rootStoreInstance);
 
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container!);
+
+root.render(
   <RootStoreContext.Provider value={rootStoreInstance}>
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  </RootStoreContext.Provider>,
-  document.getElementById('root')
+  </RootStoreContext.Provider>
 );
 
 // If you want your app to work offline and load faster, you can change

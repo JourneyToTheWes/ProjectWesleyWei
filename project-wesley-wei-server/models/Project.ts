@@ -16,6 +16,10 @@ const ProjectSchema = new mongoose.Schema({
 	images: {
 		type: Object,
 	},
+	imageDir: {
+		type: String,
+		required: true
+	}
 });
 
 const Project = mongoose.model('projects', ProjectSchema, 'projects');

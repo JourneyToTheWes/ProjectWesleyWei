@@ -1,0 +1,23 @@
+.westway-navbar {
+    position: absolute;
+    bottom: 1rem;
+}
+
+.landing-container {
+    width: 100%;
+}
+
+/* Override compass styles to style compass
+   specific to the Landing component */
+.landing-container .compass {
+    top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%); /* Translates tx and ty 50% of itself */
+}
+
+@media screen and (max-width: 650px) {
+    .westway-navbar {
+        flex-wrap: wrap;
+    }
+}

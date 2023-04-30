@@ -1,0 +1,238 @@
+.resume-section {
+    display: flex;
+    justify-content: center;
+    margin: 0 2rem 0 2rem;
+    overflow-x: hidden;
+}
+
+.resume-menu-container {
+    margin: 1rem;
+}
+
+.resume-menu-container
+> .resume-download-btn {
+    background: none;
+    border: 2px solid #EDB116;
+    padding: 0.75rem;
+    cursor: pointer;
+}
+
+.resume-menu-container
+> .resume-download-btn
+> a {
+    text-decoration: none;
+    color: black;
+}
+
+.resume-menu-container
+> .resume-download-btn
+.resume-download-icon {
+    color: black;
+    padding-left: 0.3rem;
+}
+
+.resume-categories > ul {
+    padding-left: 0;
+}
+
+.resume-categories > ul > li {
+    list-style: none;
+    font-size: xx-large;
+    width: max-content;
+    cursor: pointer;
+    /* font-weight: 500; */
+}
+
+.resume-categories > ul
+> .resume-category.is-selected {
+    color: #EDB116;
+}
+
+/* Start: Resume content container */
+.resume-content-container {
+    background-color: rgba(255, 255, 255, 0);
+    border: 3rem solid rgba(150, 150, 150, 0.3);
+    height: 55vh;
+    margin: 1rem;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+/* Start: Resume timeline */
+/* .resume-content-container::before {
+    content: '';
+    position: relative;
+    height: 100vh;
+    width: 5px;
+    top: 0;
+    left: calc(47.5% + 1rem);
+    background-color: rgba(150, 150, 150, 0.3);
+    float: left;
+    z-index: -1;
+} */
+
+.resume-timeline-element {
+    /* margin: 1rem; */
+    padding: 1rem;
+    background-color: rgba(150, 150, 150, 0.3);
+}
+
+.resume-timeline-element.left {
+    position: relative;
+    width: 40%;
+}
+
+.resume-timeline-element.left::after {
+    content: '';
+    height: calc(100% + 20px);
+    width: 5px;
+    position: absolute;
+    /* right: calc(-10% - 5px); */
+    right: calc((0% - ((100% * 7.5) / 40)) + (5px + 0.6rem + 1.5px));
+    top: 0;
+    background-color: #DFDFDF;
+}
+
+.resume-timeline-element
+> .resume-timeline-heading {
+    margin-top: 0;
+}
+
+/* Left side resume timeline circle */
+.resume-timeline-element.left
+> .resume-timeline-heading::before {
+    content: '';
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background-color: white;
+    border: 3px solid rgba(150, 150, 150, 0.3);
+    position: absolute;
+    /* right: calc(-15.5%); */
+    /* 100% of resume timeline element and 7.5% offset from the vertical line
+    divided by 40 which is the resume timeline width to get positioning of
+    timeline circle. The rest is the circle size offset */
+    right: calc(0% - ((100% * 7.5) / 40) + (0.6rem - 1.5px));
+    z-index: 1;
+}
+
+.resume-timeline-element.left
+> .resume-timeline-date {
+    display: block;
+    position: absolute;
+    top: 0;
+}
+
+.resume-timeline-element.right {
+    position: relative;
+    left: 55%;
+    width: 40%;
+}
+
+.resume-timeline-element.right::before {
+    content: '';
+    height: calc(100% + 20px);
+    width: 5px;
+    position: absolute;
+    /* left: calc(-10% - 5px); */
+    left: calc((0% - ((100% * 7.5) / 40)) + (10px + 0.7rem + 1.5px));
+    background-color: #DFDFDF;
+}
+
+/* Right side resume timeline circle */
+.resume-timeline-element.right
+> .resume-timeline-heading::before {
+    content: '';
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background-color: white;
+    border: 3px solid rgba(150, 150, 150, 0.3);
+    position: absolute;
+    /* right: calc(100%); */
+    left: calc(0% - ((100% * 7.5) / 40) + (0.75rem + 1.5px));
+    z-index: 1;
+}
+
+.resume-timeline-element.right
+> .resume-timeline-date {
+    display: block;
+    position: absolute;
+    top: 0;
+}
+
+.resume-timeline-element:last-child::before,
+.resume-timeline-element:last-child::after {
+    height: 100%;
+}
+/* End: Resume timeline */
+/* End: Resume content container */
+
+@media screen and (max-width: 992px)  {
+    .resume-section {
+        flex-wrap: wrap;
+    }
+
+    .resume-menu-container
+    .resume-categories ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .resume-menu-container
+    .resume-categories
+    li.resume-category {
+        font-size: large;
+    }
+
+    .resume-menu-container
+    .resume-categories
+    li.resume-category:not(:last-child)::after {
+        content: '|';
+        color: black;
+        margin: 0 0.5rem 0 0.5rem;
+    }
+
+    .resume-content-container {
+        border-width: 2rem;
+    }
+}
+
+/* Mobile device styles */
+@media screen and (max-width: 500px) {
+    .resume-section {
+        margin: 0.5rem;
+    }
+    
+    .resume-menu-container h1 {
+        margin-top: 0;
+    }
+
+    .resume-content-container {
+        border-width: 1rem;
+        margin: 0;
+    }
+}
+
+@media screen and (min-width: 992px)  {
+    .resume-menu-container {
+        width: 40%;
+    }
+
+    .resume-content-container {
+        width: 60%;
+        margin: 0;
+    }
+}
+
+/* .resume-content-container {
+    position: relative;
+} */
+
+.compass.resume-compass {
+    position: absolute;
+    /* top: -55px;
+    right: -55px; */
+    z-index: -1;
+}

@@ -1,0 +1,156 @@
+.app-header.projects-header > div {
+    width: 100%;
+	height: 35vh;
+    color: white;
+}
+
+.app-header.projects-header h1 {
+    font-size: 4.5rem;
+}
+
+.app-header.projects-header {
+    background-position: center;
+	background-size: cover;
+	background-color: white;
+	background-blend-mode: multiply;
+}
+
+.project-container {
+    margin: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media screen and (min-width: 990px) {
+    .project-container
+    > .project-left {
+        width: 50%;
+    }
+}
+
+/* Start: Skill Pills */
+.project-container
+> .project-left
+.skills-pill-container {
+    display: flex;
+}
+
+.project-container
+> .project-left
+.skills-pill-container
+.skill-pill {
+    background: rgb(237,177,22);
+    background: linear-gradient(
+        180deg,
+        rgba(237,177,22,0.5) 0%,
+        rgba(237,177,22,1) 50%,
+        rgba(237,177,22,0.5) 100%
+    );
+    border: 1.5px solid #EDB116;
+    border-radius: 25px;
+    box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.35);
+    color: white;
+    margin: 0.3rem 0.3rem 0.3rem 0;
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+}
+/* End: Skill Pills*/
+
+.project-container
+> .project-left
+.project-points {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0 1rem 0;
+}
+
+.project-container
+> .project-left
+.key-points {
+    background-color: #EDB116;
+    padding: 0 1rem 0 1rem;
+    color: white;
+}
+
+.project-container
+> .project-left
+.learn-more {
+    background-color: rgba(150, 150, 150, 0.2);
+    padding: 0 1rem 0 1rem;
+}
+
+.project-container
+> .project-left
+.learn-more > .learn-more-links {
+    padding: 0;
+}
+
+.project-container
+> .project-left
+.learn-more > .learn-more-links li {
+    list-style: none;
+}
+
+.project-container
+.project-details span {
+    display: block;
+}
+
+.project-container >
+.project-right {
+    flex-grow: 1;
+}
+
+.project-container >
+.project-right img {
+    width: 100%;
+}
+
+/* Start carousel styling */
+.carousel-controls {
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-dot-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* We need to override pure-react-carousel, dot-group, classes
+to add our own styles */
+.carousel-dot-group .carousel__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border: none;
+    border-radius: 50%;
+    margin: 0 4px;
+    padding: 0;
+    background-color: rgba(150, 150, 150, 0.2);
+}
+
+.carousel-dot-group .carousel__dot--selected {
+    width: 1rem;
+    height: 0.5rem;
+    border-radius: 35%;
+    background-color: #EDB116;
+    transition: background 0.75s ease-in;
+}
+
+.carousel-btn {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 1rem 0 1rem;
+    padding: 3px;
+    border-radius: 50%;
+    background-color: rgba(150, 150, 150, 0.1);
+    border: 1px solid rgba(150, 150, 150, 0.2);
+}
+
+.carousel-btn-arrow {
+    color: #EDB116;
+}
+/* End carousel styling */
