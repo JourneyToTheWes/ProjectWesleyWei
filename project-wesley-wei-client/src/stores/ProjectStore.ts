@@ -106,6 +106,8 @@ export interface IProject {
     description: string[];
     images: string[];
     imagesDir: string;
+    otherContributors: string[];
+    skills: string[];
 }
 
 export interface IProjectsMap {

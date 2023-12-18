@@ -72,12 +72,28 @@ const Project = () => {
     }
 
     /**
+     * Generates comma delimited "other contributors".
+     * 
+     * @returns skills in the form of pills
+     */
+    const renderOtherContributors = (): String => {
+        let otherContributorsString = "";
+        project.otherContributors.forEach((contributor, index) => {
+            (index < project.otherContributors.length - 1)
+                ? otherContributorsString += contributor + ", "
+                : otherContributorsString += contributor
+        });
+
+        return otherContributorsString;
+    };
+
+    /**
      * Generates skills in the form of stylized pills.
      * 
      * @returns skills in the form of pills
      */
     const renderSkillPills = (): React.ReactNode[] => (
-        ['R', 'Shiny'].map((skill, index) =>
+        project.skills.map((skill, index) =>
             <div
                 className="skill-pill"
                 key={skill + index}
@@ -102,7 +118,10 @@ const Project = () => {
                             <section className="project-details">
                                 <h1>{project.title}</h1>
                                 <span>Timeline: {project.date}</span>
-                                <span>Contributors: </span>
+                                <span>
+                                    { project.otherContributors.length > 0 &&
+                                        `Contributors: ${renderOtherContributors()}` }                                
+                                </span>
                                 <span>Demonstrated Skills:
                                     <div className="skills-pill-container">
                                         {renderSkillPills()}
