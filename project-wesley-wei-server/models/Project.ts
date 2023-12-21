@@ -28,6 +28,14 @@ const ProjectSchema = new mongoose.Schema({
 		type: [String],
 		required: true
 	},
+	keyPoints: {
+		type: [String],
+		required: true
+	},
+	links: {
+		type: [Object],
+		required: true
+	}
 });
 
 const Project = mongoose.model('projects', ProjectSchema, 'projects');

@@ -1,5 +1,5 @@
 import Header from 'components/layout/header/Header';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { IProject } from 'stores/ProjectStore';
 import {
@@ -23,6 +23,34 @@ const Project = () => {
     const state = useLocation().state as IProjectState;
     const project = state?.project;
 
+    useEffect(() => {
+        const header = document.getElementsByClassName("projects-header")[0];
+        const headerTitle = document.getElementsByClassName("projects-header-title")[0];
+        const cover = document.getElementsByClassName("project-cover")[0];
+
+        const updateHeaderBgColor = (entries: any) => {
+            const [entry] = entries;
+
+            if(!entry.isIntersecting) {
+                header.classList.add("header-with-bg");
+                headerTitle.classList.remove("white-color");
+            } else {
+                header.classList.remove("header-with-bg");
+                headerTitle.classList.add("white-color");
+            }
+        };
+
+        const headerObserver = new IntersectionObserver(updateHeaderBgColor, {
+            root: null,
+            threshold: 0.75, // Make cover intersecting when only 75% of cover is visible
+        });
+
+        // Observe the Project Cover so we can add a bg color to the header
+        // and change the color of the header title when the cover is no
+        // longer intersecting (visible)
+        headerObserver.observe(cover);
+    }, []);
+
     /**
      * Gets the project cover image path if there exists one,
      * otherwise defaults to a select default cover images.
@@ -31,8 +59,16 @@ const Project = () => {
      * project cover
      */
     const renderBgImgSrc = () => {
-        return project && project.images.includes('project-cover')
-            ? `${project.imagesDir}/project-cover`
+        let containsProjectCover = false;
+        let projectCoverImageSrc = 'cloud.png';
+        project.images.forEach(image => {
+            if (image.includes('project-cover')) {
+                containsProjectCover = true;
+                projectCoverImageSrc = image;
+            }
+        });
+        return project && containsProjectCover
+            ? `${project.imagesDir}/${projectCoverImageSrc}`
             : 'cloud.png';
     };
 
@@ -44,7 +80,7 @@ const Project = () => {
     const renderKeyPoints = (): string => {
         let keyPointsString = '';
 
-        ['Key Point 1', 'Key Point 2', 'Key Point 3'].forEach((keyPoint, index, keyPoints) => {
+        project.keyPoints.forEach((keyPoint, index, keyPoints) => {
             if (index === keyPoints.length - 1) {
                 keyPointsString += keyPoint;
             } else {
@@ -62,11 +98,7 @@ const Project = () => {
      * @returns an array of li elements with learn more links
      */
     const renderLearnMoreLinks = (): React.ReactNode[] => {
-        return [
-            {link: 'https://example.com', name: 'example'},
-            {link: 'https://example.com', name: 'example'},
-            {link: 'https://example.com', name: 'example'}
-        ].map(linkObj => {
+        return project.links.map(linkObj => {
             return <li><a href={linkObj.link} target="_blank">{linkObj.name}</a></li>
         })
     }
@@ -103,14 +135,38 @@ const Project = () => {
         )
     );
 
+    /**
+     * Generates description in the form of paragraphs.
+     * 
+     * @returns description in the form of paragraphs
+     */
+    const renderDescription = (): React.ReactNode[] => {
+        return project.description.map(description => <p>{description}</p>);
+    };
+
     return (
         <>
             <Header
-                bgImageSrc={renderBgImgSrc()}
-                className='projects-header'
+                className="projects-header"
+                position="fixed"
+                // bgImageSrc={renderBgImgSrc()}
             >
-                <h1>Projects</h1>
+                <h1 className="projects-header-title white-color">Projects</h1>
             </Header>
+            {/* <div className="project-cover">
+                <img
+                    // className="project-cover-img"
+                    src={require(`images/${renderBgImgSrc()}`)}
+                    alt={`${project.title} Project Cover Image`}
+                />
+            </div> */}
+            <div 
+                className='project-cover'
+                style={{
+                    backgroundImage: `url(${require(`images/${renderBgImgSrc()}`)})`
+                }}
+            >
+            </div>
             {
                 project &&
                     <div className="project-container">
@@ -120,7 +176,7 @@ const Project = () => {
                                 <span>Timeline: {project.date}</span>
                                 <span>
                                     { project.otherContributors.length > 0 &&
-                                        `Contributors: ${renderOtherContributors()}` }                                
+                                        `Other Contributors: ${renderOtherContributors()}` }                                
                                 </span>
                                 <span>Demonstrated Skills:
                                     <div className="skills-pill-container">
@@ -129,70 +185,8 @@ const Project = () => {
                                 </span>
                             </section>
                             <section className="project-intro">
-                                <h3>Introduction</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sollicitudin
-                                    turpis, quis porta libero. Ut id ante vitae elit gravida semper. Nunc magna
-                                    neque, accumsan sit amet risus rhoncus, congue condimentum lacus. Maecenas
-                                    nibh massa, viverra consequat nibh ut, convallis bibendum arcu. Donec
-                                    sagittis nibh non semper pellentesque. Nulla vitae lorem a sapien iaculis
-                                    tristique. Nullam pretium euismod massa, at scelerisque lacus facilisis
-                                    vitae. Pellentesque a tellus nunc. Suspendisse vel purus ut sem malesuada
-                                    laoreet eget et felis. Fusce non dolor vel augue scelerisque aliquam sit
-                                    amet vitae neque. Maecenas vel egestas odio. Nulla tincidunt ligula nec odio
-                                    sodales malesuada. Vestibulum ex mauris, tristique id consectetur vitae,
-                                    varius et massa. Integer consequat facilisis mattis. Fusce vitae magna
-                                    magna. In vitae est libero. Etiam ut varius dolor. Duis id neque eros.
-                                    Quisque sed maximus nibh. Donec posuere dui non risus tempus condimentum.
-                                    Maecenas sit amet dolor efficitur, rutrum mi ut, imperdiet ligula. Etiam
-                                    gravida orci vitae sapien dignissim, in pulvinar tellus volutpat. Aenean
-                                    feugiat odio purus, eget suscipit arcu fermentum vel. Praesent at felis sed
-                                    eros blandit varius. Etiam tempus volutpat neque, eu congue justo interdum
-                                    eget. Sed varius ut ante ac egestas. Ut blandit lorem in metus hendrerit,
-                                    sit amet dignissim magna malesuada. Pellentesque turpis mauris, tincidunt eu
-                                    velit quis, volutpat auctor est. Sed rutrum lobortis ipsum eu convallis.
-                                    Curabitur varius eleifend est eget volutpat. Vestibulum venenatis, ipsum ac
-                                    molestie blandit, felis orci aliquet diam, eu sodales leo mauris eu sapien.
-                                    Suspendisse vestibulum suscipit vulputate. Curabitur finibus ultricies
-                                    dapibus. Nunc eget ligula tincidunt, tempus tellus quis, consequat sapien.
-                                    Ut non odio dapibus, tristique turpis ut, sodales justo. Praesent fermentum,
-                                    leo eget lobortis blandit, arcu augue imperdiet ligula, vel eleifend nunc
-                                    ante et quam. Praesent lobortis erat eget odio pulvinar, a suscipit nisi
-                                    pharetra.
-                                </p>
-                            </section>
-                            <section className="project-solution">
-                                <h3>Solution</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sollicitudin
-                                    turpis, quis porta libero. Ut id ante vitae elit gravida semper. Nunc magna
-                                    neque, accumsan sit amet risus rhoncus, congue condimentum lacus. Maecenas
-                                    nibh massa, viverra consequat nibh ut, convallis bibendum arcu. Donec
-                                    sagittis nibh non semper pellentesque. Nulla vitae lorem a sapien iaculis
-                                    tristique. Nullam pretium euismod massa, at scelerisque lacus facilisis
-                                    vitae. Pellentesque a tellus nunc. Suspendisse vel purus ut sem malesuada
-                                    laoreet eget et felis. Fusce non dolor vel augue scelerisque aliquam sit
-                                    amet vitae neque. Maecenas vel egestas odio. Nulla tincidunt ligula nec odio
-                                    sodales malesuada. Vestibulum ex mauris, tristique id consectetur vitae,
-                                    varius et massa. Integer consequat facilisis mattis. Fusce vitae magna
-                                    magna. In vitae est libero. Etiam ut varius dolor. Duis id neque eros.
-                                    Quisque sed maximus nibh. Donec posuere dui non risus tempus condimentum.
-                                    Maecenas sit amet dolor efficitur, rutrum mi ut, imperdiet ligula. Etiam
-                                    gravida orci vitae sapien dignissim, in pulvinar tellus volutpat. Aenean
-                                    feugiat odio purus, eget suscipit arcu fermentum vel. Praesent at felis sed
-                                    eros blandit varius. Etiam tempus volutpat neque, eu congue justo interdum
-                                    eget. Sed varius ut ante ac egestas. Ut blandit lorem in metus hendrerit,
-                                    sit amet dignissim magna malesuada. Pellentesque turpis mauris, tincidunt eu
-                                    velit quis, volutpat auctor est. Sed rutrum lobortis ipsum eu convallis.
-                                    Curabitur varius eleifend est eget volutpat. Vestibulum venenatis, ipsum ac
-                                    molestie blandit, felis orci aliquet diam, eu sodales leo mauris eu sapien.
-                                    Suspendisse vestibulum suscipit vulputate. Curabitur finibus ultricies
-                                    dapibus. Nunc eget ligula tincidunt, tempus tellus quis, consequat sapien.
-                                    Ut non odio dapibus, tristique turpis ut, sodales justo. Praesent fermentum,
-                                    leo eget lobortis blandit, arcu augue imperdiet ligula, vel eleifend nunc
-                                    ante et quam. Praesent lobortis erat eget odio pulvinar, a suscipit nisi
-                                    pharetra.
-                                </p>
+                                <h3>Description</h3>
+                                <p>{ renderDescription() }</p>
                             </section>
                             <section className="project-points">
                                 <div className="key-points">

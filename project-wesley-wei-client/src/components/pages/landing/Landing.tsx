@@ -27,7 +27,7 @@ const Landing = () => {
 					<Ocean />			
 					<Sky distance={450000} sunPosition={[0, 1, 0]} inclination={0} azimuth={0.25} />
 				</Canvas>
-				<Header fixed position="top-left-abs" />
+				<Header position="fixed" placement="top-left" />
 				<section>
 					<Compass size={
 						(!windowWidth && initialWindowWidth.current && initialWindowWidth.current > 650)
