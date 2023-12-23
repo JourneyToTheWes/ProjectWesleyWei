@@ -35,7 +35,7 @@
     padding-bottom: 0.75rem;
 }
 
-.header-with-bg { background-color: white; }
+.header-with-bg { background-color: #EDB116; }
 
 .project-cover {
     /* padding-top: 25%;
@@ -62,15 +62,17 @@
 
 .project-container {
     margin: 3rem;
+    padding-bottom: 3rem; /* Since margin-bottom doesn't show when this is the last element */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 1rem;
 }
 
 @media screen and (min-width: 990px) {
     .project-container
     > .project-left {
-        width: 50%;
+        width: 35%;
     }
 }
 
@@ -79,6 +81,7 @@
 > .project-left
 .skills-pill-container {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .project-container
@@ -105,8 +108,10 @@
 > .project-left
 .project-points {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding: 1rem 0 1rem 0;
+    gap: 1rem;
 }
 
 .project-container
@@ -115,6 +120,7 @@
     background-color: #EDB116;
     padding: 0 1rem 0 1rem;
     color: white;
+    flex: 1 1 40%;
 }
 
 .project-container
@@ -122,6 +128,7 @@
 .learn-more {
     background-color: rgba(150, 150, 150, 0.2);
     padding: 0 1rem 0 1rem;
+    flex: 1 1 40%;
 }
 
 .project-container
@@ -147,8 +154,11 @@
 }
 
 .project-container >
-.project-right img {
-    width: 100%;
+.project-right .project-images
+.carousel__image {
+    background-size: 100% auto !important;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* Start carousel styling */

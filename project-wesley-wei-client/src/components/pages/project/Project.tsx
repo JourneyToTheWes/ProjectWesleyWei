@@ -33,10 +33,10 @@ const Project = () => {
 
             if(!entry.isIntersecting) {
                 header.classList.add("header-with-bg");
-                headerTitle.classList.remove("white-color");
+                // headerTitle.classList.remove("white-color");
             } else {
                 header.classList.remove("header-with-bg");
-                headerTitle.classList.add("white-color");
+                // headerTitle.classList.add("white-color");
             }
         };
 
@@ -144,6 +144,48 @@ const Project = () => {
         return project.description.map(description => <p>{description}</p>);
     };
 
+    /**
+     * Renders the project image slides.
+     * 
+     * @returns An array of Slide component for the pure-react-carousel
+     */
+    const renderSlides = (): React.ReactNode[] => {
+        const slides: React.ReactNode[] = [];
+        
+        project.images.forEach((image, index) => {
+            if (!image.includes('project-cover')) {
+                slides.push(
+                    <Slide key={index} index={index}>                                            
+                        <ImageWithZoom
+                            className="project-images"
+                            src={`/assets/images/${project.imagesDir}/${image}`}
+                        />
+                    </Slide>
+                );
+            }
+        });
+
+        return slides;
+    };
+
+    /**
+     * Returns true if the project has a cover image and false
+     * otherwise.
+     * 
+     * @returns whether or not the project has a cover image
+     */
+    const projectHasCoverImage = (): boolean => {
+        let projectHasCoverImage = false;
+        for (const image of project.images) {
+            if (image.includes('project-cover')) {
+                projectHasCoverImage = !projectHasCoverImage;
+                break;
+            }
+        }
+
+        return projectHasCoverImage;
+    };
+
     return (
         <>
             <Header
@@ -207,19 +249,15 @@ const Project = () => {
                             <CarouselProvider
                                 naturalSlideWidth={300}
                                 naturalSlideHeight={180}
-                                totalSlides={project ? project.images.length : 0}
+                                totalSlides={
+                                    project
+                                        ? projectHasCoverImage()
+                                            ? project.images.length - 1
+                                            : project.images.length
+                                        : 0
+                                }
                             >
-                                <Slider>
-                                    {
-                                        project.images.map((image, index) => {                                
-                                            return (
-                                                <Slide key={index} index={index}>                                            
-                                                    <ImageWithZoom src={`/assets/${image}`} />
-                                                </Slide>
-                                            )
-                                        })
-                                    }                            
-                                </Slider>
+                                <Slider>{ renderSlides() }</Slider>
                                 <div className="carousel-controls">
                                     <ButtonBack className="carousel-btn">                                
                                         <FontAwesomeIcon className="carousel-btn-arrow" icon={faChevronLeft} />
