@@ -237,12 +237,15 @@ const Project = () => {
                                         {renderKeyPoints()}
                                     </p>
                                 </div>
-                                <div className="learn-more">
-                                    <h3>Learn More</h3>
-                                    <ul className="learn-more-links">
-                                        {renderLearnMoreLinks()}
-                                    </ul>
-                                </div>
+                                {
+                                    project.links.length > 0 &&
+                                    <div className="learn-more">
+                                        <h3>Learn More</h3>
+                                        <ul className="learn-more-links">
+                                            {renderLearnMoreLinks()}
+                                        </ul>
+                                    </div>
+                                }
                             </section>
                         </div>
                         <div className="project-right">
