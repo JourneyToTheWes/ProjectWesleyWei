@@ -5,8 +5,9 @@ import { IHonorsAndAwards, ILeadership, IResumeMap, IWorkExperience } from 'stor
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
 import { observer } from 'mobx-react';
-import './styles/Resume.css';
 import Compass from 'components/common/compass/Compass';
+import { Helmet } from 'react-helmet-async';
+import './styles/Resume.css';
 
 interface IResume {
     store: RootStore;
@@ -210,6 +211,10 @@ const Resume: React.FC<IResume> = ({ store }) => {
 
     return (
         <>
+            <Helmet>
+				<title>WestWay Resume</title>
+				<meta name="description" content="This is the WestWay Resume section." />
+			</Helmet>
             <Header />
             {
                 store.ResumeStore.isResumeLoaded &&

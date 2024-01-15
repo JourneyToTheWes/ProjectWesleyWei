@@ -2,8 +2,9 @@ import React from 'react';
 import RootStore from 'stores/RootStore';
 import { observer } from 'mobx-react';
 import Header from 'components/layout/header/Header';
-import './styles/Videos.css';
 import Compass from 'components/common/compass/Compass';
+import { Helmet } from 'react-helmet-async';
+import './styles/Videos.css';
 
 interface IVideos {
     store: RootStore;
@@ -50,6 +51,10 @@ const Videos: React.FC<IVideos> = ({ store }) => {
 
     return (
         <>
+            <Helmet>
+				<title>WestWay Videos</title>
+				<meta name="description" content="This is the WestWay Videos section." />
+			</Helmet>
             <Header
                 className="videos-header"
                 children={<Compass size="small" />}

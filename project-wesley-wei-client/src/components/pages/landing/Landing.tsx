@@ -6,6 +6,7 @@ import Header from 'components/layout/header/Header';
 import { Canvas } from '@react-three/fiber';
 import { Sky } from '@react-three/drei';
 import About from '../about/About';
+import { Helmet } from 'react-helmet-async';
 import './styles/Landing.css';
 
 const Landing = () => {
@@ -22,12 +23,16 @@ const Landing = () => {
 
 	return (
 		<>
+			<Helmet>
+				<title>WestWay</title>
+				<meta name="description" content="This is WestWay which explores the life of Wesley Wei and takes a look into his space." />
+			</Helmet>
 			<div className="landing-container">
 				<Canvas style={{ width: "100%", height: "100vh" }} camera={{ position: [ 0, 10, 20 ] }}>
 					<Ocean />			
 					<Sky distance={450000} sunPosition={[0, 1, 0]} inclination={0} azimuth={0.25} />
 				</Canvas>
-				<Header fixed position="top-left-abs" />
+				<Header position="fixed" placement="top-left" />
 				<section>
 					<Compass size={
 						(!windowWidth && initialWindowWidth.current && initialWindowWidth.current > 650)

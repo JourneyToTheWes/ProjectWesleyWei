@@ -4,6 +4,7 @@ import Header from 'components/layout/header/Header';
 import RootStore from 'stores/RootStore';
 import { observer } from 'mobx-react-lite';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import './styles/Projects.css';
 
 interface IProjects {
@@ -77,6 +78,10 @@ const Projects: React.FC<IProjects> = ({ store }) => {
 
     return (
         <>
+            <Helmet>
+				<title>WestWay Projects</title>
+				<meta name="description" content="This is the WestWay Projects section." />
+			</Helmet>
             <Header />
             <div className="projects-section">
                 <div className="projects-menu-container">
@@ -107,7 +112,10 @@ const Projects: React.FC<IProjects> = ({ store }) => {
                                     currentHoveredProject &&                                                                                
                                         <div className="compass-back-content">
                                             <h3>{currentHoveredProject.title}</h3>
-                                            <img src={`/assets/${currentHoveredProject.images[0]}`} alt="" />
+                                            <img
+                                                src={`/assets/images/${currentHoveredProject.imagesDir}/${currentHoveredProject.images[0]}`}
+                                                alt=""
+                                            />
                                             <span>
                                                 <u>Description</u>
                                             </span>
