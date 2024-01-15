@@ -13,6 +13,7 @@ import {
 } from 'pure-react-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { Helmet } from 'react-helmet-async';
 import './styles/Project.css';
 
 interface IProjectState {
@@ -188,6 +189,10 @@ const Project = () => {
 
     return (
         <>
+            <Helmet>
+				<title>WestWay Project: {project.title}</title>
+				<meta name="description" content={`This is the WestWay Project: ${project.title}.`} />
+			</Helmet>
             <Header
                 className="projects-header"
                 position="fixed"
