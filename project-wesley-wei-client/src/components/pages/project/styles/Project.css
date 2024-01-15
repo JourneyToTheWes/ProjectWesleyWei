@@ -1,31 +1,78 @@
-.app-header.projects-header > div {
+/* .app-header.projects-header > div {
     width: 100%;
 	height: 35vh;
     color: white;
-}
+} */
 
 .app-header.projects-header h1 {
-    font-size: 4.5rem;
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-.app-header.projects-header {
+.app-header.projects-header .logo {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 75px;
+    height: 75px;
+}
+
+
+.white-color {
+    color: white;
+}
+
+/* .app-header.projects-header {
     background-position: center;
 	background-size: cover;
 	background-color: white;
 	background-blend-mode: multiply;
+} */
+
+.app-header.projects-header {
+    width: 100%;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
 }
+
+.header-with-bg { background-color: #EDB116; }
+
+.project-cover {
+    /* padding-top: 25%;
+    padding-bottom: 25%; */
+    height: 70vh;
+    /* background-size: auto 100%; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-position-y: center; */
+    /* background-position: 50% 0; */
+    background-attachment: fixed;
+}
+
+/* .project-cover > img {
+    width: 100%;
+} */
+
+/* .project-cover > div {
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed, scroll;
+} */
 
 .project-container {
     margin: 3rem;
+    padding-bottom: 3rem; /* Since margin-bottom doesn't show when this is the last element */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 1rem;
 }
 
 @media screen and (min-width: 990px) {
     .project-container
     > .project-left {
-        width: 50%;
+        width: 35%;
     }
 }
 
@@ -34,6 +81,7 @@
 > .project-left
 .skills-pill-container {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .project-container
@@ -60,8 +108,10 @@
 > .project-left
 .project-points {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding: 1rem 0 1rem 0;
+    gap: 1rem;
 }
 
 .project-container
@@ -70,6 +120,7 @@
     background-color: #EDB116;
     padding: 0 1rem 0 1rem;
     color: white;
+    flex: 1 1 40%;
 }
 
 .project-container
@@ -77,6 +128,7 @@
 .learn-more {
     background-color: rgba(150, 150, 150, 0.2);
     padding: 0 1rem 0 1rem;
+    flex: 1 1 40%;
 }
 
 .project-container
@@ -102,8 +154,11 @@
 }
 
 .project-container >
-.project-right img {
-    width: 100%;
+.project-right .project-images
+.carousel__image {
+    background-size: auto 100% !important;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* Start carousel styling */

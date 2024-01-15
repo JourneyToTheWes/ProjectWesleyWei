@@ -1,5 +1,5 @@
 import Header from 'components/layout/header/Header';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { IProject } from 'stores/ProjectStore';
 import {
@@ -23,6 +23,34 @@ const Project = () => {
     const state = useLocation().state as IProjectState;
     const project = state?.project;
 
+    useEffect(() => {
+        const header = document.getElementsByClassName("projects-header")[0];
+        const headerTitle = document.getElementsByClassName("projects-header-title")[0];
+        const cover = document.getElementsByClassName("project-cover")[0];
+
+        const updateHeaderBgColor = (entries: any) => {
+            const [entry] = entries;
+
+            if(!entry.isIntersecting) {
+                header.classList.add("header-with-bg");
+                // headerTitle.classList.remove("white-color");
+            } else {
+                header.classList.remove("header-with-bg");
+                // headerTitle.classList.add("white-color");
+            }
+        };
+
+        const headerObserver = new IntersectionObserver(updateHeaderBgColor, {
+            root: null,
+            threshold: 0.75, // Make cover intersecting when only 75% of cover is visible
+        });
+
+        // Observe the Project Cover so we can add a bg color to the header
+        // and change the color of the header title when the cover is no
+        // longer intersecting (visible)
+        headerObserver.observe(cover);
+    }, []);
+
     /**
      * Gets the project cover image path if there exists one,
      * otherwise defaults to a select default cover images.
@@ -31,8 +59,16 @@ const Project = () => {
      * project cover
      */
     const renderBgImgSrc = () => {
-        return project && project.images.includes('project-cover')
-            ? `${project.imagesDir}/project-cover`
+        let containsProjectCover = false;
+        let projectCoverImageSrc = 'cloud.png';
+        project.images.forEach(image => {
+            if (image.includes('project-cover')) {
+                containsProjectCover = true;
+                projectCoverImageSrc = image;
+            }
+        });
+        return project && containsProjectCover
+            ? `${project.imagesDir}/${projectCoverImageSrc}`
             : 'cloud.png';
     };
 
@@ -44,7 +80,7 @@ const Project = () => {
     const renderKeyPoints = (): string => {
         let keyPointsString = '';
 
-        ['Key Point 1', 'Key Point 2', 'Key Point 3'].forEach((keyPoint, index, keyPoints) => {
+        project.keyPoints.forEach((keyPoint, index, keyPoints) => {
             if (index === keyPoints.length - 1) {
                 keyPointsString += keyPoint;
             } else {
@@ -62,14 +98,26 @@ const Project = () => {
      * @returns an array of li elements with learn more links
      */
     const renderLearnMoreLinks = (): React.ReactNode[] => {
-        return [
-            {link: 'https://example.com', name: 'example'},
-            {link: 'https://example.com', name: 'example'},
-            {link: 'https://example.com', name: 'example'}
-        ].map(linkObj => {
+        return project.links.map(linkObj => {
             return <li><a href={linkObj.link} target="_blank">{linkObj.name}</a></li>
         })
     }
+
+    /**
+     * Generates comma delimited "other contributors".
+     * 
+     * @returns skills in the form of pills
+     */
+    const renderOtherContributors = (): String => {
+        let otherContributorsString = "";
+        project.otherContributors.forEach((contributor, index) => {
+            (index < project.otherContributors.length - 1)
+                ? otherContributorsString += contributor + ", "
+                : otherContributorsString += contributor
+        });
+
+        return otherContributorsString;
+    };
 
     /**
      * Generates skills in the form of stylized pills.
@@ -77,7 +125,7 @@ const Project = () => {
      * @returns skills in the form of pills
      */
     const renderSkillPills = (): React.ReactNode[] => (
-        ['R', 'Shiny'].map((skill, index) =>
+        project.skills.map((skill, index) =>
             <div
                 className="skill-pill"
                 key={skill + index}
@@ -87,14 +135,80 @@ const Project = () => {
         )
     );
 
+    /**
+     * Generates description in the form of paragraphs.
+     * 
+     * @returns description in the form of paragraphs
+     */
+    const renderDescription = (): React.ReactNode[] => {
+        return project.description.map(description => <p>{description}</p>);
+    };
+
+    /**
+     * Renders the project image slides.
+     * 
+     * @returns An array of Slide component for the pure-react-carousel
+     */
+    const renderSlides = (): React.ReactNode[] => {
+        const slides: React.ReactNode[] = [];
+        
+        project.images.forEach((image, index) => {
+            if (!image.includes('project-cover')) {
+                slides.push(
+                    <Slide key={index} index={index}>                                            
+                        <ImageWithZoom
+                            className="project-images"
+                            src={`/assets/images/${project.imagesDir}/${image}`}
+                        />
+                    </Slide>
+                );
+            }
+        });
+
+        return slides;
+    };
+
+    /**
+     * Returns true if the project has a cover image and false
+     * otherwise.
+     * 
+     * @returns whether or not the project has a cover image
+     */
+    const projectHasCoverImage = (): boolean => {
+        let projectHasCoverImage = false;
+        for (const image of project.images) {
+            if (image.includes('project-cover')) {
+                projectHasCoverImage = !projectHasCoverImage;
+                break;
+            }
+        }
+
+        return projectHasCoverImage;
+    };
+
     return (
         <>
             <Header
-                bgImageSrc={renderBgImgSrc()}
-                className='projects-header'
+                className="projects-header"
+                position="fixed"
+                // bgImageSrc={renderBgImgSrc()}
             >
-                <h1>Projects</h1>
+                <h1 className="projects-header-title white-color">Projects</h1>
             </Header>
+            {/* <div className="project-cover">
+                <img
+                    // className="project-cover-img"
+                    src={require(`images/${renderBgImgSrc()}`)}
+                    alt={`${project.title} Project Cover Image`}
+                />
+            </div> */}
+            <div 
+                className='project-cover'
+                style={{
+                    backgroundImage: `url(${require(`images/${renderBgImgSrc()}`)})`
+                }}
+            >
+            </div>
             {
                 project &&
                     <div className="project-container">
@@ -102,7 +216,10 @@ const Project = () => {
                             <section className="project-details">
                                 <h1>{project.title}</h1>
                                 <span>Timeline: {project.date}</span>
-                                <span>Contributors: </span>
+                                <span>
+                                    { project.otherContributors.length > 0 &&
+                                        `Other Contributors: ${renderOtherContributors()}` }                                
+                                </span>
                                 <span>Demonstrated Skills:
                                     <div className="skills-pill-container">
                                         {renderSkillPills()}
@@ -110,70 +227,8 @@ const Project = () => {
                                 </span>
                             </section>
                             <section className="project-intro">
-                                <h3>Introduction</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sollicitudin
-                                    turpis, quis porta libero. Ut id ante vitae elit gravida semper. Nunc magna
-                                    neque, accumsan sit amet risus rhoncus, congue condimentum lacus. Maecenas
-                                    nibh massa, viverra consequat nibh ut, convallis bibendum arcu. Donec
-                                    sagittis nibh non semper pellentesque. Nulla vitae lorem a sapien iaculis
-                                    tristique. Nullam pretium euismod massa, at scelerisque lacus facilisis
-                                    vitae. Pellentesque a tellus nunc. Suspendisse vel purus ut sem malesuada
-                                    laoreet eget et felis. Fusce non dolor vel augue scelerisque aliquam sit
-                                    amet vitae neque. Maecenas vel egestas odio. Nulla tincidunt ligula nec odio
-                                    sodales malesuada. Vestibulum ex mauris, tristique id consectetur vitae,
-                                    varius et massa. Integer consequat facilisis mattis. Fusce vitae magna
-                                    magna. In vitae est libero. Etiam ut varius dolor. Duis id neque eros.
-                                    Quisque sed maximus nibh. Donec posuere dui non risus tempus condimentum.
-                                    Maecenas sit amet dolor efficitur, rutrum mi ut, imperdiet ligula. Etiam
-                                    gravida orci vitae sapien dignissim, in pulvinar tellus volutpat. Aenean
-                                    feugiat odio purus, eget suscipit arcu fermentum vel. Praesent at felis sed
-                                    eros blandit varius. Etiam tempus volutpat neque, eu congue justo interdum
-                                    eget. Sed varius ut ante ac egestas. Ut blandit lorem in metus hendrerit,
-                                    sit amet dignissim magna malesuada. Pellentesque turpis mauris, tincidunt eu
-                                    velit quis, volutpat auctor est. Sed rutrum lobortis ipsum eu convallis.
-                                    Curabitur varius eleifend est eget volutpat. Vestibulum venenatis, ipsum ac
-                                    molestie blandit, felis orci aliquet diam, eu sodales leo mauris eu sapien.
-                                    Suspendisse vestibulum suscipit vulputate. Curabitur finibus ultricies
-                                    dapibus. Nunc eget ligula tincidunt, tempus tellus quis, consequat sapien.
-                                    Ut non odio dapibus, tristique turpis ut, sodales justo. Praesent fermentum,
-                                    leo eget lobortis blandit, arcu augue imperdiet ligula, vel eleifend nunc
-                                    ante et quam. Praesent lobortis erat eget odio pulvinar, a suscipit nisi
-                                    pharetra.
-                                </p>
-                            </section>
-                            <section className="project-solution">
-                                <h3>Solution</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sollicitudin
-                                    turpis, quis porta libero. Ut id ante vitae elit gravida semper. Nunc magna
-                                    neque, accumsan sit amet risus rhoncus, congue condimentum lacus. Maecenas
-                                    nibh massa, viverra consequat nibh ut, convallis bibendum arcu. Donec
-                                    sagittis nibh non semper pellentesque. Nulla vitae lorem a sapien iaculis
-                                    tristique. Nullam pretium euismod massa, at scelerisque lacus facilisis
-                                    vitae. Pellentesque a tellus nunc. Suspendisse vel purus ut sem malesuada
-                                    laoreet eget et felis. Fusce non dolor vel augue scelerisque aliquam sit
-                                    amet vitae neque. Maecenas vel egestas odio. Nulla tincidunt ligula nec odio
-                                    sodales malesuada. Vestibulum ex mauris, tristique id consectetur vitae,
-                                    varius et massa. Integer consequat facilisis mattis. Fusce vitae magna
-                                    magna. In vitae est libero. Etiam ut varius dolor. Duis id neque eros.
-                                    Quisque sed maximus nibh. Donec posuere dui non risus tempus condimentum.
-                                    Maecenas sit amet dolor efficitur, rutrum mi ut, imperdiet ligula. Etiam
-                                    gravida orci vitae sapien dignissim, in pulvinar tellus volutpat. Aenean
-                                    feugiat odio purus, eget suscipit arcu fermentum vel. Praesent at felis sed
-                                    eros blandit varius. Etiam tempus volutpat neque, eu congue justo interdum
-                                    eget. Sed varius ut ante ac egestas. Ut blandit lorem in metus hendrerit,
-                                    sit amet dignissim magna malesuada. Pellentesque turpis mauris, tincidunt eu
-                                    velit quis, volutpat auctor est. Sed rutrum lobortis ipsum eu convallis.
-                                    Curabitur varius eleifend est eget volutpat. Vestibulum venenatis, ipsum ac
-                                    molestie blandit, felis orci aliquet diam, eu sodales leo mauris eu sapien.
-                                    Suspendisse vestibulum suscipit vulputate. Curabitur finibus ultricies
-                                    dapibus. Nunc eget ligula tincidunt, tempus tellus quis, consequat sapien.
-                                    Ut non odio dapibus, tristique turpis ut, sodales justo. Praesent fermentum,
-                                    leo eget lobortis blandit, arcu augue imperdiet ligula, vel eleifend nunc
-                                    ante et quam. Praesent lobortis erat eget odio pulvinar, a suscipit nisi
-                                    pharetra.
-                                </p>
+                                <h3>Description</h3>
+                                <p>{ renderDescription() }</p>
                             </section>
                             <section className="project-points">
                                 <div className="key-points">
@@ -182,31 +237,30 @@ const Project = () => {
                                         {renderKeyPoints()}
                                     </p>
                                 </div>
-                                <div className="learn-more">
-                                    <h3>Learn More</h3>
-                                    <ul className="learn-more-links">
-                                        {renderLearnMoreLinks()}
-                                    </ul>
-                                </div>
+                                {
+                                    project.links.length > 0 &&
+                                    <div className="learn-more">
+                                        <h3>Learn More</h3>
+                                        <ul className="learn-more-links">
+                                            {renderLearnMoreLinks()}
+                                        </ul>
+                                    </div>
+                                }
                             </section>
                         </div>
                         <div className="project-right">
                             <CarouselProvider
                                 naturalSlideWidth={300}
                                 naturalSlideHeight={180}
-                                totalSlides={project ? project.images.length : 0}
+                                totalSlides={
+                                    project
+                                        ? projectHasCoverImage()
+                                            ? project.images.length - 1
+                                            : project.images.length
+                                        : 0
+                                }
                             >
-                                <Slider>
-                                    {
-                                        project.images.map((image, index) => {                                
-                                            return (
-                                                <Slide key={index} index={index}>                                            
-                                                    <ImageWithZoom src={`/assets/${image}`} />
-                                                </Slide>
-                                            )
-                                        })
-                                    }                            
-                                </Slider>
+                                <Slider>{ renderSlides() }</Slider>
                                 <div className="carousel-controls">
                                     <ButtonBack className="carousel-btn">                                
                                         <FontAwesomeIcon className="carousel-btn-arrow" icon={faChevronLeft} />

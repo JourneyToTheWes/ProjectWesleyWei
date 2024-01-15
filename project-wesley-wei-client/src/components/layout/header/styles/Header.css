@@ -9,8 +9,11 @@
 	z-index: 100;
 }
 
-.top-left-abs {
-	position: absolute;
+.app-header.sticky {
+	position: sticky;
+}
+
+.top-left {
 	top: 0px;
 	left: 0px;
 }

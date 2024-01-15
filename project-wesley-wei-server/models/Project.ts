@@ -19,6 +19,22 @@ const ProjectSchema = new mongoose.Schema({
 	imageDir: {
 		type: String,
 		required: true
+	},
+	otherContributors: {
+		type: [String],
+		required: true
+	},
+	skills: {
+		type: [String],
+		required: true
+	},
+	keyPoints: {
+		type: [String],
+		required: true
+	},
+	links: {
+		type: [Object],
+		required: true
 	}
 });
 
