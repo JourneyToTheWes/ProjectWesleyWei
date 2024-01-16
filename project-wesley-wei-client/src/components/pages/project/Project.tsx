@@ -210,7 +210,7 @@ const Project = () => {
             <div 
                 className='project-cover'
                 style={{
-                    backgroundImage: `url(${require(`images/${renderBgImgSrc()}`)})`
+                    backgroundImage: `url(/assets/images/${renderBgImgSrc()})`
                 }}
             >
             </div>
