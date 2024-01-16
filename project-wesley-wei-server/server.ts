@@ -12,7 +12,7 @@ ConnectDB();
 
 // Initialize App
 const app = new App({
-	port: process.env.PORT || 5000,
+	port: process.env.PORT || 8080,
 	controllers: [new ResumeController(), new ProjectController(), new VideoController()],
 	middleWares: [express.json({ extended: false })],
 });
