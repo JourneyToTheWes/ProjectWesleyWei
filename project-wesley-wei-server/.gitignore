@@ -3,6 +3,7 @@
 
 # Build
 /Build
+/public
 
 # Config
 config/default.json

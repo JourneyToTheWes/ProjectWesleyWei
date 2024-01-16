@@ -5,7 +5,8 @@
 	"main": "ug\": \"^2.0.3\"",
 	"scripts": {
 		"dev": "ts-node-dev server.ts",
-		"build": "tsc -project ./tsconfig.json"
+		"build": "tsc -project ./tsconfig.json",
+		"start": "npm run build && node ./build/server.js"
 	},
 	"repository": {
 		"type": "git",
