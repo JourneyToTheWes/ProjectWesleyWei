@@ -31,4 +31,4 @@ Follow [Deployment Guide](DeploymentGuide.md)
  
 ## Demo
 
-![ProjectGif](project-wesley-wei-client\public\assets\images\ProjectGif.gif)
+![ProjectGif](./project-wesley-wei-client/public/assets/images/ProjectGif.gif)
