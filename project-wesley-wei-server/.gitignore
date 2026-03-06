@@ -3,6 +3,8 @@
 
 # Build
 /Build
+/public
 
 # Config
 config/default.json
+config/production.json

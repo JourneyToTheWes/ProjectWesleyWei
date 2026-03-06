@@ -1,5 +1,8 @@
 import * as express from 'express';
 import { Application } from 'express';
+import * as path from 'path';
+import * as fs from 'fs';
+
 type Port = string | number;
 interface IAppInit {
     port: Port;
@@ -16,6 +19,26 @@ class App {
         this.port = appInit.port;
         this.useMiddleWares(appInit.middleWares);
         this.useRoutes(appInit.controllers);
+
+        // test read folder in docker env
+        console.info("Files at project-wesley-wei-server directory")
+        fs.readdir('.', (err, files) => {
+            files.forEach(file => {
+                console.log(file);
+
+                if (file === 'public') {
+                    console.info("Files in public folder")
+                    fs.readdir('./public', (err, files) => {
+                        files.forEach(file => {
+                            console.log(file);
+                        });
+                    });
+                }
+            });
+        });
+
+        this.app.use(express.static(path.join(__dirname + '/../public')));
+        this.app.get(/^\/(?!api).*/, (req, res) => res.sendFile(path.join(__dirname + '/../public/index.html')));
     }
 
     private useMiddleWares = (middleWares: any[]) => {

@@ -1,0 +1,10 @@
+# flyctl launch added from .gitignore
+# Dependencies
+node_modules
+
+# Build
+Build
+
+# Config
+**\config\default.json
+fly.toml
