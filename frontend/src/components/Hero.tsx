@@ -1,3 +1,5 @@
+import Button from "./ui/Button";
+
 const Hero = () => {
     return (
         <section className="min-h-screen flex items-center bg-gradient-to-b from-background to-surface">
@@ -17,13 +19,9 @@ const Hero = () => {
                 </p>
 
                 <div className="flex gap-4">
-                    <button className="bg-primary text-white px-6 py-3 rounded-lg">
-                        View Projects
-                    </button>
+                    <Button variant="primary">View Projects</Button>
 
-                    <button className="border px-6 py-3 rounded-lg">
-                        GitHub
-                    </button>
+                    <Button variant="outline">GitHub</Button>
                 </div>
 
                 <p className="text-sm text-muted mt-10">
