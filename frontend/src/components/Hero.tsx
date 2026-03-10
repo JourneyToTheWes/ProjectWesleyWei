@@ -2,7 +2,7 @@ import Button from "./ui/Button";
 
 const Hero = () => {
     return (
-        <section className="min-h-screen flex items-center bg-gradient-to-b from-background to-surface">
+        <section className="min-h-screen flex items-center py-24 bg-gradient-to-b from-background to-surface">
             <div className="max-w-5xl mx-auto px-6">
                 <p className="text-accent mb-4">Hi, I'm</p>
 
@@ -19,9 +19,17 @@ const Hero = () => {
                 </p>
 
                 <div className="flex gap-4">
-                    <Button variant="primary">View Projects</Button>
+                    <Button href="#projects" variant="primary">
+                        View Projects
+                    </Button>
 
-                    <Button variant="outline">GitHub</Button>
+                    <Button
+                        href="https://github.com/JourneyToTheWes"
+                        variant="outline"
+                        external
+                    >
+                        GitHub
+                    </Button>
                 </div>
 
                 <p className="text-sm text-muted mt-10">
