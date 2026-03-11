@@ -3,6 +3,7 @@ import { Sun, Moon } from "lucide-react";
 import Hero from "./components/Hero";
 import Button from "./components/ui/Button";
 import Projects from "./components/projects/Projects";
+import WorkExperience from "./components/WorkExperience/WorkExperience";
 
 const App = () => {
     const { toggleTheme } = useTheme();
@@ -21,6 +22,7 @@ const App = () => {
             <main>
                 <Hero />
                 <Projects />
+                <WorkExperience />
             </main>
         </div>
     );
