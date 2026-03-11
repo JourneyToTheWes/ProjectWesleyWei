@@ -12,7 +12,7 @@ const App = () => {
             <Button
                 variant="ghost"
                 size="icon"
-                className="fixed top-6 right-6 border"
+                className="fixed top-6 right-6 border z-1"
                 onClick={toggleTheme}
             >
                 <Sun className="w-4 h-4 dark:hidden" />

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 type BaseProps = {
     variant?: "primary" | "outline" | "ghost";
-    size?: "default" | "icon";
+    size?: "default" | "sm" | "icon";
     className?: string;
     children: React.ReactNode;
 };
@@ -43,14 +43,15 @@ const Button: React.FC<ButtonProps> = ({
     const classes = clsx(
         "rounded-lg transition cursor-pointer flex items-center gap-2 justify-center hover:scale-[1.02]",
 
-        variant === "primary" &&
-            "bg-primary text-white px-6 py-3 hover:opacity-90",
+        variant === "primary" && "bg-primary text-white hover:opacity-90",
 
-        variant === "outline" && "border px-6 py-3 hover:bg-muted",
+        variant === "outline" && "border hover:bg-muted",
 
         variant === "ghost" && "hover:bg-muted",
 
         size === "default" && "px-6 py-3",
+
+        size === "sm" && "px-3 py-1.5 text-sm",
 
         size === "icon" && "p-2",
 

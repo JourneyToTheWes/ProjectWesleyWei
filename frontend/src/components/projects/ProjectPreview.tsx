@@ -44,8 +44,8 @@ const ProjectPreview: React.FC<ProjectPreviewProps> = ({ activeProject }) => {
                     <div className="flex flex-wrap gap-3 mt-4">
                         <Button
                             variant="primary"
+                            size="sm"
                             to={`/projects/${activeProject.id}`}
-                            className="text-sm"
                         >
                             View Project
                             <ArrowRight className="w-4 h-4" />
@@ -54,9 +54,9 @@ const ProjectPreview: React.FC<ProjectPreviewProps> = ({ activeProject }) => {
                         {activeProject.links && activeProject.links.demo && (
                             <Button
                                 variant="outline"
+                                size="sm"
                                 href={activeProject.links.demo}
                                 external
-                                className="text-sm"
                             >
                                 Live Demo
                             </Button>
@@ -65,9 +65,9 @@ const ProjectPreview: React.FC<ProjectPreviewProps> = ({ activeProject }) => {
                         {activeProject.links && activeProject.links.github && (
                             <Button
                                 variant="outline"
+                                size="sm"
                                 href={activeProject.links.github}
                                 external
-                                className="text-sm"
                             >
                                 GitHub
                             </Button>
