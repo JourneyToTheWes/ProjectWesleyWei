@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import Button from "./components/ui/Button";
 import Projects from "./components/projects/Projects";
 import WorkExperience from "./components/WorkExperience/WorkExperience";
+import About from "./components/About";
 
 const App = () => {
     const { toggleTheme } = useTheme();
@@ -21,6 +22,7 @@ const App = () => {
             </Button>
             <main>
                 <Hero />
+                <About />
                 <Projects />
                 <WorkExperience />
             </main>

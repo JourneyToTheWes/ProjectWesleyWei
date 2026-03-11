@@ -15,7 +15,7 @@ const Hero = () => {
 
                 <p className="text-lg max-w-xl mb-10">
                     I build high-performance web applications, interactive
-                    tools, and modern developer platforms.
+                    developer tools, and modern browser-based platforms.
                 </p>
 
                 <div className="flex gap-4">
