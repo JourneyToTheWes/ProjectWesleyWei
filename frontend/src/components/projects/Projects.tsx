@@ -65,7 +65,6 @@ const projects = [
         tech: ["React", "TypeScript", "Rust", "WebAssembly"],
         image: "https://picsum.photos/200/300",
         links: {
-            github: "#",
             demo: "#",
         },
     },
@@ -90,9 +89,14 @@ const Projects = () => {
     return (
         <section id="projects" className="py-24 bg-surface">
             <div className="max-w-5xl mx-auto px-6">
-                <h2 className="text-3xl font-bold mb-12 text-content">
-                    Featured Projects
-                </h2>
+                <div className="mb-12 flex flex-col gap-2">
+                    <h2 className="text-3xl font-bold text-content">
+                        Featured Projects
+                    </h2>
+                    <p className="text-sm text-muted">
+                        Hover over a project to preview
+                    </p>
+                </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                     <ProjectTimeline
                         projectsByYear={groupedProjects}

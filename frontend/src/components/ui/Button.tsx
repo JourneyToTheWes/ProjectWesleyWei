@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
 
 type BaseProps = {
     variant?: "primary" | "outline" | "ghost";
@@ -21,8 +22,16 @@ type InternalAnchorProps = BaseProps &
         external?: boolean;
     };
 
+type InternalLinkProps = BaseProps &
+    React.ButtonHTMLAttributes<HTMLAnchorElement> & {
+        to?: string;
+    };
+
 // Exported props type
-export type ButtonProps = InternalButtonProps | InternalAnchorProps;
+export type ButtonProps =
+    | InternalButtonProps
+    | InternalAnchorProps
+    | InternalLinkProps;
 
 const Button: React.FC<ButtonProps> = ({
     variant = "primary",
@@ -48,7 +57,17 @@ const Button: React.FC<ButtonProps> = ({
         className,
     );
 
-    if ("href" in props) {
+    if ("to" in props && props.to) {
+        const { to, ...rest } = props;
+
+        return (
+            <Link to={to} className={classes} {...rest}>
+                {children}
+            </Link>
+        );
+    }
+
+    if ("href" in props && "external" in props) {
         const { href, external, ...rest } = props;
 
         // Explicitly cast to AnchorProps to avoid spreading button-only props

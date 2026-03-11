@@ -1,4 +1,6 @@
 import type { Project } from "../../types/project";
+import Button from "../ui/Button";
+import { ArrowRight } from "lucide-react";
 
 interface ProjectPreviewProps {
     activeProject: Project;
@@ -38,6 +40,38 @@ const ProjectPreview: React.FC<ProjectPreviewProps> = ({ activeProject }) => {
                                 {t}
                             </span>
                         ))}
+                    </div>
+                    <div className="flex flex-wrap gap-3 mt-4">
+                        <Button
+                            variant="primary"
+                            to={`/projects/${activeProject.id}`}
+                            className="text-sm"
+                        >
+                            View Project
+                            <ArrowRight className="w-4 h-4" />
+                        </Button>
+
+                        {activeProject.links && activeProject.links.demo && (
+                            <Button
+                                variant="outline"
+                                href={activeProject.links.demo}
+                                external
+                                className="text-sm"
+                            >
+                                Live Demo
+                            </Button>
+                        )}
+
+                        {activeProject.links && activeProject.links.github && (
+                            <Button
+                                variant="outline"
+                                href={activeProject.links.github}
+                                external
+                                className="text-sm"
+                            >
+                                GitHub
+                            </Button>
+                        )}
                     </div>
                 </div>
             )}

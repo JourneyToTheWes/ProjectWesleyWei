@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import type { Project } from "../../types/project";
 import { motion } from "framer-motion";
+import Button from "../ui/Button";
+import { ArrowRight } from "lucide-react";
 
 type ProjectItemProps = {
     project: Project;
@@ -50,6 +52,38 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
                                 {t}
                             </span>
                         ))}
+                    </div>
+                    <div className="flex flex-wrap gap-3 mt-4">
+                        <Button
+                            variant="primary"
+                            to={`/projects/${project.id}`}
+                            className="text-sm"
+                        >
+                            View Project
+                            <ArrowRight className="w-4 h-4" />
+                        </Button>
+
+                        {project.links && project.links.demo && (
+                            <Button
+                                variant="outline"
+                                href={project.links.demo}
+                                external
+                                className="text-sm"
+                            >
+                                Live Demo
+                            </Button>
+                        )}
+
+                        {project.links && project.links.github && (
+                            <Button
+                                variant="outline"
+                                href={project.links.github}
+                                external
+                                className="text-sm"
+                            >
+                                GitHub
+                            </Button>
+                        )}
                     </div>
                 </div>
             </Link>
