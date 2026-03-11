@@ -2,6 +2,7 @@ import { useTheme } from "./hooks/useTheme";
 import { Sun, Moon } from "lucide-react";
 import Hero from "./components/Hero";
 import Button from "./components/ui/Button";
+import Projects from "./components/projects/Projects";
 
 const App = () => {
     const { toggleTheme } = useTheme();
@@ -19,6 +20,7 @@ const App = () => {
             </Button>
             <main>
                 <Hero />
+                <Projects />
             </main>
         </div>
     );
