@@ -1,17 +1,25 @@
+import { motion } from "framer-motion";
 import type { Project } from "../../types/project";
 import ProjectItem from "./ProjectItem";
 
 type ProjectTimelineProps = {
     projectsByYear: Record<number, Project[]>;
+    onProjectHover: (project: Project) => void;
 };
 
 const ProjectTimeline: React.FC<ProjectTimelineProps> = ({
     projectsByYear,
+    onProjectHover,
 }) => {
     return (
         <div className="relative max-w-3xl mx-auto">
             {/* vertical timeline line */}
-            <div className="absolute left-4 top-0 h-full w-[2px] bg-border"></div>
+            <motion.div
+                initial={{ height: 0 }}
+                whileInView={{ height: "100%" }}
+                transition={{ duration: 0.8 }}
+                className="absolute left-4 top-0 h-full w-[2px] bg-border -translate-x-1/2"
+            />
 
             {Object.entries(projectsByYear)
                 .sort(([a], [b]) => Number(b) - Number(a))
@@ -23,10 +31,15 @@ const ProjectTimeline: React.FC<ProjectTimelineProps> = ({
 
                         <div className="space-y-6">
                             {projects.map((project) => (
-                                <ProjectItem
+                                <motion.div
                                     key={project.id}
-                                    project={project}
-                                />
+                                    initial={{ opacity: 0, y: -100 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.5 }}
+                                    onMouseEnter={() => onProjectHover(project)}
+                                >
+                                    <ProjectItem project={project} />
+                                </motion.div>
                             ))}
                         </div>
                     </div>
