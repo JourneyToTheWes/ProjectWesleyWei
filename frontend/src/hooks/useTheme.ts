@@ -1,12 +1,25 @@
+import { useState, useLayoutEffect } from "react";
+
 export const useTheme = () => {
+    // Initialize state directly from localStorage or system preference
+    const [theme, setTheme] = useState<"light" | "dark">(() => {
+        const stored = localStorage.getItem("theme") as "light" | "dark" | null;
+        if (stored) return stored;
+
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+    });
+
+    // Apply the theme to the DOM whenever state changes
+    useLayoutEffect(() => {
+        document.documentElement.classList.toggle("dark", theme === "dark");
+        localStorage.setItem("theme", theme);
+    }, [theme]);
+
     const toggleTheme = () => {
-        const root = document.documentElement;
-        root.classList.toggle("dark");
-        localStorage.setItem(
-            "theme",
-            root.classList.contains("dark") ? "dark" : "light",
-        );
+        setTheme((prev) => (prev === "dark" ? "light" : "dark"));
     };
 
-    return { toggleTheme };
+    return { theme, toggleTheme };
 };

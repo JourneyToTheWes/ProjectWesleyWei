@@ -47,7 +47,7 @@ const Button: React.FC<ButtonProps> = ({
 
         variant === "outline" && "border hover:bg-muted",
 
-        variant === "ghost" && "hover:bg-muted",
+        variant === "ghost" && "hover:bg-muted hover:text-white",
 
         size === "default" && "px-6 py-3",
 
