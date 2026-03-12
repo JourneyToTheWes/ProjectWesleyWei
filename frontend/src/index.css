@@ -33,11 +33,15 @@
     --color-border: #334155;
 }
 
+/* Base styling */
 :root {
     font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-/* Base styling */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     @apply bg-background text-content;
 }
