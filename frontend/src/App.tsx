@@ -5,6 +5,7 @@ import Button from "./components/ui/Button";
 import Projects from "./components/projects/Projects";
 import WorkExperience from "./components/WorkExperience/WorkExperience";
 import About from "./components/About";
+import Contact from "./components/Contact";
 
 const App = () => {
     const { toggleTheme } = useTheme();
@@ -25,6 +26,7 @@ const App = () => {
                 <About />
                 <Projects />
                 <WorkExperience />
+                <Contact />
             </main>
         </div>
     );

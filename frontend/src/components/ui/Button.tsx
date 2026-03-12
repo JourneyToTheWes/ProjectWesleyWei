@@ -68,7 +68,7 @@ const Button: React.FC<ButtonProps> = ({
         );
     }
 
-    if ("href" in props && "external" in props) {
+    if ("href" in props) {
         const { href, external, ...rest } = props;
 
         // Explicitly cast to AnchorProps to avoid spreading button-only props
@@ -84,7 +84,9 @@ const Button: React.FC<ButtonProps> = ({
                 {...anchorProps}
             >
                 {children}
-                {external && <ExternalLink className="w-4 h-4" />}
+                {external && size !== "icon" && (
+                    <ExternalLink className="w-4 h-4" />
+                )}
             </a>
         );
     }
