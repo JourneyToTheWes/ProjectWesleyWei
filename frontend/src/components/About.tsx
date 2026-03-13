@@ -18,7 +18,12 @@ const About = () => {
                         <p>
                             I'm a software engineer who enjoys building systems
                             at the intersection of performance, usability, and
-                            creativity.
+                            creativity. I approach my work like navigating with
+                            a compass—finding a clear direction and purpose in
+                            every project I take on. That’s the philosophy
+                            behind <strong>West Way</strong>: charting my own
+                            path while delivering meaningful, well-crafted
+                            software.
                         </p>
 
                         <p className="text-muted">

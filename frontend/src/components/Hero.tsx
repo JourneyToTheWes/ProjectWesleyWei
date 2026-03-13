@@ -10,16 +10,27 @@ const Hero = () => {
                 <div className="flex-1">
                     <p className="text-accent mb-4">Hi, I'm</p>
 
-                    <h1 className="text-6xl font-bold tracking-tight mb-6">
-                        Wesley Wei
-                    </h1>
+                    <div className="mb-6 flex flex-col lg:flex-row lg:items-baseline lg:gap-2">
+                        <h1 className="text-6xl font-bold tracking-tight lg:inline-block">
+                            Wesley Wei
+                        </h1>
+                        <span className="text-xs lg:text-sm">
+                            (aka West Way)
+                        </span>
+                    </div>
                     <h2 className="text-2xl text-muted mb-6">
                         Full-Stack Software Engineer
                     </h2>
 
-                    <p className="text-lg max-w-xl mb-10">
+                    <p className="text-lg max-w-xl mb-3">
                         I build high-performance web applications, interactive
                         developer tools, and modern browser-based platforms.
+                    </p>
+
+                    <p className="text-sm text-muted mb-10">
+                        My site is called <strong>West Way</strong>—a nod to my
+                        name and my compass always pointing west—charting my own
+                        course in software.
                     </p>
 
                     <div className="flex gap-4">
