@@ -15,6 +15,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
             <motion.div
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.4 }}
                 className="absolute left-4 top-2 h-3 w-3 rounded-full bg-primary border-2 border-background -translate-x-1/2"
             />

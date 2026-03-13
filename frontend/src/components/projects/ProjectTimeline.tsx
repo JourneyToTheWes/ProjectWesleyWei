@@ -17,7 +17,8 @@ const ProjectTimeline: React.FC<ProjectTimelineProps> = ({
             <motion.div
                 initial={{ height: 0 }}
                 whileInView={{ height: "100%" }}
-                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1 }}
                 className="absolute left-4 top-0 h-full w-[2px] bg-border -translate-x-1/2"
             />
 
@@ -35,6 +36,7 @@ const ProjectTimeline: React.FC<ProjectTimelineProps> = ({
                                     key={project.id}
                                     initial={{ opacity: 0, y: -100 }}
                                     whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, amount: 1 }}
                                     transition={{ duration: 0.5 }}
                                     onMouseEnter={() => onProjectHover(project)}
                                 >

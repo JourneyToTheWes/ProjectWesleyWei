@@ -17,14 +17,20 @@ const WorkExperience: React.FC = () => {
         <section id="work-experience" className="py-24 bg-surface">
             <div className="max-w-5xl mx-auto px-6">
                 {/* Section Title */}
-                <div className="mb-12 flex flex-col gap-2">
+                <motion.div
+                    className="mb-12 flex flex-col gap-2"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.8 }}
+                    transition={{ duration: 0.6 }}
+                >
                     <h2 className="text-3xl font-bold text-content">
                         Work Experience
                     </h2>
                     <p className="text-sm text-muted">
                         Some highlights of my professional experience
                     </p>
-                </div>
+                </motion.div>
 
                 {/* Timeline */}
                 <div className="relative max-w-3xl mx-auto">
@@ -32,7 +38,8 @@ const WorkExperience: React.FC = () => {
                     <motion.div
                         initial={{ height: 0 }}
                         whileInView={{ height: "100%" }}
-                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1 }}
                         className="absolute left-4 top-0 w-[2px] bg-border -translate-x-1/2"
                     />
 
@@ -40,9 +47,15 @@ const WorkExperience: React.FC = () => {
                         .sort(([a], [b]) => Number(b) - Number(a))
                         .map(([year, jobs]) => (
                             <div key={year} className="mb-10">
-                                <h3 className="mb-4 text-sm font-semibold text-muted ml-10">
+                                <motion.h3
+                                    className="mb-4 text-sm font-semibold text-muted ml-10"
+                                    initial={{ opacity: 0, y: -50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, amount: 1 }}
+                                    transition={{ duration: 0.5 }}
+                                >
                                     {year}
-                                </h3>
+                                </motion.h3>
 
                                 {/* Jobs */}
                                 <div className="space-y-6">
@@ -51,6 +64,10 @@ const WorkExperience: React.FC = () => {
                                             key={job.company + job.role}
                                             initial={{ opacity: 0, y: -50 }}
                                             whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{
+                                                once: true,
+                                                amount: 0.8,
+                                            }}
                                             transition={{ duration: 0.5 }}
                                         >
                                             <WorkExperienceItem job={job} />
@@ -62,7 +79,13 @@ const WorkExperience: React.FC = () => {
                 </div>
 
                 {/* Download Resume Button */}
-                <div className="mt-12 text-center">
+                <motion.div
+                    className="mt-12 text-center"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 1 }}
+                    transition={{ duration: 0.6 }}
+                >
                     <a
                         href="https://yourcdn.com/resume.pdf" // replace with hosted resume
                         target="_blank"
@@ -71,7 +94,7 @@ const WorkExperience: React.FC = () => {
                     >
                         Download Resume
                     </a>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
