@@ -1,5 +1,6 @@
 import Button from "./ui/Button";
 import Compass from "./ui/Compass";
+import InteractiveHover from "./ui/InteractiveHover";
 import Ocean from "./ui/Ocean";
 
 const Hero = () => {
@@ -40,18 +41,22 @@ const Hero = () => {
                     </p>
                 </div>
 
-                <div className="relative w-40 h-40 lg:ml-10 mt-10 lg:mt-0 flex-shrink-0">
-                    <Ocean />
+                <div className="relative lg:ml-10 mt-10 lg:mt-0 flex-shrink-0">
+                    <Ocean width={250} height={250} color={"primary"} />
                     <div className="absolute inset-0 flex items-center justify-center">
-                        <Compass
-                            faceColor="none"
-                            borderColor="content"
-                            needleColor="content"
-                            needleOutlineColor="content"
-                            tickColor="content"
-                            majorTickColor="content"
-                            labelColor="content"
-                        />
+                        <InteractiveHover size={225}>
+                            <Compass
+                                size={225}
+                                faceColor="none"
+                                borderColor="content"
+                                needleColor="content"
+                                needleOutlineColor="content"
+                                centerPinColor="primary"
+                                tickColor="content"
+                                majorTickColor="content"
+                                labelColor="content"
+                            />
+                        </InteractiveHover>
                     </div>
                 </div>
             </div>

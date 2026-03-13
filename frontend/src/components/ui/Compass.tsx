@@ -1,16 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
+import type { HexColor, ThemeColor } from "../../types/colors";
 
-type ThemeColor =
-    | "primary"
-    | "secondary"
-    | "accent"
-    | "border"
-    | "content"
-    | "muted"
-    | "card"
-    | "surface"
-    | "background";
-type HexColor = `#${string}` | "none";
 type ColorProp = ThemeColor | HexColor; // Can specify a specified Tailwind theme color or custom Hex color
 
 interface CompassProps {
@@ -74,10 +64,39 @@ const Compass: React.FC<CompassProps> = ({
             : `var(--color-${colorString})`;
     };
 
+    // Needle animation variants
+    const needleVariants: Variants = {
+        idle: {
+            rotate: [-20, -10, -5, 5, 0],
+            transition: {
+                duration: 2,
+                ease: [0, 1, 0.71, 0.13],
+                repeat: Infinity,
+                repeatType: "mirror",
+            },
+        },
+        hover: {
+            rotate: [-5, 0, 5, -5, 0],
+            transition: {
+                duration: 0.5,
+                ease: [0, 1, 0.71, 0.13],
+                repeat: Infinity,
+                repeatType: "mirror",
+            },
+        },
+    };
+
     return (
-        <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+        <motion.svg
+            width={size}
+            height={size}
+            viewBox={`0 0 ${size} ${size}`}
+            initial="idle"
+            animate="idle"
+            whileHover="hover"
+        >
             {/* Compass face */}
-            <circle
+            <motion.circle
                 cx={center}
                 cy={center}
                 r={radius}
@@ -88,7 +107,7 @@ const Compass: React.FC<CompassProps> = ({
 
             {/* Tick marks */}
             {tickMarks.map((tick, i) => (
-                <line
+                <motion.line
                     key={i}
                     x1={tick.x1}
                     y1={tick.y1}
@@ -110,7 +129,7 @@ const Compass: React.FC<CompassProps> = ({
                 const x = center + labelR * Math.cos(angleRad);
                 const y = center + labelR * Math.sin(angleRad) + 5;
                 return (
-                    <text
+                    <motion.text
                         key={i}
                         x={x}
                         y={y}
@@ -120,22 +139,15 @@ const Compass: React.FC<CompassProps> = ({
                         fontWeight="bold"
                     >
                         {l.label}
-                    </text>
+                    </motion.text>
                 );
             })}
 
             {/* Needle */}
             <motion.g
                 style={{ transformOrigin: `${center}px ${center}px` }}
-                animate={{
-                    rotate: [-20, -10, -5, 5, 0], // point-west animation
-                }}
-                transition={{
-                    duration: 2,
-                    ease: [0, 1, 0.71, 0.13],
-                    repeat: Infinity,
-                    repeatType: "mirror",
-                }}
+                // animate={onHover ? "hover" : "idle"}
+                variants={needleVariants}
             >
                 {/* West side filled */}
                 <polygon
@@ -169,7 +181,7 @@ const Compass: React.FC<CompassProps> = ({
                     strokeWidth={1}
                 />
             </motion.g>
-        </svg>
+        </motion.svg>
     );
 };
 
