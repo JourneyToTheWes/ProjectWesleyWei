@@ -21,18 +21,19 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
             />
 
             <Link
-                to={`/projects/${project.id}`}
+                to={`/projects/${project.slug}`}
                 className="ml-10 block p-4 rounded-lg bg-card border hover:border-primary hover:shadow-sm transition"
             >
                 <h4 className="font-semibold text-content">{project.title}</h4>
 
-                <p className="text-sm text-muted">{project.date}</p>
+                <p className="text-sm text-muted">{project.timeline.display}</p>
                 {/* Mobile view Project Item expansion */}
                 <div className="lg:hidden mt-3 space-y-3">
                     <div className="mb-4 rounded-lg overflow-hidden border border-border aspect-video bg-secondary flex items-center justify-center">
-                        {project.image && project.image.length > 0 ? (
+                        {project.previewImage &&
+                        project.previewImage.length > 0 ? (
                             <img
-                                src={project.image}
+                                src={project.previewImage}
                                 className="w-full h-full object-cover"
                             />
                         ) : (
@@ -57,7 +58,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
                     <div className="flex flex-wrap gap-3 mt-4">
                         <Button
                             variant="primary"
-                            to={`/projects/${project.id}`}
+                            to={`/projects/${project.slug}`}
                             className="text-sm"
                         >
                             View Project

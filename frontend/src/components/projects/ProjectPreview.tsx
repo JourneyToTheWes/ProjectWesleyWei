@@ -12,10 +12,10 @@ const ProjectPreview: React.FC<ProjectPreviewProps> = ({ activeProject }) => {
             {activeProject && (
                 <div className="sticky top-24 p-6 border rounded-lg bg-card">
                     <div className="mb-4 rounded-lg overflow-hidden border border-border aspect-video bg-secondary flex items-center justify-center">
-                        {activeProject.image &&
-                        activeProject.image.length > 0 ? (
+                        {activeProject.previewImage &&
+                        activeProject.previewImage.length > 0 ? (
                             <img
-                                src={activeProject.image}
+                                src={activeProject.previewImage}
                                 className="w-full h-full object-cover"
                             />
                         ) : (
@@ -45,7 +45,7 @@ const ProjectPreview: React.FC<ProjectPreviewProps> = ({ activeProject }) => {
                         <Button
                             variant="primary"
                             size="sm"
-                            to={`/projects/${activeProject.id}`}
+                            to={`/projects/${activeProject.slug}`}
                         >
                             View Project
                             <ArrowRight className="w-4 h-4" />

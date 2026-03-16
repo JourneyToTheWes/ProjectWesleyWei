@@ -3,72 +3,7 @@ import ProjectPreview from "./ProjectPreview";
 import ProjectTimeline from "./ProjectTimeline";
 import type { Project } from "../../types/project";
 import { motion } from "framer-motion";
-
-const projects = [
-    {
-        id: "project-wesley-wei",
-        title: "Project Wesley Wei",
-        date: "Dec 2017 – Present",
-        year: 2017,
-        summary:
-            "Personal developer portfolio featuring a timeline UI and interactive compass visualization.",
-        tech: ["React", "Node.js", "MongoDB"],
-        image: "",
-    },
-    {
-        id: "project-wesley-wei",
-        title: "Project Wesley Wei",
-        date: "Dec 2017 – Present",
-        year: 2017,
-        summary:
-            "Personal developer portfolio featuring a timeline UI and interactive compass visualization.",
-        tech: ["React", "Node.js", "MongoDB"],
-        image: "",
-    },
-    {
-        id: "project-wesley-wei",
-        title: "Project Wesley Wei",
-        date: "Dec 2017 – Present",
-        year: 2017,
-        summary:
-            "Personal developer portfolio featuring a timeline UI and interactive compass visualization.",
-        tech: ["React", "Node.js", "MongoDB"],
-        image: "",
-    },
-    {
-        id: "project-wesley-wei",
-        title: "Project Wesley Wei",
-        date: "Dec 2017 – Present",
-        year: 2017,
-        summary:
-            "Personal developer portfolio featuring a timeline UI and interactive compass visualization.",
-        tech: ["React", "Node.js", "MongoDB"],
-        image: "",
-    },
-    {
-        id: "mbt",
-        title: "MBT",
-        date: "May 2023 - Present",
-        year: 2023,
-        summary:
-            "Sports performance tracking mobile Android app designed to help players improve their game in real time through sports metric utilization.",
-        tech: ["Kotlin", "Compose", "YOLOv8"],
-        image: "",
-    },
-    {
-        id: "milkbread",
-        title: "Milkbread Spreadsheet Engine",
-        date: "Aug 2025 - Present",
-        year: 2025,
-        summary:
-            "Custom spreadsheet engine supporting thousands of reactive cells with Rust-powered formula evaluation.",
-        tech: ["React", "TypeScript", "Rust", "WebAssembly"],
-        image: "https://picsum.photos/200/300",
-        links: {
-            demo: "#",
-        },
-    },
-];
+import { projects } from "./dummyData";
 
 const groupedProjects = projects.reduce<Record<number, typeof projects>>(
     (acc, project) => {
@@ -83,7 +18,7 @@ const groupedProjects = projects.reduce<Record<number, typeof projects>>(
 );
 const Projects = () => {
     const [activeProject, setActiveProject] = useState<Project | null>(
-        projects[2],
+        projects[0],
     );
 
     return (
@@ -111,7 +46,7 @@ const Projects = () => {
                     <div className="hidden lg:block sticky top-24 self-start">
                         {activeProject && (
                             <motion.div
-                                key={activeProject.id}
+                                key={activeProject.slug}
                                 initial={{ opacity: 0, y: -8 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5 }}
