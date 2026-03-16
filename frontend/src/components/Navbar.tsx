@@ -4,16 +4,17 @@ import { useTheme } from "../hooks/useTheme";
 import Button from "./ui/Button";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
+import { HashLink } from "react-router-hash-link";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     const { theme, toggleTheme } = useTheme();
 
     const links = [
-        { name: "About", href: "#about" },
-        { name: "Projects", href: "#projects" },
-        { name: "Experience", href: "#work-experience" },
-        { name: "Contact", href: "#contact" },
+        { name: "About", href: "/#about" },
+        { name: "Projects", href: "/#projects" },
+        { name: "Experience", href: "/#work-experience" },
+        { name: "Contact", href: "/#contact" },
     ];
 
     const renderLightDarkToggle = () => {
@@ -56,20 +57,21 @@ const Navbar = () => {
         >
             <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
                 {/* Logo / Name */}
-                <a href="#" className="font-semibold text-content">
+                <HashLink to="/#" className="font-semibold text-content">
                     WestWay
-                </a>
+                </HashLink>
 
                 {/* Desktop Nav Links */}
                 <div className="hidden md:flex items-center gap-6 text-sm">
                     {links.map((link) => (
-                        <a
+                        <HashLink
                             key={link.name}
-                            href={link.href}
+                            smooth
+                            to={link.href}
                             className="text-muted hover:text-content transition"
                         >
                             {link.name}
-                        </a>
+                        </HashLink>
                     ))}
                     {renderLightDarkToggle()}
                 </div>
@@ -97,14 +99,15 @@ const Navbar = () => {
                     >
                         <div className="flex flex-col items-center gap-4 py-6">
                             {links.map((link) => (
-                                <a
+                                <HashLink
                                     key={link.name}
-                                    href={link.href}
+                                    smooth
+                                    to={link.href}
                                     onClick={() => setOpen(false)}
                                     className="text-muted hover:text-content transition"
                                 >
                                     {link.name}
-                                </a>
+                                </HashLink>
                             ))}
                             {renderLightDarkToggle()}
                         </div>
