@@ -1,5 +1,6 @@
 import type {
     ArchitectureSection,
+    ChallengesSection,
     FeatureListSection,
     GallerySection,
     Metric,
@@ -63,6 +64,42 @@ const FeatureListSection: React.FC<FeatureListSection> = ({
     );
 };
 
+const ChallengesSection: React.FC<ChallengesSection> = ({
+    title,
+    challenges,
+}) => {
+    return (
+        <section id={getSlug(title)}>
+            <h2 className="text-2xl font-semibold mb-8">{title}</h2>
+
+            <div className="space-y-8">
+                {challenges.map((challenge, index) => (
+                    <div key={index} className="border rounded-lg p-6 bg-card">
+                        <div className="mb-3">
+                            <span className="font-semibold">Challenge</span>
+                            <p className="text-muted">{challenge.problem}</p>
+                        </div>
+
+                        <div className="mb-3">
+                            <span className="font-semibold">Solution</span>
+                            <p className="text-muted">{challenge.solution}</p>
+                        </div>
+
+                        {challenge.outcome && (
+                            <div>
+                                <span className="font-semibold">Outcome</span>
+                                <p className="text-muted">
+                                    {challenge.outcome}
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
+};
+
 const MetricCard: React.FC<Metric> = ({ label, value }) => {
     return (
         <div className="border rounded-lg p-4 bg-card">
@@ -118,6 +155,9 @@ const ProjectSectionRenderer: React.FC<ProjectSectionRendererProps> = ({
 
             case "feature-list":
                 return <FeatureListSection key={section.title} {...section} />;
+
+            case "challenges":
+                return <ChallengesSection key={section.title} {...section} />;
 
             case "metrics":
                 return <MetricsSection key={section.title} {...section} />;

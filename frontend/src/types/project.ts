@@ -7,6 +7,7 @@ export type ProjectSection =
     | TextSection
     | ArchitectureSection
     | FeatureListSection
+    | ChallengesSection
     | MetricSection
     | GallerySection;
 
@@ -27,6 +28,18 @@ export type FeatureListSection = {
     type: "feature-list";
     title: string;
     features: string[];
+};
+
+export type Challenge = {
+    problem: string;
+    solution: string;
+    outcome?: string;
+};
+
+export type ChallengesSection = {
+    type: "challenges";
+    title: string;
+    challenges: Challenge[];
 };
 
 export type Metric = {

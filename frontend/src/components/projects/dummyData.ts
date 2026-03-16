@@ -64,6 +64,35 @@ export const projects: Project[] = [
             },
 
             {
+                type: "challenges",
+                title: "Challenges",
+
+                challenges: [
+                    {
+                        problem:
+                            "Financial statements take time to manually input into spreadsheets.",
+
+                        solution:
+                            "Automate this process algorithmically with the help of an AI Agent.",
+
+                        outcome:
+                            "Financial statements can be generated within ~10 seconds.",
+                    },
+
+                    {
+                        problem:
+                            "Large spreadsheets caused noticeable UI lag during recalculation.",
+
+                        solution:
+                            "Moved formula evaluation to a Rust engine compiled to WebAssembly.",
+
+                        outcome:
+                            "Reduced recalculation time from ~120ms to under 5ms.",
+                    },
+                ],
+            },
+
+            {
                 type: "metrics",
                 title: "Results",
                 metrics: [
