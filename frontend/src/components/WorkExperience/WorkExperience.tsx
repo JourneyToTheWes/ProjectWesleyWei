@@ -1,18 +1,20 @@
 import { motion } from "framer-motion";
-import type { WorkExperienceType } from "../../types/workExperience";
+import type { WorkExperience } from "../../types/workExperience";
 import WorkExperienceItem from "./WorkExperienceItem";
-import { workExperienceDummy } from "./dummyData";
-
-const groupedWork = workExperienceDummy.reduce<
-    Record<number, WorkExperienceType[]>
->((acc, job) => {
-    const startYear = new Date(job.startDate).getFullYear();
-    if (!acc[startYear]) acc[startYear] = [];
-    acc[startYear].push(job);
-    return acc;
-}, {});
+import { useWorkExperience } from "../../hooks/useWorkExperience";
 
 const WorkExperience: React.FC = () => {
+    const { data: workExperience } = useWorkExperience();
+
+    const groupedWork = workExperience?.reduce<
+        Record<number, WorkExperience[]>
+    >((acc, job) => {
+        const startYear = new Date(job.startDate).getFullYear();
+        if (!acc[startYear]) acc[startYear] = [];
+        acc[startYear].push(job);
+        return acc;
+    }, {});
+
     return (
         <section id="work-experience" className="py-24 bg-surface">
             <div className="max-w-5xl mx-auto px-6">
@@ -33,50 +35,55 @@ const WorkExperience: React.FC = () => {
                 </motion.div>
 
                 {/* Timeline */}
-                <div className="relative max-w-3xl mx-auto">
-                    {/* Vertical timeline line */}
-                    <motion.div
-                        initial={{ height: 0 }}
-                        whileInView={{ height: "100%" }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1 }}
-                        className="absolute left-4 top-0 w-[2px] bg-border -translate-x-1/2"
-                    />
+                {workExperience && groupedWork && (
+                    <div className="relative max-w-3xl mx-auto">
+                        {/* Vertical timeline line */}
+                        <motion.div
+                            initial={{ height: 0 }}
+                            whileInView={{ height: "100%" }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1 }}
+                            className="absolute left-4 top-0 w-[2px] bg-border -translate-x-1/2"
+                        />
 
-                    {Object.entries(groupedWork)
-                        .sort(([a], [b]) => Number(b) - Number(a))
-                        .map(([year, jobs]) => (
-                            <div key={year} className="mb-10">
-                                <motion.h3
-                                    className="mb-4 text-sm font-semibold text-muted ml-10"
-                                    initial={{ opacity: 0, y: -50 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true, amount: 1 }}
-                                    transition={{ duration: 0.5 }}
-                                >
-                                    {year}
-                                </motion.h3>
+                        {Object.entries(groupedWork)
+                            .sort(([a], [b]) => Number(b) - Number(a))
+                            .map(([year, jobs]) => (
+                                <div key={year} className="mb-10">
+                                    <motion.h3
+                                        className="mb-4 text-sm font-semibold text-muted ml-10"
+                                        initial={{ opacity: 0, y: -50 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, amount: 1 }}
+                                        transition={{ duration: 0.5 }}
+                                    >
+                                        {year}
+                                    </motion.h3>
 
-                                {/* Jobs */}
-                                <div className="space-y-6">
-                                    {jobs.map((job) => (
-                                        <motion.div
-                                            key={job.company + job.role}
-                                            initial={{ opacity: 0, y: -50 }}
-                                            whileInView={{ opacity: 1, y: 0 }}
-                                            viewport={{
-                                                once: true,
-                                                amount: 0.8,
-                                            }}
-                                            transition={{ duration: 0.5 }}
-                                        >
-                                            <WorkExperienceItem job={job} />
-                                        </motion.div>
-                                    ))}
+                                    {/* Jobs */}
+                                    <div className="space-y-6">
+                                        {jobs.map((job) => (
+                                            <motion.div
+                                                key={job.company + job.role}
+                                                initial={{ opacity: 0, y: -50 }}
+                                                whileInView={{
+                                                    opacity: 1,
+                                                    y: 0,
+                                                }}
+                                                viewport={{
+                                                    once: true,
+                                                    amount: 0.8,
+                                                }}
+                                                transition={{ duration: 0.5 }}
+                                            >
+                                                <WorkExperienceItem job={job} />
+                                            </motion.div>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                </div>
+                            ))}
+                    </div>
+                )}
 
                 {/* Download Resume Button */}
                 <motion.div

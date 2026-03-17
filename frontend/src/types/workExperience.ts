@@ -1,4 +1,4 @@
-export type WorkExperienceType = {
+export type WorkExperience = {
     company: string; // e.g., "Nintex"
     role: string; // e.g., "Software Engineer"
     startDate: string; // e.g., "Jan 2021"
