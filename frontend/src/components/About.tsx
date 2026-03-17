@@ -63,7 +63,7 @@ const About = () => {
                                 </h3>
                                 <ul className="list-disc list-inside text-muted">
                                     {about.focusAreas.map((focus) => (
-                                        <li>{focus}</li>
+                                        <li key={focus}>{focus}</li>
                                     ))}
                                 </ul>
                             </motion.div>
