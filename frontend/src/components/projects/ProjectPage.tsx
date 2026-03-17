@@ -1,4 +1,3 @@
-import { projects } from "./dummyData";
 import ProjectHero from "./ProjectHero";
 import ProjectSectionRenderer from "./ProjectSectionRenderer";
 import ProjectStickySectionNav from "./ProjectSticySectionNav";
