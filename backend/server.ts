@@ -4,7 +4,7 @@ const express = require("express");
 
 // Controllers
 import AboutController from "./controllers/AboutController";
-import ResumeController from "./controllers/ResumeController";
+import WorkExperienceController from "./controllers/WorkExperienceController";
 import ProjectController from "./controllers/ProjectController";
 import VideoController from "./controllers/VideoController";
 
@@ -16,7 +16,7 @@ const app = new App({
     port: process.env.PORT || 5000,
     controllers: [
         new AboutController(),
-        new ResumeController(),
+        new WorkExperienceController(),
         new ProjectController(),
         new VideoController(),
     ],
