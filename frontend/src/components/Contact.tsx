@@ -5,8 +5,11 @@ import {
     getContainerVariants,
     getContainerChildVariants,
 } from "../utils/framerAnimation";
+import { useSiteConfig } from "../hooks/useSiteConfig";
 
 const Contact = () => {
+    const { data: siteConfig } = useSiteConfig();
+
     return (
         <section id="contact" className="py-24 bg-surface">
             <motion.div
@@ -31,59 +34,77 @@ const Contact = () => {
                     free to reach out.
                 </motion.p>
 
-                <div className="flex justify-center gap-6 flex-wrap mb-8">
-                    {/* Primary CTA buttons */}
-                    <motion.div variants={getContainerChildVariants()}>
-                        <Button
-                            href="mailto:wesley631w@email.com"
-                            variant="primary"
-                        >
-                            Email
-                        </Button>
-                    </motion.div>
-                    <motion.div variants={getContainerChildVariants()}>
-                        <Button
-                            href="https://linkedin.com/in/wes-wei"
-                            variant="primary"
-                            external
-                        >
-                            LinkedIn
-                        </Button>
-                    </motion.div>
-                    <motion.div variants={getContainerChildVariants()}>
-                        <Button
-                            href="https://github.com/JourneyToTheWes"
-                            variant="primary"
-                            external
-                        >
-                            GitHub
-                        </Button>
-                    </motion.div>
-                </div>
+                {siteConfig &&
+                    siteConfig.github &&
+                    siteConfig.linkedin &&
+                    siteConfig.youtube &&
+                    siteConfig.instagram && (
+                        <>
+                            <div className="flex justify-center gap-6 flex-wrap mb-8">
+                                {/* Primary CTA buttons */}
+                                <motion.div
+                                    variants={getContainerChildVariants()}
+                                >
+                                    <Button
+                                        href="mailto:wesley631w@email.com"
+                                        variant="primary"
+                                    >
+                                        Email
+                                    </Button>
+                                </motion.div>
+                                <motion.div
+                                    variants={getContainerChildVariants()}
+                                >
+                                    <Button
+                                        href={siteConfig.linkedin}
+                                        variant="primary"
+                                        external
+                                    >
+                                        LinkedIn
+                                    </Button>
+                                </motion.div>
+                                <motion.div
+                                    variants={getContainerChildVariants()}
+                                >
+                                    <Button
+                                        href={siteConfig.github}
+                                        variant="primary"
+                                        external
+                                    >
+                                        GitHub
+                                    </Button>
+                                </motion.div>
+                            </div>
 
-                {/* Secondary circular social links */}
-                <div className="flex justify-center gap-4 flex-wrap">
-                    <motion.div variants={getContainerChildVariants()}>
-                        <Button
-                            href="https://www.youtube.com/channel/UCHSsr_f2vnk1p5YlCfj82lg"
-                            variant="outline"
-                            size="icon"
-                            external
-                        >
-                            <Youtube />
-                        </Button>
-                    </motion.div>
-                    <motion.div variants={getContainerChildVariants()}>
-                        <Button
-                            href="https://www.instagram.com/journeytothewes/"
-                            variant="outline"
-                            size="icon"
-                            external
-                        >
-                            <Instagram />
-                        </Button>
-                    </motion.div>
-                </div>
+                            {/* Secondary circular social links */}
+                            <div className="flex justify-center gap-4 flex-wrap">
+                                <motion.div
+                                    variants={getContainerChildVariants()}
+                                >
+                                    <Button
+                                        href={siteConfig.youtube}
+                                        variant="outline"
+                                        size="icon"
+                                        external
+                                    >
+                                        <Youtube />
+                                    </Button>
+                                </motion.div>
+                                <motion.div
+                                    variants={getContainerChildVariants()}
+                                >
+                                    <Button
+                                        href={siteConfig.instagram}
+                                        variant="outline"
+                                        size="icon"
+                                        external
+                                    >
+                                        <Instagram />
+                                    </Button>
+                                </motion.div>
+                            </div>
+                        </>
+                    )}
 
                 <motion.p
                     className="text-xs text-muted mt-16"

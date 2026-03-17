@@ -2,9 +2,11 @@ import { motion } from "framer-motion";
 import type { WorkExperience } from "../../types/workExperience";
 import WorkExperienceItem from "./WorkExperienceItem";
 import { useWorkExperience } from "../../hooks/useWorkExperience";
+import { useSiteConfig } from "../../hooks/useSiteConfig";
 
 const WorkExperience: React.FC = () => {
     const { data: workExperience } = useWorkExperience();
+    const { data: siteConfig } = useSiteConfig();
 
     const groupedWork = workExperience?.reduce<
         Record<number, WorkExperience[]>
@@ -86,22 +88,24 @@ const WorkExperience: React.FC = () => {
                 )}
 
                 {/* Download Resume Button */}
-                <motion.div
-                    className="mt-12 text-center"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 1 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <a
-                        href="https://yourcdn.com/resume.pdf" // replace with hosted resume
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-6 py-3 bg-primary text-white rounded-lg hover:opacity-90 transition"
+                {siteConfig && siteConfig.resume && (
+                    <motion.div
+                        className="mt-12 text-center"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 1 }}
+                        transition={{ duration: 0.6 }}
                     >
-                        Download Resume
-                    </a>
-                </motion.div>
+                        <a
+                            href={siteConfig.resume} // replace with hosted resume
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-6 py-3 bg-primary text-white rounded-lg hover:opacity-90 transition"
+                        >
+                            Download Resume
+                        </a>
+                    </motion.div>
+                )}
             </div>
         </section>
     );
