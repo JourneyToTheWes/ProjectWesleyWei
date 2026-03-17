@@ -3,22 +3,24 @@ import ProjectPreview from "./ProjectPreview";
 import ProjectTimeline from "./ProjectTimeline";
 import type { Project } from "../../types/project";
 import { motion } from "framer-motion";
-import { projects } from "./dummyData";
+import { useProjects } from "../../hooks/useProjects";
 
-const groupedProjects = projects.reduce<Record<number, typeof projects>>(
-    (acc, project) => {
-        if (!acc[project.year]) {
-            acc[project.year] = [];
-        }
-
-        acc[project.year].push(project);
-        return acc;
-    },
-    {},
-);
 const Projects = () => {
+    const { projects } = useProjects();
     const [activeProject, setActiveProject] = useState<Project | null>(
-        projects[0],
+        projects ? projects[0] : null,
+    );
+
+    const groupedProjects = projects?.reduce<Record<number, typeof projects>>(
+        (acc, project) => {
+            if (!acc[project.year]) {
+                acc[project.year] = [];
+            }
+
+            acc[project.year].push(project);
+            return acc;
+        },
+        {},
     );
 
     return (
@@ -38,25 +40,31 @@ const Projects = () => {
                         Hover over a project to preview
                     </p>
                 </motion.div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                    <ProjectTimeline
-                        projectsByYear={groupedProjects}
-                        onProjectHover={(project) => setActiveProject(project)}
-                    />
-                    <div className="hidden lg:block sticky top-24 self-start">
-                        {activeProject && (
-                            <motion.div
-                                key={activeProject.slug}
-                                initial={{ opacity: 0, y: -8 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5 }}
-                                viewport={{ amount: 0.5 }}
-                            >
-                                <ProjectPreview activeProject={activeProject} />
-                            </motion.div>
-                        )}
+                {projects && groupedProjects && (
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                        <ProjectTimeline
+                            projectsByYear={groupedProjects}
+                            onProjectHover={(project) =>
+                                setActiveProject(project)
+                            }
+                        />
+                        <div className="hidden lg:block sticky top-24 self-start">
+                            {activeProject && (
+                                <motion.div
+                                    key={activeProject.slug}
+                                    initial={{ opacity: 0, y: -8 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.5 }}
+                                    viewport={{ amount: 0.5 }}
+                                >
+                                    <ProjectPreview
+                                        activeProject={activeProject}
+                                    />
+                                </motion.div>
+                            )}
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </section>
     );
