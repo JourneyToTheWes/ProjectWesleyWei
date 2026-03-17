@@ -8,8 +8,9 @@ import { useProjects } from "../../hooks/useProjects";
 const Projects = () => {
     const { data: projects } = useProjects();
     const [activeProject, setActiveProject] = useState<Project | null>(
-        projects ? projects[0] : null,
+        projects?.[0] ?? null,
     );
+    const currentActiveProject = activeProject ?? projects?.[0];
 
     const groupedProjects = projects?.reduce<Record<number, typeof projects>>(
         (acc, project) => {
@@ -49,16 +50,16 @@ const Projects = () => {
                             }
                         />
                         <div className="hidden lg:block sticky top-24 self-start">
-                            {activeProject && (
+                            {currentActiveProject && (
                                 <motion.div
-                                    key={activeProject.slug}
+                                    key={currentActiveProject.slug}
                                     initial={{ opacity: 0, y: -8 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5 }}
                                     viewport={{ amount: 0.5 }}
                                 >
                                     <ProjectPreview
-                                        activeProject={activeProject}
+                                        activeProject={currentActiveProject}
                                     />
                                 </motion.div>
                             )}
