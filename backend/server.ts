@@ -7,6 +7,7 @@ import AboutController from "./controllers/AboutController";
 import WorkExperienceController from "./controllers/WorkExperienceController";
 import ProjectController from "./controllers/ProjectController";
 import VideoController from "./controllers/VideoController";
+import SiteConfigController from "./controllers/SiteConfigController";
 
 // Connect Database
 ConnectDB();
@@ -19,6 +20,7 @@ const app = new App({
         new WorkExperienceController(),
         new ProjectController(),
         new VideoController(),
+        new SiteConfigController(),
     ],
     middleWares: [express.json({ extended: false })],
 });
