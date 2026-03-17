@@ -1,23 +1,24 @@
 const mongoose = require("mongoose");
+
+const SectionBaseSchema = new mongoose.Schema(
+    {
+        id: { type: String, required: true },
+        type: { type: String, required: true },
+        title: { type: String, required: true },
+    },
+    { _id: false, discriminatorKey: "type" },
+);
+
 const TextSectionSchema = new mongoose.Schema({
-    id: { type: String, required: true }, // unique for hash links
-    type: { type: String, default: "text" },
-    title: { type: String, required: true },
     content: { type: String, required: true },
 });
 
 const ArchitectureSectionSchema = new mongoose.Schema({
-    id: { type: String, required: true },
-    type: { type: String, default: "architecture" },
-    title: { type: String, required: true },
     diagram: { type: String }, // path to diagram image
     points: [{ type: String }],
 });
 
 const FeatureListSectionSchema = new mongoose.Schema({
-    id: { type: String, required: true },
-    type: { type: String, default: "feature-list" },
-    title: { type: String, required: true },
     features: [{ type: String }],
 });
 
@@ -28,16 +29,10 @@ const ChallengeSchema = new mongoose.Schema({
 });
 
 const ChallengesSectionSchema = new mongoose.Schema({
-    id: { type: String, required: true },
-    type: { type: String, default: "challenges" },
-    title: { type: String, required: true },
     challenges: [ChallengeSchema],
 });
 
 const MetricsSectionSchema = new mongoose.Schema({
-    id: { type: String, required: true },
-    type: { type: String, default: "metrics" },
-    title: { type: String, required: true },
     metrics: [
         {
             label: { type: String, required: true },
@@ -47,20 +42,8 @@ const MetricsSectionSchema = new mongoose.Schema({
 });
 
 const GallerySectionSchema = new mongoose.Schema({
-    id: { type: String, required: true },
-    type: { type: String, default: "gallery" },
-    title: { type: String, required: true },
     images: [{ type: String }],
 });
-
-const ProjectSectionSchema = [
-    TextSectionSchema,
-    ArchitectureSectionSchema,
-    FeatureListSectionSchema,
-    ChallengesSectionSchema,
-    MetricsSectionSchema,
-    GallerySectionSchema,
-];
 
 const ProjectSchema = new mongoose.Schema(
     {
@@ -79,11 +62,19 @@ const ProjectSchema = new mongoose.Schema(
             github: { type: String },
             demo: { type: String },
         },
-        sections: { type: [ProjectSectionSchema], default: [] },
+        sections: { type: [SectionBaseSchema], default: [] },
         otherContributors: [{ type: String }],
     },
     { timestamps: true },
 );
+
+const sectionsPath = ProjectSchema.path("sections");
+sectionsPath.discriminator("text", TextSectionSchema);
+sectionsPath.discriminator("architecture", ArchitectureSectionSchema);
+sectionsPath.discriminator("feature-list", FeatureListSectionSchema);
+sectionsPath.discriminator("challenges", ChallengesSectionSchema);
+sectionsPath.discriminator("metrics", MetricsSectionSchema);
+sectionsPath.discriminator("gallery", GallerySectionSchema);
 
 const Project = mongoose.model("projects", ProjectSchema, "projects");
 export default Project;

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useProjects } from "../../hooks/useProjects";
 
 const Projects = () => {
-    const { projects } = useProjects();
+    const { data: projects } = useProjects();
     const [activeProject, setActiveProject] = useState<Project | null>(
         projects ? projects[0] : null,
     );

@@ -6,7 +6,7 @@ import {
 import { useAbout } from "../hooks/useAbout";
 
 const About = () => {
-    const { about } = useAbout();
+    const { data: about } = useAbout();
 
     return (
         <section id="about" className="py-24 bg-background">
