@@ -8,3 +8,4 @@
 # Config
 config/default.json
 config/production.json
+.vercel

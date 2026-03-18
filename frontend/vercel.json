@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/:path*",
+            "destination": "https://project-wesley-wei-backend.vercel.app/:path*"
+        },
+        {
+            "source": "/((?!api/).*)",
+            "destination": "/index.html"
+        }
+    ]
+}

@@ -2,7 +2,9 @@
 	"compilerOptions": {
 		"sourceMap": true,
 		"module": "commonjs",
-		"outDir": "./build"
+		"outDir": "./build",
+		"esModuleInterop": true,
+		"target": "ESNext"
 	},
 	"include": ["**/*.ts"],
 	"exclude": ["node_modules"]
