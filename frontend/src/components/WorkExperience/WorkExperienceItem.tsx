@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import type { WorkExperienceType } from "../../types/workExperience";
-
-type Props = { job: WorkExperienceType };
+import type { WorkExperience } from "../../types/workExperience";
+type Props = { job: WorkExperience };
 
 const WorkExperienceItem: React.FC<Props> = ({ job }) => (
     <div className="relative flex items-start gap-4">
@@ -22,14 +21,14 @@ const WorkExperienceItem: React.FC<Props> = ({ job }) => (
             </p>
 
             <ul className="mt-2 list-disc list-inside space-y-1 text-content">
-                {job.experiences.map((exp, i) => (
+                {job.experiences.map((exp: string, i: number) => (
                     <li key={i}>{exp}</li>
                 ))}
             </ul>
 
             {job.tech && job.tech.length > 0 && (
                 <div className="flex flex-wrap gap-2 mt-3">
-                    {job.tech.map((t) => (
+                    {job.tech.map((t: string) => (
                         <span
                             key={t}
                             className="text-xs px-2 py-1 bg-secondary rounded"

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import type { WorkExperience } from "../../types/workExperience";
+import type { WorkExperience as WorkExperienceModel } from "../../types/workExperience";
 import WorkExperienceItem from "./WorkExperienceItem";
 import { useWorkExperience } from "../../hooks/useWorkExperience";
 import { useSiteConfig } from "../../hooks/useSiteConfig";
@@ -9,7 +9,7 @@ const WorkExperience: React.FC = () => {
     const { data: siteConfig } = useSiteConfig();
 
     const groupedWork = workExperience?.reduce<
-        Record<number, WorkExperience[]>
+        Record<number, WorkExperienceModel[]>
     >((acc, job) => {
         const startYear = new Date(job.startDate).getFullYear();
         if (!acc[startYear]) acc[startYear] = [];
