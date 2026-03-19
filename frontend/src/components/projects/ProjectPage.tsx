@@ -26,7 +26,8 @@ export default function ProjectPage() {
                             />
                         </div>
 
-                        <div className="space-y-24">
+                        {/* [&>section]:scroll-mt-24 -> Ignores fixed navbar header height and offsets scroll position for each section. */}
+                        <div className="space-y-24 [&>section]:scroll-mt-24">
                             <ProjectSectionRenderer
                                 sections={project.sections}
                             />
