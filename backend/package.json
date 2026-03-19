@@ -19,8 +19,8 @@
 	},
 	"homepage": "https://github.com/JourneyToTheWes/ProjectWesleyWei#readme",
 	"dependencies": {
-		"config": "^3.3.1",
 		"cors": "^2.8.6",
+		"dotenv": "^17.3.1",
 		"express": "^4.17.1",
 		"mongoose": "^5.9.25"
 	},

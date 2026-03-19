@@ -1,5 +1,7 @@
 const ConnectDB = require("./config/db");
 import App from "./app";
+import dotenv from "dotenv"; // Load environment variables
+dotenv.config();
 const express = require("express");
 
 // Controllers
@@ -25,4 +27,9 @@ const app = new App({
     middleWares: [express.json({ extended: false })],
 });
 
-app.listen();
+// Only run app.listen() if we are NOT on Vercel
+if (process.env.NODE_ENV !== 'production') {
+    app.listen();
+}
+
+export default app.app;

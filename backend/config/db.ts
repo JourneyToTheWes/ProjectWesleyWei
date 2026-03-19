@@ -1,9 +1,14 @@
 const mongoose = require('mongoose');
-const config = require('config');
-const db = config.get('mongoURI');
+import dotenv from "dotenv";
+dotenv.config();
+const db = process.env.MONGO_URI;
 
 const connectDB = async () => {
     try {
+        if (!db) {
+            throw new Error('MONGO_URI environment variable is not set');
+        }
+
         await mongoose.connect(db, {
             useNewUrlParser: true,
 			useCreateIndex: true,

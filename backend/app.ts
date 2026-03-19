@@ -3,8 +3,7 @@ import { Application } from "express";
 import * as path from "path";
 import * as fs from "fs";
 const cors = require("cors");
-const config = require("config");
-const frontendUrl = config.get("frontendUrl");
+const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
 
 type Port = string | number;
 interface IAppInit {
@@ -25,7 +24,7 @@ class App {
         this.useRoutes(appInit.controllers);
 
         // test read folder in docker env
-        console.info("Files at project-wesley-wei-server directory");
+        console.info("Files at backend directory");
         fs.readdir(".", (err, files) => {
             files.forEach((file) => {
                 console.log(file);
